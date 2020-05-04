@@ -2,20 +2,24 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import JSONEditorApp from "./JSONEditorApp";
+import CodeView from "./CodeView";
 
-const initializeJSONView = () =>
+const initializeView = (data?: string, type?: string) => {
   ReactDOM.render(
-    <React.StrictMode>
+    type && type === "json" ? (
       <JSONEditorApp />
-    </React.StrictMode>,
+    ) : (
+      <CodeView language={type} data={data} />
+    ),
     window.document.body
   );
+};
 
 const { location } = window;
 //@ts-ignore
-window.jsonView = initializeJSONView;
+window.editorView = initializeView;
 if (
   location.href.indexOf("chrome-extension://") !== -1 &&
   window.history.length === 1
 )
-  initializeJSONView();
+  initializeView("{}", "json");

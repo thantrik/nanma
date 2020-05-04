@@ -12,7 +12,7 @@
     "32": "icons/icon-32.png",
     "128": "icons/icon-128.png"
   },
-  "content_security_policy": "script-src 'self' 'unsafe-eval' 'unsafe-inline' data: blob: filesystem: https://*;  worker-src 'self' https: blob:; ",
+  "content_security_policy": "script-src 'self' 'unsafe-eval' 'unsafe-inline' data: blob: filesystem: https://raw.githubusercontent.com/*;  worker-src 'self' https: blob:; ",
   "manifest_version": 2,
   "name": "Web developer tool",
   "permissions": [

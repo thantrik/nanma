@@ -1,12 +1,15 @@
-const data = String(document.body.innerText).trim();
-let jsonParse = false;
-try {
-  window.___JSON = JSON.parse(data);
-  window.jsonView && jsonView();
-  jsonParse = true;
-} catch (e) {}
-
-if (!jsonParse && data) {
+const editorView = (data, type) =>
+  window.editorView && window.editorView(data, type);
+const initialize = () => {
+  const data = String(document.body.innerText).trim();
+  if (!data) {
+    return;
+  }
+  try {
+    window.___JSON = JSON.parse(data);
+    editorView(null, "json");
+    return;
+  } catch (e) {}
   try {
     const pos = data.indexOf("\n");
     if (pos !== -1) {
@@ -17,8 +20,19 @@ if (!jsonParse && data) {
           firstLine.trim().indexOf("[") !== -1)
       ) {
         window.___JSON = data;
-        window.jsonView && jsonView();
+        editorView(null, "json");
+        return;
       }
     }
   } catch (e) {}
-}
+
+  const location = window.location;
+  if (/\.(js|mjs|jsx|ts|tsx|c|cpp|cs)$/.test(location.href)) {
+    return editorView(data, "typescript");
+  }
+  if (/\.(text|txt|log)$/.test(location.href)) {
+    return editorView(data);
+  }
+};
+
+initialize();
