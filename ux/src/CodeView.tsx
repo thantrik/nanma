@@ -1,5 +1,4 @@
 import React from "react";
-
 import * as monaco from "monaco-editor";
 import "./index.css";
 

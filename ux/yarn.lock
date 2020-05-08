@@ -956,7 +956,7 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.5.1", "@babel/runtime@^7.7.4":
+"@babel/runtime@^7.1.2", "@babel/runtime@^7.5.1", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.4", "@babel/runtime@^7.7.6":
   version "7.9.6"
   resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/@babel/runtime/-/runtime-7.9.6.tgz#a9102eb5cadedf3f31d08a9ecf294af7827ea29f"
   integrity sha1-qRAutcre3z8x0IqezylK94J+op8=
@@ -1037,6 +1037,169 @@
   version "10.1.0"
   resolved "https://registry.yarnpkg.com/@csstools/normalize.css/-/normalize.css-10.1.0.tgz#f0950bba18819512d42f7197e56c518aa491cf18"
   integrity sha512-ij4wRiunFfaJxjB0BdrYHIH8FxBJpOwNPhhAcunlmPdXudL1WQV1qoP9un6JsEBAgQH+7UXyyjh0g7jTxXK6tg==
+
+"@fluentui/accessibility@^0.48.0":
+  version "0.48.0"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/@fluentui/accessibility/-/accessibility-0.48.0.tgz#4e1b164394fb091643bf206d96908114b33d78d9"
+  integrity sha1-ThsWQ5T7CRZDvyBtlpCBFLM9eNk=
+  dependencies:
+    "@babel/runtime" "^7.7.6"
+    keyboard-key "1.0.1"
+    lodash "^4.17.15"
+
+"@fluentui/react-bindings@^0.48.0":
+  version "0.48.0"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/@fluentui/react-bindings/-/react-bindings-0.48.0.tgz#7d1b06ea695cf2eb62ad6ff16bbb4a37569497f8"
+  integrity sha1-fRsG6mlc8utirW/xa7tKN1aUl/g=
+  dependencies:
+    "@babel/runtime" "^7.7.6"
+    "@fluentui/accessibility" "^0.48.0"
+    "@fluentui/react-compose" "^0.2.4"
+    "@fluentui/state" "^0.48.0"
+    "@fluentui/styles" "^0.48.0"
+    "@uifabric/utilities" "^7.15.6"
+    classnames "^2.2.6"
+    fela "^10.6.1"
+    lodash "^4.17.15"
+
+"@fluentui/react-component-event-listener@^0.48.0":
+  version "0.48.0"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/@fluentui/react-component-event-listener/-/react-component-event-listener-0.48.0.tgz#9e2231b0894d35bddb7df359139c217d1b8c3b29"
+  integrity sha1-niIxsIlNNb3bffNZE5whfRuMOyk=
+  dependencies:
+    "@babel/runtime" "^7.7.6"
+    prop-types "^15.7.2"
+
+"@fluentui/react-component-nesting-registry@^0.48.0":
+  version "0.48.0"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/@fluentui/react-component-nesting-registry/-/react-component-nesting-registry-0.48.0.tgz#e988fef718fea4c71dae5ab84885668b607016cd"
+  integrity sha1-6Yj+9xj+pMcdrlq4SIVmi2BwFs0=
+  dependencies:
+    "@babel/runtime" "^7.7.6"
+    prop-types "^15.7.2"
+
+"@fluentui/react-component-ref@^0.48.0":
+  version "0.48.0"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/@fluentui/react-component-ref/-/react-component-ref-0.48.0.tgz#53cfa8d4e454e367de9d9e6d007cc877330a3230"
+  integrity sha1-U8+o1ORU42fenZ5tAHzIdzMKMjA=
+  dependencies:
+    "@babel/runtime" "^7.7.6"
+    prop-types "^15.7.2"
+    react-is "^16.6.3"
+
+"@fluentui/react-compose@^0.2.4":
+  version "0.2.10"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/@fluentui/react-compose/-/react-compose-0.2.10.tgz#6ef388994cf573e15dfd633f57bdbbfff063b886"
+  integrity sha1-bvOImUz1c+Fd/WM/V727//BjuIY=
+  dependencies:
+    "@uifabric/set-version" "^7.0.11"
+    tslib "^1.10.0"
+
+"@fluentui/react-context-selector@^0.48.0":
+  version "0.48.0"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/@fluentui/react-context-selector/-/react-context-selector-0.48.0.tgz#261d335732996813c9b74a00fb765f2e8108f8c5"
+  integrity sha1-Jh0zVzKZaBPJt0oA+3ZfLoEI+MU=
+  dependencies:
+    "@babel/runtime" "^7.7.6"
+
+"@fluentui/react-focus@^7.9.0":
+  version "7.9.0"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/@fluentui/react-focus/-/react-focus-7.9.0.tgz#6dd9a7ff60f6924259e96c89b94bf17bec4fdb86"
+  integrity sha1-bdmn/2D2kkJZ6WyJuUvxe+xP24Y=
+  dependencies:
+    "@uifabric/merge-styles" "^7.11.1"
+    "@uifabric/set-version" "^7.0.11"
+    "@uifabric/styling" "^7.12.0"
+    "@uifabric/utilities" "^7.16.0"
+    tslib "^1.10.0"
+
+"@fluentui/react-icons-northstar@^0.48.0":
+  version "0.48.0"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/@fluentui/react-icons-northstar/-/react-icons-northstar-0.48.0.tgz#2dd09a627e6e2c47570643f0f6837325037dd8b8"
+  integrity sha1-LdCaYn5uLEdXBkPw9oNzJQN92Lg=
+  dependencies:
+    "@babel/runtime" "^7.7.6"
+    "@fluentui/accessibility" "^0.48.0"
+    "@fluentui/react-bindings" "^0.48.0"
+    "@fluentui/styles" "^0.48.0"
+    classnames "^2.2.6"
+    fela "^10.6.1"
+    lodash "^4.17.15"
+
+"@fluentui/react-icons@^0.1.9":
+  version "0.1.9"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/@fluentui/react-icons/-/react-icons-0.1.9.tgz#da97e5112041c5b186d4a879cf1990fcc37f430e"
+  integrity sha1-2pflESBBxbGG1Kh5zxmQ/MN/Qw4=
+  dependencies:
+    "@uifabric/set-version" "^7.0.11"
+    "@uifabric/styling" "^7.12.0"
+    "@uifabric/utilities" "^7.16.0"
+    tslib "^1.10.0"
+
+"@fluentui/react-northstar@^0.48.0":
+  version "0.48.0"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/@fluentui/react-northstar/-/react-northstar-0.48.0.tgz#47a7f4f5f44cadefc725f87d2d81c90e0561e627"
+  integrity sha1-R6f09fRMre/HJfh9LYHJDgVh5ic=
+  dependencies:
+    "@babel/runtime" "^7.7.6"
+    "@fluentui/accessibility" "^0.48.0"
+    "@fluentui/react-bindings" "^0.48.0"
+    "@fluentui/react-component-event-listener" "^0.48.0"
+    "@fluentui/react-component-nesting-registry" "^0.48.0"
+    "@fluentui/react-component-ref" "^0.48.0"
+    "@fluentui/react-context-selector" "^0.48.0"
+    "@fluentui/react-icons-northstar" "^0.48.0"
+    "@fluentui/react-proptypes" "^0.48.0"
+    "@fluentui/styles" "^0.48.0"
+    classnames "^2.2.6"
+    downshift "3.2.14"
+    fela "^10.6.1"
+    fela-plugin-embedded "^10.6.1"
+    fela-plugin-fallback-value "^10.6.1"
+    fela-plugin-placeholder-prefixer "^10.6.1"
+    fela-plugin-prefixer "^10.6.1"
+    fela-plugin-rtl "^10.6.1"
+    inline-style-expand-shorthand "^1.2.0"
+    keyboard-key "1.0.1"
+    lodash "^4.17.15"
+    popper.js "^1.15.0"
+    prop-types "^15.7.2"
+    react-fela "^10.6.1"
+    react-transition-group "^4.3.0"
+
+"@fluentui/react-proptypes@^0.48.0":
+  version "0.48.0"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/@fluentui/react-proptypes/-/react-proptypes-0.48.0.tgz#74cba61c1f7341849eee27b4e114c49fa0a7144b"
+  integrity sha1-dMumHB9zQYSe7ie04RTEn6CnFEs=
+  dependencies:
+    "@babel/runtime" "^7.7.6"
+    lodash "^4.17.15"
+    prop-types "^15.7.2"
+
+"@fluentui/react@^7.110.2":
+  version "7.110.2"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/@fluentui/react/-/react-7.110.2.tgz#4de6f5477e36456d2628f20118d68dbd9c9a4aff"
+  integrity sha1-Teb1R342RW0mKPIBGNaNvZyaSv8=
+  dependencies:
+    "@uifabric/set-version" "^7.0.11"
+    office-ui-fabric-react "^7.110.2"
+    tslib "^1.10.0"
+
+"@fluentui/state@^0.48.0":
+  version "0.48.0"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/@fluentui/state/-/state-0.48.0.tgz#b0c3f457e5f4e0d07cdf7a6d99d2c9b7e845018b"
+  integrity sha1-sMP0V+X04NB833ptmdLJt+hFAYs=
+  dependencies:
+    "@babel/runtime" "^7.7.6"
+
+"@fluentui/styles@^0.48.0":
+  version "0.48.0"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/@fluentui/styles/-/styles-0.48.0.tgz#a42750133c8040d598dc022370bbc2d3331dce38"
+  integrity sha1-pCdQEzyAQNWY3AIjcLvC0zMdzjg=
+  dependencies:
+    "@babel/runtime" "^7.7.6"
+    csstype "^2.6.7"
+    lodash "^4.17.15"
 
 "@hapi/address@2.x.x":
   version "2.1.4"
@@ -1228,6 +1391,11 @@
     "@types/yargs" "^15.0.0"
     chalk "^3.0.0"
 
+"@microsoft/load-themed-styles@^1.10.26":
+  version "1.10.44"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/@microsoft/load-themed-styles/-/load-themed-styles-1.10.44.tgz#55ab022a9b7790492215d3fc1b408e597bb689c8"
+  integrity sha1-VasCKpt3kEkiFdP8G0COWXu2icg=
+
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz#524af240d1a360527b730475ecfa1344aa540dde"
@@ -1240,6 +1408,50 @@
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
+
+"@redux-saga/core@^1.1.3":
+  version "1.1.3"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/@redux-saga/core/-/core-1.1.3.tgz#3085097b57a4ea8db5528d58673f20ce0950f6a4"
+  integrity sha1-MIUJe1ek6o21Uo1YZz8gzglQ9qQ=
+  dependencies:
+    "@babel/runtime" "^7.6.3"
+    "@redux-saga/deferred" "^1.1.2"
+    "@redux-saga/delay-p" "^1.1.2"
+    "@redux-saga/is" "^1.1.2"
+    "@redux-saga/symbols" "^1.1.2"
+    "@redux-saga/types" "^1.1.0"
+    redux "^4.0.4"
+    typescript-tuple "^2.2.1"
+
+"@redux-saga/deferred@^1.1.2":
+  version "1.1.2"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/@redux-saga/deferred/-/deferred-1.1.2.tgz#59937a0eba71fff289f1310233bc518117a71888"
+  integrity sha1-WZN6Drpx//KJ8TECM7xRgRenGIg=
+
+"@redux-saga/delay-p@^1.1.2":
+  version "1.1.2"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/@redux-saga/delay-p/-/delay-p-1.1.2.tgz#8f515f4b009b05b02a37a7c3d0ca9ddc157bb355"
+  integrity sha1-j1FfSwCbBbAqN6fD0Mqd3BV7s1U=
+  dependencies:
+    "@redux-saga/symbols" "^1.1.2"
+
+"@redux-saga/is@^1.1.2":
+  version "1.1.2"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/@redux-saga/is/-/is-1.1.2.tgz#ae6c8421f58fcba80faf7cadb7d65b303b97e58e"
+  integrity sha1-rmyEIfWPy6gPr3ytt9ZbMDuX5Y4=
+  dependencies:
+    "@redux-saga/symbols" "^1.1.2"
+    "@redux-saga/types" "^1.1.0"
+
+"@redux-saga/symbols@^1.1.2":
+  version "1.1.2"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/@redux-saga/symbols/-/symbols-1.1.2.tgz#216a672a487fc256872b8034835afc22a2d0595d"
+  integrity sha1-IWpnKkh/wlaHK4A0g1r8IqLQWV0=
+
+"@redux-saga/types@^1.1.0":
+  version "1.1.0"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/@redux-saga/types/-/types-1.1.0.tgz#0e81ce56b4883b4b2a3001ebe1ab298b84237204"
+  integrity sha1-DoHOVrSIO0sqMAHr4aspi4QjcgQ=
 
 "@sheerun/mutationobserver-shim@^0.3.2":
   version "0.3.3"
@@ -1396,6 +1608,13 @@
   resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/@testing-library/user-event/-/user-event-7.2.1.tgz#2ad4e844175a3738cb9e7064be5ea070b8863a1c"
   integrity sha1-KtToRBdaNzjLnnBkvl6gcLiGOhw=
 
+"@tinymce/tinymce-react@^3.6.0":
+  version "3.6.0"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/@tinymce/tinymce-react/-/tinymce-react-3.6.0.tgz#6e33e89b7bb0240c4ffa892a8e1924688f479b4b"
+  integrity sha1-bjPom3uwJAxP+okqjhkkaI9Hm0s=
+  dependencies:
+    prop-types "^15.6.2"
+
 "@types/ace@*":
   version "0.0.43"
   resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/@types/ace/-/ace-0.0.43.tgz#9f0916174b6060dabbccd36ba4868ea769a1c633"
@@ -1497,6 +1716,11 @@
   dependencies:
     "@types/ace" "*"
     ajv "^6.12.0"
+
+"@types/lodash@^4.14.150":
+  version "4.14.150"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/@types/lodash/-/lodash-4.14.150.tgz#649fe44684c3f1fcb6164d943c5a61977e8cf0bd"
+  integrity sha1-ZJ/kRoTD8fy2Fk2UPFphl36M8L0=
 
 "@types/minimatch@*":
   version "3.0.3"
@@ -1632,6 +1856,71 @@
     lodash "^4.17.15"
     semver "^6.3.0"
     tsutils "^3.17.1"
+
+"@uifabric/foundation@^7.7.7":
+  version "7.7.7"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/@uifabric/foundation/-/foundation-7.7.7.tgz#2c2fd6659a6a00f1b2703860e34da61508cd2bbf"
+  integrity sha1-LC/WZZpqAPGycDhg402mFQjNK78=
+  dependencies:
+    "@uifabric/merge-styles" "^7.11.1"
+    "@uifabric/set-version" "^7.0.11"
+    "@uifabric/styling" "^7.12.0"
+    "@uifabric/utilities" "^7.16.0"
+    tslib "^1.10.0"
+
+"@uifabric/icons@^7.3.33":
+  version "7.3.33"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/@uifabric/icons/-/icons-7.3.33.tgz#f0b60b3b98fb1a605876e233d4333112a8bfd37f"
+  integrity sha1-8LYLO5j7GmBYduIz1DMxEqi/038=
+  dependencies:
+    "@uifabric/set-version" "^7.0.11"
+    "@uifabric/styling" "^7.12.0"
+    tslib "^1.10.0"
+
+"@uifabric/merge-styles@^7.11.1":
+  version "7.11.1"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/@uifabric/merge-styles/-/merge-styles-7.11.1.tgz#7ed1a8a4ade85d8b652da4c26cc3d25646fd811c"
+  integrity sha1-ftGopK3oXYtlLaTCbMPSVkb9gRw=
+  dependencies:
+    "@uifabric/set-version" "^7.0.11"
+    tslib "^1.10.0"
+
+"@uifabric/react-hooks@^7.2.2":
+  version "7.2.2"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/@uifabric/react-hooks/-/react-hooks-7.2.2.tgz#dc5541c7c3c2df6c58762f8522d06a2ad3fa871d"
+  integrity sha1-3FVBx8PC32xYdi+FItBqKtP6hx0=
+  dependencies:
+    "@uifabric/set-version" "^7.0.11"
+    "@uifabric/utilities" "^7.16.0"
+    tslib "^1.10.0"
+
+"@uifabric/set-version@^7.0.11":
+  version "7.0.11"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/@uifabric/set-version/-/set-version-7.0.11.tgz#c59e0e0bbf361f5123f8e8f97a8464e28163cc72"
+  integrity sha1-xZ4OC782H1Ej+Oj5eoRk4oFjzHI=
+  dependencies:
+    tslib "^1.10.0"
+
+"@uifabric/styling@^7.12.0":
+  version "7.12.0"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/@uifabric/styling/-/styling-7.12.0.tgz#609a02cf8c52106a3db04a1e9a2199f9c1e3ddcb"
+  integrity sha1-YJoCz4xSEGo9sEoemiGZ+cHj3cs=
+  dependencies:
+    "@microsoft/load-themed-styles" "^1.10.26"
+    "@uifabric/merge-styles" "^7.11.1"
+    "@uifabric/set-version" "^7.0.11"
+    "@uifabric/utilities" "^7.16.0"
+    tslib "^1.10.0"
+
+"@uifabric/utilities@^7.15.6", "@uifabric/utilities@^7.16.0":
+  version "7.16.0"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/@uifabric/utilities/-/utilities-7.16.0.tgz#13a1586eb97db1aecdd0b80c7632a68acf525c45"
+  integrity sha1-E6FYbrl9sa7N0LgMdjKmis9SXEU=
+  dependencies:
+    "@uifabric/merge-styles" "^7.11.1"
+    "@uifabric/set-version" "^7.0.11"
+    prop-types "^15.7.2"
+    tslib "^1.10.0"
 
 "@webassemblyjs/ast@1.8.5":
   version "1.8.5"
@@ -2121,7 +2410,7 @@ arrify@^1.0.1:
   resolved "https://registry.yarnpkg.com/arrify/-/arrify-1.0.1.tgz#898508da2226f380df904728456849c1501a4b0d"
   integrity sha1-iYUI2iIm84DfkEcoRWhJwVAaSw0=
 
-asap@~2.0.6:
+asap@~2.0.3, asap@~2.0.6:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/asap/-/asap-2.0.6.tgz#e50347611d7e690943208bbdafebcbc2fb866d46"
   integrity sha1-5QNHYR1+aQlDIIu9r+vLwvuGbUY=
@@ -2920,6 +3209,11 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
+classnames@^2.2.6:
+  version "2.2.6"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
+  integrity sha1-Q5Nb/90pHzJtrQogUwmzjQD2UM4=
+
 clean-css@^4.2.3:
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-4.2.3.tgz#507b5de7d97b48ee53d84adb0160ff6216380f78"
@@ -3113,6 +3407,11 @@ compression@^1.7.4:
     safe-buffer "5.1.2"
     vary "~1.1.2"
 
+compute-scroll-into-view@^1.0.9:
+  version "1.0.13"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/compute-scroll-into-view/-/compute-scroll-into-view-1.0.13.tgz#be1b1663b0e3f56cd5f7713082549f562a3477e2"
+  integrity sha1-vhsWY7Dj9WzV93EwglSfVio0d+I=
+
 concat-map@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
@@ -3234,6 +3533,11 @@ core-js-pure@^3.0.0:
   version "3.6.4"
   resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.6.4.tgz#4bf1ba866e25814f149d4e9aaa08c36173506e3a"
   integrity sha512-epIhRLkXdgv32xIUFaaAry2wdxZYBi6bgM7cB136dzzXXa+dFyRLTZeLUJxnd8ShrmyVXBub63n2NHo2JAt8Cw==
+
+core-js@^1.0.0:
+  version "1.2.7"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/core-js/-/core-js-1.2.7.tgz#652294c14651db28fa93bd2d5ff2983a4f08c636"
+  integrity sha1-ZSKUwUZR2yj6k70tX/KYOk8IxjY=
 
 core-js@^2.4.0:
   version "2.6.11"
@@ -3382,6 +3686,21 @@ css-has-pseudo@^0.10.0:
   dependencies:
     postcss "^7.0.6"
     postcss-selector-parser "^5.0.0-rc.4"
+
+css-in-js-utils@^2.0.0:
+  version "2.0.1"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/css-in-js-utils/-/css-in-js-utils-2.0.1.tgz#3b472b398787291b47cfe3e44fecfdd9e914ba99"
+  integrity sha1-O0crOYeHKRtHz+PkT+z92ekUupk=
+  dependencies:
+    hyphenate-style-name "^1.0.2"
+    isobject "^3.0.1"
+
+css-in-js-utils@^3.0.0:
+  version "3.0.4"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/css-in-js-utils/-/css-in-js-utils-3.0.4.tgz#9173c31b1fcb31401f0baf84fb3b680971b49eab"
+  integrity sha1-kXPDGx/LMUAfC6+E+ztoCXG0nqs=
+  dependencies:
+    hyphenate-style-name "^1.0.3"
 
 css-loader@3.4.2:
   version "3.4.2"
@@ -3568,7 +3887,7 @@ cssstyle@^1.0.0, cssstyle@^1.1.1:
   dependencies:
     cssom "0.3.x"
 
-csstype@^2.2.0:
+csstype@^2.2.0, csstype@^2.5.5, csstype@^2.6.7:
   version "2.6.10"
   resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/csstype/-/csstype-2.6.10.tgz#e63af50e66d7c266edb6b32909cfd0aabe03928b"
   integrity sha1-5jr1DmbXwmbttrMpCc/Qqr4Dkos=
@@ -3845,6 +4164,14 @@ dom-converter@^0.2:
   dependencies:
     utila "~0.4"
 
+dom-helpers@^5.0.1:
+  version "5.1.4"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/dom-helpers/-/dom-helpers-5.1.4.tgz#4609680ab5c79a45f2531441f1949b79d6587f4b"
+  integrity sha1-RgloCrXHmkXyUxRB8ZSbedZYf0s=
+  dependencies:
+    "@babel/runtime" "^7.8.7"
+    csstype "^2.6.7"
+
 dom-serializer@0:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/dom-serializer/-/dom-serializer-0.2.2.tgz#1afb81f533717175d478655debc5e332d9f9bb51"
@@ -3928,6 +4255,16 @@ double-ended-queue@2.1.0-0:
   resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/double-ended-queue/-/double-ended-queue-2.1.0-0.tgz#103d3527fd31528f40188130c841efdd78264e5c"
   integrity sha1-ED01J/0xUo9AGIEwyEHv3XgmTlw=
 
+downshift@3.2.14:
+  version "3.2.14"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/downshift/-/downshift-3.2.14.tgz#5ca9ebc1ce65141652cf9ae71e3528dc95bc74ee"
+  integrity sha1-XKnrwc5lFBZSz5rnHjUo3JW8dO4=
+  dependencies:
+    "@babel/runtime" "^7.4.5"
+    compute-scroll-into-view "^1.0.9"
+    prop-types "^15.7.2"
+    react-is "^16.9.0"
+
 duplexer@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/duplexer/-/duplexer-0.1.1.tgz#ace6ff808c1ce66b57d1ebf97977acb02334cfc1"
@@ -4008,6 +4345,13 @@ encoding-down@^6.3.0:
     inherits "^2.0.3"
     level-codec "^9.0.0"
     level-errors "^2.0.0"
+
+encoding@^0.1.11:
+  version "0.1.12"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/encoding/-/encoding-0.1.12.tgz#538b66f3ee62cd1ab51ec323829d1f9480c74beb"
+  integrity sha1-U4tm8+5izRq1HsMjgp0flIDHS+s=
+  dependencies:
+    iconv-lite "~0.4.13"
 
 end-of-stream@^1.0.0, end-of-stream@^1.1.0:
   version "1.4.4"
@@ -4552,6 +4896,11 @@ fast-levenshtein@~2.0.6:
   resolved "https://registry.yarnpkg.com/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
   integrity sha1-PYpcZog6FqMMqGQ+hR8Zuqd5eRc=
 
+fast-loops@^1.0.0, fast-loops@^1.0.1:
+  version "1.1.2"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/fast-loops/-/fast-loops-1.1.2.tgz#2ee75ba943a08a9b1ffdf9b49f133322c99bda68"
+  integrity sha1-LudbqUOgipsf/fm0nxMzIsmb2mg=
+
 faye-websocket@^0.10.0:
   version "0.10.0"
   resolved "https://registry.yarnpkg.com/faye-websocket/-/faye-websocket-0.10.0.tgz#4e492f8d04dfb6f89003507f6edbf2d501e7c6f4"
@@ -4572,6 +4921,118 @@ fb-watchman@^2.0.0:
   integrity sha512-DkPJKQeY6kKwmuMretBhr7G6Vodr7bFwDYTXIkfG1gjvNpaxBTQV3PbXg6bR1c1UP4jPOX0jHUbbHANL9vRjVg==
   dependencies:
     bser "2.1.1"
+
+fbjs@^0.8.4:
+  version "0.8.17"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/fbjs/-/fbjs-0.8.17.tgz#c4d598ead6949112653d6588b01a5cdcd9f90fdd"
+  integrity sha1-xNWY6taUkRJlPWWIsBpc3Nn5D90=
+  dependencies:
+    core-js "^1.0.0"
+    isomorphic-fetch "^2.1.1"
+    loose-envify "^1.0.0"
+    object-assign "^4.1.0"
+    promise "^7.1.1"
+    setimmediate "^1.0.5"
+    ua-parser-js "^0.7.18"
+
+fela-bindings@^10.8.2:
+  version "10.8.2"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/fela-bindings/-/fela-bindings-10.8.2.tgz#b47d63d37bacc318196481a5d7d9904eece51744"
+  integrity sha1-tH1j03uswxgZZIGl19mQTuzlF0Q=
+  dependencies:
+    fast-loops "^1.0.0"
+    fela-dom "^10.8.2"
+    fela-tools "^10.8.2"
+    react-addons-shallow-compare "^15.6.2"
+    shallow-equal "^1.0.0"
+
+fela-dom@^10.8.2:
+  version "10.8.2"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/fela-dom/-/fela-dom-10.8.2.tgz#31b4d8d1003dee255076b1580c8cbeb9f9e0c190"
+  integrity sha1-MbTY0QA97iVQdrFYDIy+ufngwZA=
+  dependencies:
+    css-in-js-utils "^3.0.0"
+    fast-loops "^1.0.1"
+    fela-utils "^10.8.2"
+
+fela-plugin-custom-property@^10.8.2:
+  version "10.8.2"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/fela-plugin-custom-property/-/fela-plugin-custom-property-10.8.2.tgz#41847826be4bf4495eee5072df16228f5f8827a8"
+  integrity sha1-QYR4Jr5L9Ele7lBy3xYij1+IJ6g=
+  dependencies:
+    css-in-js-utils "^3.0.0"
+    isobject "^3.0.1"
+
+fela-plugin-embedded@^10.6.1:
+  version "10.8.2"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/fela-plugin-embedded/-/fela-plugin-embedded-10.8.2.tgz#3369b0bd67864c696cb0b8ccb142a1de78d1eb48"
+  integrity sha1-M2mwvWeGTGlssLjMsUKh3njR60g=
+  dependencies:
+    fast-loops "^1.0.0"
+    isobject "^3.0.1"
+
+fela-plugin-fallback-value@^10.6.1, fela-plugin-fallback-value@^10.8.2:
+  version "10.8.2"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/fela-plugin-fallback-value/-/fela-plugin-fallback-value-10.8.2.tgz#c34ba7e369478f03bf24e798f64789d7306485e2"
+  integrity sha1-w0un42lHjwO/JOeY9keJ1zBkheI=
+  dependencies:
+    css-in-js-utils "^3.0.0"
+    isobject "^3.0.1"
+
+fela-plugin-placeholder-prefixer@^10.6.1:
+  version "10.8.2"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/fela-plugin-placeholder-prefixer/-/fela-plugin-placeholder-prefixer-10.8.2.tgz#9af6aa3d450f3b174fbbcc001db5f9fe1d49239c"
+  integrity sha1-mvaqPUUPOxdPu8wAHbX5/h1JI5w=
+  dependencies:
+    fast-loops "^1.0.0"
+    fela-plugin-custom-property "^10.8.2"
+
+fela-plugin-prefixer@^10.6.1:
+  version "10.8.2"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/fela-plugin-prefixer/-/fela-plugin-prefixer-10.8.2.tgz#968633dd060ebb2776208dc10a801a59b6ac4e06"
+  integrity sha1-loYz3QYOuyd2II3BCoAaWbasTgY=
+  dependencies:
+    css-in-js-utils "^3.0.0"
+    fast-loops "^1.0.0"
+    fela-plugin-fallback-value "^10.8.2"
+    inline-style-prefixer "^5.1.0"
+    isobject "^3.0.1"
+
+fela-plugin-rtl@^10.6.1:
+  version "10.8.2"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/fela-plugin-rtl/-/fela-plugin-rtl-10.8.2.tgz#287e993e73e371ba9a65c124821baf14ff1d9cb3"
+  integrity sha1-KH6ZPnPjcbqaZcEkghuvFP8dnLM=
+  dependencies:
+    rtl-css-js "^1.1.3"
+
+fela-tools@^10.8.2:
+  version "10.8.2"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/fela-tools/-/fela-tools-10.8.2.tgz#de8916173abd7d0436a6d9f726f7434209d70ee0"
+  integrity sha1-3okWFzq9fQQ2ptn3JvdDQgnXDuA=
+  dependencies:
+    css-in-js-utils "^3.0.0"
+    fast-loops "^1.0.0"
+    fela "^10.8.2"
+    fela-utils "^10.8.2"
+
+fela-utils@^10.8.2:
+  version "10.8.2"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/fela-utils/-/fela-utils-10.8.2.tgz#b9d38e043aaf5d3d48012686ffb84e6378f24a35"
+  integrity sha1-udOOBDqvXT1IASaG/7hOY3jySjU=
+  dependencies:
+    css-in-js-utils "^3.0.0"
+    fast-loops "^1.0.0"
+
+fela@^10.6.1, fela@^10.8.2:
+  version "10.8.2"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/fela/-/fela-10.8.2.tgz#f72ffad692f425489abf7ddc7c840b584c098ec7"
+  integrity sha1-9y/61pL0JUiav33cfIQLWEwJjsc=
+  dependencies:
+    css-in-js-utils "^3.0.0"
+    csstype "^2.5.5"
+    fast-loops "^1.0.0"
+    fela-utils "^10.8.2"
+    isobject "^3.0.1"
 
 fetch-cookie@0.7.3:
   version "0.7.3"
@@ -5152,6 +5613,13 @@ hmac-drbg@^1.0.0:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.1"
 
+hoist-non-react-statics@^3.3.0:
+  version "3.3.2"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz#ece0acaf71d62c2969c2ec59feff42a4b1a85b45"
+  integrity sha1-7OCsr3HWLClpwuxZ/v9CpLGoW0U=
+  dependencies:
+    react-is "^16.7.0"
+
 hosted-git-info@^2.1.4:
   version "2.8.8"
   resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.8.8.tgz#7539bd4bc1e0e0a895815a2e0262420b12858488"
@@ -5311,7 +5779,12 @@ https-browserify@^1.0.0:
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-1.0.0.tgz#ec06c10e0a34c0f2faf199f7fd7fc78fffd03c73"
   integrity sha1-7AbBDgo0wPL68Zn3/X/Hj//QPHM=
 
-iconv-lite@0.4.24, iconv-lite@^0.4.24:
+hyphenate-style-name@^1.0.2, hyphenate-style-name@^1.0.3:
+  version "1.0.3"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/hyphenate-style-name/-/hyphenate-style-name-1.0.3.tgz#097bb7fa0b8f1a9cf0bd5c734cf95899981a9b48"
+  integrity sha1-CXu3+guPGpzwvVxzTPlYmZgam0g=
+
+iconv-lite@0.4.24, iconv-lite@^0.4.24, iconv-lite@~0.4.13:
   version "0.4.24"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.24.tgz#2022b4b25fbddc21d2f524974a474aafe733908b"
   integrity sha512-v3MXnZAcvnywkTUEZomIActle7RXXeedOR31wwl7VlyoXO4Qi9arvSenNQWne1TcRwhCL1HwLI21bEqdpj8/rA==
@@ -5452,6 +5925,18 @@ ini@^1.3.5:
   version "1.3.5"
   resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.5.tgz#eee25f56db1c9ec6085e0c22778083f596abf927"
   integrity sha512-RZY5huIKCMRWDUqZlEi72f/lmXKMvuszcMBduliQ3nnWbx9X/ZBQO7DijMEYS9EhHBb2qacRUMtC7svLwe0lcw==
+
+inline-style-expand-shorthand@^1.2.0:
+  version "1.2.0"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/inline-style-expand-shorthand/-/inline-style-expand-shorthand-1.2.0.tgz#951ed9918ba9fe87af0e11c20fd2fb1f5075cae2"
+  integrity sha1-lR7ZkYup/oevDhHCD9L7H1B1yuI=
+
+inline-style-prefixer@^5.1.0:
+  version "5.1.2"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/inline-style-prefixer/-/inline-style-prefixer-5.1.2.tgz#e5a5a3515e25600e016b71e39138971228486c33"
+  integrity sha1-5aWjUV4lYA4Ba3HjkTiXEihIbDM=
+  dependencies:
+    css-in-js-utils "^2.0.0"
 
 inquirer@7.0.4:
   version "7.0.4"
@@ -5797,7 +6282,7 @@ is-root@2.1.0:
   resolved "https://registry.yarnpkg.com/is-root/-/is-root-2.1.0.tgz#809e18129cf1129644302a4f8544035d51984a9c"
   integrity sha512-AGOriNp96vNBd3HtU+RzFEc75FfR5ymiYv8E553I71SCeXBiMsVDUtdio1OEFvrPyLIQ9tVR5RxXIFe5PUFjMg==
 
-is-stream@^1.1.0:
+is-stream@^1.0.1, is-stream@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/is-stream/-/is-stream-1.1.0.tgz#12d4a3dd4e68e0b79ceb8dbc84173ae80d91ca44"
   integrity sha1-EtSj3U5o4Lec6428hBc66A2RykQ=
@@ -5867,6 +6352,14 @@ isobject@^3.0.0, isobject@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/isobject/-/isobject-3.0.1.tgz#4e431e92b11a9731636aa1f9c8d1ccbcfdab78df"
   integrity sha1-TkMekrEalzFjaqH5yNHMvP2reN8=
+
+isomorphic-fetch@^2.1.1:
+  version "2.2.1"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/isomorphic-fetch/-/isomorphic-fetch-2.2.1.tgz#611ae1acf14f5e81f729507472819fe9733558a9"
+  integrity sha1-YRrhrPFPXoH3KVB0coGf6XM1WKk=
+  dependencies:
+    node-fetch "^1.0.1"
+    whatwg-fetch ">=0.10.0"
 
 isstream@~0.1.2:
   version "0.1.2"
@@ -6511,6 +7004,11 @@ jsx-ast-utils@^2.2.1, jsx-ast-utils@^2.2.3:
   dependencies:
     array-includes "^3.0.3"
     object.assign "^4.1.0"
+
+keyboard-key@1.0.1:
+  version "1.0.1"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/keyboard-key/-/keyboard-key-1.0.1.tgz#a946294fe59ad5431c63a3ea269f023e51fac6aa"
+  integrity sha1-qUYpT+Wa1UMcY6PqJp8CPlH6xqo=
 
 killable@^1.0.1:
   version "1.0.1"
@@ -7274,6 +7772,14 @@ node-fetch@2.4.1:
   resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/node-fetch/-/node-fetch-2.4.1.tgz#b2e38f1117b8acbedbe0524f041fb3177188255d"
   integrity sha1-suOPERe4rL7b4FJPBB+zF3GIJV0=
 
+node-fetch@^1.0.1:
+  version "1.7.3"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/node-fetch/-/node-fetch-1.7.3.tgz#980f6f72d85211a5347c6b2bc18c5b84c3eb47ef"
+  integrity sha1-mA9vcthSEaU0fGsrwYxbhMPrR+8=
+  dependencies:
+    encoding "^0.1.11"
+    is-stream "^1.0.1"
+
 node-forge@0.9.0:
   version "0.9.0"
   resolved "https://registry.yarnpkg.com/node-forge/-/node-forge-0.9.0.tgz#d624050edbb44874adca12bb9a52ec63cb782579"
@@ -7522,6 +8028,24 @@ obuf@^1.0.0, obuf@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/obuf/-/obuf-1.1.2.tgz#09bea3343d41859ebd446292d11c9d4db619084e"
   integrity sha512-PX1wu0AmAdPqOL1mWhqmlOd8kOIZQwGZw6rh7uby9fTc5lhaOWFLX3I6R1hrF9k3zUY40e6igsLGkDXK92LJNg==
+
+office-ui-fabric-react@^7.110.2:
+  version "7.110.2"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/office-ui-fabric-react/-/office-ui-fabric-react-7.110.2.tgz#8eed0a463b4cf69deeb636168f3dda6c1d2abd6e"
+  integrity sha1-ju0KRjtM9p3utjYWjz3abB0qvW4=
+  dependencies:
+    "@fluentui/react-focus" "^7.9.0"
+    "@fluentui/react-icons" "^0.1.9"
+    "@microsoft/load-themed-styles" "^1.10.26"
+    "@uifabric/foundation" "^7.7.7"
+    "@uifabric/icons" "^7.3.33"
+    "@uifabric/merge-styles" "^7.11.1"
+    "@uifabric/react-hooks" "^7.2.2"
+    "@uifabric/set-version" "^7.0.11"
+    "@uifabric/styling" "^7.12.0"
+    "@uifabric/utilities" "^7.16.0"
+    prop-types "^15.7.2"
+    tslib "^1.10.0"
 
 on-finished@~2.3.0:
   version "2.3.0"
@@ -7989,6 +8513,11 @@ pnp-webpack-plugin@1.6.4:
   integrity sha512-7Wjy+9E3WwLOEL30D+m8TSTF7qJJUJLONBnwQp0518siuMxUQUbgZwssaFX+QKlZkjHZcw/IpZCt/H0srrntSg==
   dependencies:
     ts-pnp "^1.1.6"
+
+popper.js@^1.15.0:
+  version "1.16.1"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/popper.js/-/popper.js-1.16.1.tgz#2a223cb3dc7b6213d740e40372be40de43e65b1b"
+  integrity sha1-KiI8s9x7YhPXQOQDcr5A3kPmWxs=
 
 portfinder@^1.0.25:
   version "1.0.25"
@@ -8759,6 +9288,13 @@ promise-inflight@^1.0.1:
   resolved "https://registry.yarnpkg.com/promise-inflight/-/promise-inflight-1.0.1.tgz#98472870bf228132fcbdd868129bad12c3c029e3"
   integrity sha1-mEcocL8igTL8vdhoEputEsPAKeM=
 
+promise@^7.1.1:
+  version "7.3.1"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/promise/-/promise-7.3.1.tgz#064b72602b18f90f29192b8b1bc418ffd1ebd3bf"
+  integrity sha1-BktyYCsY+Q8pGSuLG8QY/9Hr078=
+  dependencies:
+    asap "~2.0.3"
+
 promise@^8.0.3:
   version "8.1.0"
   resolved "https://registry.yarnpkg.com/promise/-/promise-8.1.0.tgz#697c25c3dfe7435dd79fcd58c38a135888eaf05e"
@@ -8774,7 +9310,7 @@ prompts@^2.0.1:
     kleur "^3.0.3"
     sisteransi "^1.0.4"
 
-prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.5.8, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha1-UsQedbjIfnK52TYOAga5ncv/psU=
@@ -8928,6 +9464,14 @@ raw-body@2.4.0:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
+react-addons-shallow-compare@^15.6.2:
+  version "15.6.2"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/react-addons-shallow-compare/-/react-addons-shallow-compare-15.6.2.tgz#198a00b91fc37623db64a28fd17b596ba362702f"
+  integrity sha1-GYoAuR/DdiPbZKKP0XtZa6NicC8=
+  dependencies:
+    fbjs "^0.8.4"
+    object-assign "^4.1.0"
+
 react-app-polyfill@^1.0.6:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/react-app-polyfill/-/react-app-polyfill-1.0.6.tgz#890f8d7f2842ce6073f030b117de9130a5f385f0"
@@ -8985,10 +9529,40 @@ react-error-overlay@^6.0.7:
   resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/react-error-overlay/-/react-error-overlay-6.0.7.tgz#1dcfb459ab671d53f660a991513cb2f0a0553108"
   integrity sha1-Hc+0WatnHVP2YKmRUTyy8KBVMQg=
 
-react-is@^16.12.0, react-is@^16.8.1, react-is@^16.8.4:
+react-fela@^10.6.1:
+  version "10.8.2"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/react-fela/-/react-fela-10.8.2.tgz#286ee4a273fd53c689a96f4aed38738ab0203cfc"
+  integrity sha1-KG7konP9U8aJqW9K7ThzirAgPPw=
+  dependencies:
+    fela-bindings "^10.8.2"
+    fela-dom "^10.8.2"
+    prop-types "^15.5.8"
+
+react-is@^16.12.0, react-is@^16.6.3, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4, react-is@^16.9.0:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
+
+react-redux@^7.2.0:
+  version "7.2.0"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/react-redux/-/react-redux-7.2.0.tgz#f970f62192b3981642fec46fd0db18a074fe879d"
+  integrity sha1-+XD2IZKzmBZC/sRv0NsYoHT+h50=
+  dependencies:
+    "@babel/runtime" "^7.5.5"
+    hoist-non-react-statics "^3.3.0"
+    loose-envify "^1.4.0"
+    prop-types "^15.7.2"
+    react-is "^16.9.0"
+
+react-transition-group@^4.3.0:
+  version "4.3.0"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/react-transition-group/-/react-transition-group-4.3.0.tgz#fea832e386cf8796c58b61874a3319704f5ce683"
+  integrity sha1-/qgy44bPh5bFi2GHSjMZcE9c5oM=
+  dependencies:
+    "@babel/runtime" "^7.5.5"
+    dom-helpers "^5.0.1"
+    loose-envify "^1.4.0"
+    prop-types "^15.6.2"
 
 react@^16.13.1:
   version "16.13.1"
@@ -9107,6 +9681,21 @@ redent@^3.0.0:
   dependencies:
     indent-string "^4.0.0"
     strip-indent "^3.0.0"
+
+redux-saga@^1.1.3:
+  version "1.1.3"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/redux-saga/-/redux-saga-1.1.3.tgz#9f3e6aebd3c994bbc0f6901a625f9a42b51d1112"
+  integrity sha1-nz5q69PJlLvA9pAaYl+aQrUdERI=
+  dependencies:
+    "@redux-saga/core" "^1.1.3"
+
+redux@^4.0.4, redux@^4.0.5:
+  version "4.0.5"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/redux/-/redux-4.0.5.tgz#4db5de5816e17891de8a80c424232d06f051d93f"
+  integrity sha1-TbXeWBbheJHeioDEJCMtBvBR2T8=
+  dependencies:
+    loose-envify "^1.4.0"
+    symbol-observable "^1.2.0"
 
 regenerate-unicode-properties@^8.2.0:
   version "8.2.0"
@@ -9411,6 +10000,13 @@ rsvp@^4.8.4:
   resolved "https://registry.yarnpkg.com/rsvp/-/rsvp-4.8.5.tgz#c8f155311d167f68f21e168df71ec5b083113734"
   integrity sha512-nfMOlASu9OnRJo1mbEk2cz0D56a1MBNrJ7orjRZQG10XDyuvwksKbuXNp6qa+kbn839HwjwhBzhFmdsaEAfauA==
 
+rtl-css-js@^1.1.3:
+  version "1.14.0"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/rtl-css-js/-/rtl-css-js-1.14.0.tgz#daa4f192a92509e292a0519f4b255e6e3c076b7d"
+  integrity sha1-2qTxkqklCeKSoFGfSyVebjwHa30=
+  dependencies:
+    "@babel/runtime" "^7.1.2"
+
 run-async@^2.2.0, run-async@^2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/run-async/-/run-async-2.4.0.tgz#e59054a5b86876cfae07f431d18cbaddc594f1e8"
@@ -9429,6 +10025,13 @@ rxjs@^6.5.3:
   version "6.5.4"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.5.4.tgz#e0777fe0d184cec7872df147f303572d414e211c"
   integrity sha512-naMQXcgEo3csAEGvw/NydRA0fuS2nDZJiw1YUWFKU7aPPAPGZEsD4Iimit96qwCieH6y614MCLYwdkrWx7z/7Q==
+  dependencies:
+    tslib "^1.9.0"
+
+rxjs@^6.5.5:
+  version "6.5.5"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/rxjs/-/rxjs-6.5.5.tgz#c5c884e3094c8cfee31bf27eb87e54ccfc87f9ec"
+  integrity sha1-xciE4wlMjP7jG/J+uH5UzPyH+ew=
   dependencies:
     tslib "^1.9.0"
 
@@ -9611,7 +10214,7 @@ set-value@^2.0.0, set-value@^2.0.1:
     is-plain-object "^2.0.3"
     split-string "^3.0.1"
 
-setimmediate@^1.0.4:
+setimmediate@^1.0.4, setimmediate@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/setimmediate/-/setimmediate-1.0.5.tgz#290cbb232e306942d7d7ea9b83732ab7856f8285"
   integrity sha1-KQy7Iy4waULX1+qbg3Mqt4VvgoU=
@@ -9650,6 +10253,11 @@ shallow-clone@^3.0.0:
   integrity sha512-/6KqX+GVUdqPuPPd2LxDDxzX6CAbjJehAAOKlNpqqUpAqPM6HeL8f+o3a+JsyGjn2lv0WY8UsTgUJjU9Ok55NA==
   dependencies:
     kind-of "^6.0.2"
+
+shallow-equal@^1.0.0:
+  version "1.2.1"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/shallow-equal/-/shallow-equal-1.2.1.tgz#4c16abfa56043aa20d050324efa68940b0da79da"
+  integrity sha1-TBar+lYEOqINBQMk76aJQLDaedo=
 
 shebang-command@^1.2.0:
   version "1.2.0"
@@ -10223,6 +10831,11 @@ svgo@^1.0.0, svgo@^1.2.2:
     unquote "~1.1.1"
     util.promisify "~1.0.0"
 
+symbol-observable@^1.2.0:
+  version "1.2.0"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/symbol-observable/-/symbol-observable-1.2.0.tgz#c22688aed4eab3cdc2dfeacbb561660560a00804"
+  integrity sha1-wiaIrtTqs83C3+rLtWFmBWCgCAQ=
+
 symbol-tree@^3.2.2:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"
@@ -10338,6 +10951,11 @@ timsort@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/timsort/-/timsort-0.3.0.tgz#405411a8e7e6339fe64db9a234de11dc31e02bd4"
   integrity sha1-QFQRqOfmM5/mTbmiNN4R3DHgK9Q=
+
+tinymce@^5.2.2:
+  version "5.2.2"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/tinymce/-/tinymce-5.2.2.tgz#1ac77cce1565b54932b4e612d2fd9c07b687f238"
+  integrity sha1-Gsd8zhVltUkytOYS0v2cB7aH8jg=
 
 tmp@^0.0.33:
   version "0.0.33"
@@ -10487,10 +11105,34 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
+typescript-compare@^0.0.2:
+  version "0.0.2"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/typescript-compare/-/typescript-compare-0.0.2.tgz#7ee40a400a406c2ea0a7e551efd3309021d5f425"
+  integrity sha1-fuQKQApAbC6gp+VR79MwkCHV9CU=
+  dependencies:
+    typescript-logic "^0.0.0"
+
+typescript-logic@^0.0.0:
+  version "0.0.0"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/typescript-logic/-/typescript-logic-0.0.0.tgz#66ebd82a2548f2b444a43667bec120b496890196"
+  integrity sha1-ZuvYKiVI8rREpDZnvsEgtJaJAZY=
+
+typescript-tuple@^2.2.1:
+  version "2.2.1"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/typescript-tuple/-/typescript-tuple-2.2.1.tgz#7d9813fb4b355f69ac55032e0363e8bb0f04dad2"
+  integrity sha1-fZgT+0s1X2msVQMuA2Pouw8E2tI=
+  dependencies:
+    typescript-compare "^0.0.2"
+
 typescript@~3.7.2:
   version "3.7.5"
   resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/typescript/-/typescript-3.7.5.tgz#0692e21f65fd4108b9330238aac11dd2e177a1ae"
   integrity sha1-BpLiH2X9QQi5MwI4qsEd0uF3oa4=
+
+ua-parser-js@^0.7.18:
+  version "0.7.21"
+  resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/ua-parser-js/-/ua-parser-js-0.7.21.tgz#853cf9ce93f642f67174273cc34565ae6f308777"
+  integrity sha1-hTz5zpP2QvZxdCc8w0Vlrm8wh3c=
 
 unicode-canonical-property-names-ecmascript@^1.0.4:
   version "1.0.4"
@@ -10900,7 +11542,7 @@ whatwg-encoding@^1.0.1, whatwg-encoding@^1.0.3, whatwg-encoding@^1.0.5:
   dependencies:
     iconv-lite "0.4.24"
 
-whatwg-fetch@^3.0.0:
+whatwg-fetch@>=0.10.0, whatwg-fetch@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-3.0.0.tgz#fc804e458cc460009b1a2b966bc8817d2578aefb"
   integrity sha512-9GSJUgz1D4MfyKU7KRqwOjXCXTqWdFNvEr7eUBYchQiVc744mqK/MzXPNR2WsPkmkOa4ywfg8C2n8h+13Bey1Q==

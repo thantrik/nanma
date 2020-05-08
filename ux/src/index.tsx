@@ -3,14 +3,22 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import JSONEditorApp from "./JSONEditorApp";
 import CodeView from "./CodeView";
+import ToggleMenu from "./menu/toggle/ToggleMenu";
+import UrlProcessor from "./UrlProcessor/UrlProcessor";
+import RichTextEditor from "./components/editor/RichTextEditor";
 
 const initializeView = (data?: string, type?: string) => {
   ReactDOM.render(
-    type && type === "json" ? (
-      <JSONEditorApp />
-    ) : (
-      <CodeView language={type} data={data} />
-    ),
+    <React.Fragment>
+      <ToggleMenu></ToggleMenu>
+      <RichTextEditor></RichTextEditor>
+      <UrlProcessor></UrlProcessor>
+      {/* {type && type === "json" ? (
+        <JSONEditorApp />
+      ) : (
+        <CodeView language={type} data={data} />
+      )} */}
+    </React.Fragment>,
     window.document.body
   );
 };
@@ -23,3 +31,5 @@ if (
   window.history.length === 1
 )
   initializeView("{}", "json");
+
+initializeView("{}", "json");

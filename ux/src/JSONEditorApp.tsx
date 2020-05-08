@@ -43,7 +43,7 @@ class JSONEditorApp extends React.Component {
       self.jsonEditor.code.editor = new JSONEditor(
         this.jsonEditor.code.element,
         {
-          mode: "code",
+          mode: "text",
           onChangeText: function (jsonString) {
             self.jsonEditor.tree.editor?.updateText(jsonString);
           },

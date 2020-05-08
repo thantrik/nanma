@@ -1,6 +1,7 @@
 const editorView = (data, type) =>
   window.editorView && window.editorView(data, type);
 const initialize = () => {
+  if (document?.doctype?.name === "html") return;
   const data = String(document.body.innerText).trim();
   if (!data) {
     return;
@@ -29,6 +30,9 @@ const initialize = () => {
   const location = window.location;
   if (/\.(js|mjs|jsx|ts|tsx|c|cpp|cs)$/.test(location.href)) {
     return editorView(data, "typescript");
+  }
+  if (/\.(css)$/.test(location.href)) {
+    return editorView(data, "css");
   }
   if (/\.(text|txt|log)$/.test(location.href)) {
     return editorView(data);
