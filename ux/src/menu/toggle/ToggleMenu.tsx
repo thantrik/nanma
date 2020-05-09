@@ -1,7 +1,7 @@
 import React from "react";
 import "./toggle.style.css";
 
-export default class ToggleMenu extends React.Component {
+export default class ToggleMenu extends React.Component<any, any> {
   instanceButton: HTMLImageElement | null;
   instanceItems: HTMLImageElement[] = [];
   instanceMenu: HTMLDivElement | null;
