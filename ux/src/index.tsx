@@ -1,4 +1,4 @@
-import { Provider } from "react-redux";
+import { Provider, ReactReduxContextValue } from "react-redux";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import React from "react";
 import ReactDOM from "react-dom";
@@ -19,7 +19,7 @@ const App = (props: any) => (
             <Route
               key={route.path}
               path={route.path}
-              render={() => route.component}
+              component={route.component}
             ></Route>
           ))}
         </Switch>

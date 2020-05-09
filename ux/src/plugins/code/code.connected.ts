@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import CodeEditor from "./code";
@@ -13,4 +14,4 @@ import CodeEditor from "./code";
 //   });
 // };
 
-export default connect()(CodeEditor);
+export default withRouter(connect()(CodeEditor));
