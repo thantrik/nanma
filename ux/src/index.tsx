@@ -2,10 +2,11 @@ import { Provider } from "react-redux";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import React from "react";
 import ReactDOM from "react-dom";
-
 import { getRoutes, store } from "./app";
 
 import "./plugins/json";
+import "./plugins/code";
+// plugins.map((plugin: string) => import(plugin));
 
 const routes = getRoutes();
 
@@ -15,7 +16,11 @@ const App = (props: any) => (
       <Router>
         <Switch>
           {routes.map((route, i) => (
-            <Route path={route.path}>{route.component}</Route>
+            <Route
+              key={route.path}
+              path={route.path}
+              render={() => route.component}
+            ></Route>
           ))}
         </Switch>
       </Router>

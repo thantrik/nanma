@@ -3,7 +3,7 @@ import json from "./json.reducer";
 import route from "./json.routes";
 
 const config = {
-  name: "JSON",
+  name: "json",
   route,
   reducer: json,
 };

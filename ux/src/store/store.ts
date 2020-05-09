@@ -1,10 +1,19 @@
 import { combineReducers, compose, StoreEnhancer, Store } from "redux";
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import { history } from "./history";
-import { persistStore, Persistor } from "redux-persist";
+import { persistStore, persistReducer, Persistor } from "redux-persist";
 import { routerMiddleware } from "react-router-redux";
 import createSagaMiddleware from "redux-saga";
 import sagas from "./root.saga";
+import { getAppReducer } from "../app/app.reducer";
+import { Storage } from "../cache/indexdb";
+
+const persistConfig: any = {
+  key: "root",
+  storage: Storage(),
+};
+
+const persistedReducer = persistReducer(persistConfig, getAppReducer());
 
 declare global {
   interface Window {
@@ -35,19 +44,18 @@ const configureAppStore = (preloadedState: any = {}): any => {
   ];
 
   const composedEnhancers: StoreEnhancer = compose(...enhancers);
-  const rootReducer = combineReducers({});
+  const appReducers = getAppReducer();
   const store = configureStore({
     devTools: true,
     preloadedState: preloadedState,
-    reducer: { app: rootReducer },
+    reducer: persistedReducer,
     middleware: middleware,
   });
   sagaMiddleware.run(sagas);
 
   if (module.hot) {
     module.hot.accept(() => {
-      const nextRootReducer: any = combineReducers({});
-      store.replaceReducer(nextRootReducer);
+      store.replaceReducer(getAppReducer());
     });
   }
 
