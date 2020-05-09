@@ -1,35 +1,26 @@
+import { Provider } from "react-redux";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import JSONEditorApp from "./JSONEditorApp";
-import CodeView from "./CodeView";
-import ToggleMenu from "./menu/toggle/ToggleMenu";
-import UrlProcessor from "./UrlProcessor/UrlProcessor";
-import RichTextEditor from "./components/editor/RichTextEditor";
 
-const initializeView = (data?: string, type?: string) => {
-  ReactDOM.render(
-    <React.Fragment>
-      <ToggleMenu></ToggleMenu>
-      <RichTextEditor></RichTextEditor>
-      <UrlProcessor></UrlProcessor>
-      {/* {type && type === "json" ? (
-        <JSONEditorApp />
-      ) : (
-        <CodeView language={type} data={data} />
-      )} */}
-    </React.Fragment>,
-    window.document.body
-  );
-};
+import { getRoutes, store } from "./app";
 
-const { location } = window;
-//@ts-ignore
-window.editorView = initializeView;
-if (
-  location.href.indexOf("chrome-extension://") !== -1 &&
-  window.history.length === 1
-)
-  initializeView("{}", "json");
+import "./plugins/json";
 
-initializeView("{}", "json");
+const routes = getRoutes();
+
+const App = (props: any) => (
+  <Provider store={store}>
+    <>
+      <Router>
+        <Switch>
+          {routes.map((route, i) => (
+            <Route path={route.path}>{route.component}</Route>
+          ))}
+        </Switch>
+      </Router>
+    </>
+  </Provider>
+);
+
+ReactDOM.render(<App></App>, document.body);
