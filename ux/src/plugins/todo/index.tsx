@@ -1,11 +1,11 @@
 import { Register } from "../../app";
-import code from "./code.reducer";
-import route from "./code.routes";
+import json from "./json.reducer";
+import route from "./json.routes";
 
 const config = {
-  name: "code",
+  name: "json",
   route,
-  reducer: code,
+  reducer: json,
 };
 
 Register(config);
