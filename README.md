@@ -10,7 +10,7 @@ A collection of tools which used by a web developer. It can be installed as a ch
 
 In development, will publish once it complete
 
-### How to build from source
+### How to build from source ?
 
 > ```
 >   git clone git@github.com:thantrik/nanma.git
@@ -21,6 +21,21 @@ In development, will publish once it complete
 
     Creates a directory with version name mentioned in package.json
     Open chrome extension menu and load unpacked extension by selecting the build output directory
+
+### How add a new plugin source ?
+
+    Complete the code setup with required dependancies.
+
+> ```
+>   yarn new:plugin -- {plugin name}
+> ```
+
+Command will create a copy of plugin template with necessary files. Modify the created template.
+import plugin in `ux\index.tsx` file
+
+> ```
+> import "./plugins/{plugin-name}";
+> ```
 
 ### Architecture
 
