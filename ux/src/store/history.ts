@@ -1,5 +1,6 @@
-import { createMemoryHistory } from "history";
+import { createMemoryHistory, createBrowserHistory } from "history";
 
 export const history = createMemoryHistory({
-  initialEntries: ["/"],
+  initialEntries: [window.location.pathname],
+  initialIndex: 1,
 });

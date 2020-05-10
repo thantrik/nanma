@@ -3,7 +3,8 @@ import { store } from "../store";
 import { IPluginConfig } from "./app.types";
 import { createReducer, createAction } from "@reduxjs/toolkit";
 import { name, version } from "../../package.json";
-
+import { connectRouter } from "connected-react-router";
+import { history } from "../store/history";
 export const getAppConfig = createAction("GET_CONFIG");
 export const persistAppState = createAction("persist/PERSIST");
 
@@ -15,7 +16,10 @@ const appReducer = createReducer(initialState, {
 
 export default appReducer;
 
-export let APP_REDUCERS: Record<string, Reducer> = { app: appReducer };
+export let APP_REDUCERS: Record<string, Reducer> = {
+  app: appReducer,
+  router: connectRouter(history) as any,
+};
 export let COMBINED_REDUCERS: Reducer = combineReducers(APP_REDUCERS);
 
 export const createAppReducer = (

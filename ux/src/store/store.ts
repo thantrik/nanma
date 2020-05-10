@@ -1,19 +1,33 @@
-import { combineReducers, compose, StoreEnhancer, Store } from "redux";
-import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+import {
+  combineReducers,
+  compose,
+  StoreEnhancer,
+  Store,
+  applyMiddleware,
+} from "redux";
+import {
+  configureStore,
+  getDefaultMiddleware,
+  EnhancedStore,
+} from "@reduxjs/toolkit";
 import { history } from "./history";
 import { persistStore, persistReducer, Persistor } from "redux-persist";
-import { routerMiddleware } from "react-router-redux";
+import { routerMiddleware } from "connected-react-router";
 import createSagaMiddleware from "redux-saga";
 import sagas from "./root.saga";
 import { getAppReducer } from "../app/app.reducer";
 import { Storage } from "../cache/indexdb";
+import { MemoryHistory, History } from "history";
 
 const persistConfig: any = {
   key: "root",
   storage: Storage(),
 };
 
-const persistedReducer = persistReducer(persistConfig, getAppReducer());
+const createReducer = () => {
+  const newReducer = persistReducer(persistConfig, getAppReducer());
+  return newReducer;
+};
 
 declare global {
   interface Window {
@@ -27,7 +41,14 @@ declare global {
 //import Reactotron from "reactotron-react-native";
 //import { reactotronRedux } from "reactotron-redux";
 
-const configureAppStore = (preloadedState: any = {}): any => {
+const configureAppStore = (
+  preloadedState: any = {}
+): {
+  store: EnhancedStore;
+  persistor: Persistor;
+  getState: () => any;
+  history: MemoryHistory | History;
+} => {
   // Create a history depending on the environment
   const enhancers: StoreEnhancer[] = [];
   //  [
@@ -44,22 +65,21 @@ const configureAppStore = (preloadedState: any = {}): any => {
   ];
 
   const composedEnhancers: StoreEnhancer = compose(...enhancers);
-  const appReducers = getAppReducer();
-  const store = configureStore({
+  const store: EnhancedStore = configureStore({
     devTools: true,
     preloadedState: preloadedState,
-    reducer: persistedReducer,
+    reducer: createReducer(),
     middleware: middleware,
   });
   sagaMiddleware.run(sagas);
 
   if (module.hot) {
     module.hot.accept(() => {
-      store.replaceReducer(getAppReducer());
+      store.replaceReducer(createReducer());
     });
   }
 
-  const persistor: Persistor = persistStore(store);
+  const persistor: Persistor = persistStore(store as any);
   //persistor.purge();
   //persistor.flush();
   // Reactotron.configure()
