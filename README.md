@@ -6,7 +6,21 @@ A collection of tools which used by a web developer. It can be installed as a ch
 This plugin never connect to any thrid party site for push or fetch data other than github. No Analytics. Completely under user control. I won't be knowing any errors about tools execution. So please create issues in github once you face any error.
 ```
 
+### Status
+
 In development, will publish once it complete
+
+### How to build from source
+
+    ```
+    git clone git@github.com:thantrik/nanma.git
+    cd nanma
+    yarn app:install
+    yarn build
+    ```
+
+    Creates a directory with version name mentioned in package.json
+    Open chrome extension menu and load unpacked extension by selecting the build output directory
 
 ### Architecture
 
