@@ -23,7 +23,6 @@ const App = (props: any) => {
       key={`${route.path}-${i}`}
       path={route.path}
       component={route.component}
-      exact={true}
     ></Route>
   );
   let root = {
