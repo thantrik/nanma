@@ -13,3 +13,5 @@ export const Register = (config: IPluginConfig) => {
   RegisterRoute(config);
   RegisterState(PLUGINS);
 };
+
+export const getPlugins = () => PLUGINS;

@@ -1,0 +1,37 @@
+.dashboard {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+.dashboard a {
+  display: inline-block;
+  height: 100px;
+  width: 100px;
+  background-color: beige;
+  border: "solid 1px #CDCDCD";
+  margin: 20px;
+  text-align: center;
+  padding-top: 40px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px 0 #ffffff;
+  text-shadow: darkslateblue;
+  text-decoration: none;
+  color: #444444;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.dashboard a:hover {
+  background-color: beige;
+  border: "solid 1px #CDCDCD";
+  transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 17px 0 #ffffff;
+}
+
+.dashboard a:active {
+  background-color: darkseagreen;
+  border: "solid 1px #CDCDCD";
+}

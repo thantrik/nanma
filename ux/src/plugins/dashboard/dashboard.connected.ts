@@ -2,7 +2,7 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import JSONEditor from"./dashboard";
+import DashBoard from "./dashboard";
 
 //mapDispatch;
 // mapState;
@@ -14,4 +14,4 @@ import JSONEditor from"./dashboard";
 //   });
 // };
 
-export default withRouter(connect()(JSONEditor));
+export default withRouter(connect()(DashBoard));

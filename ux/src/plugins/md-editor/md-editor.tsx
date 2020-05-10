@@ -59,7 +59,7 @@ class MarkDownEditorApp extends React.Component<any, any> {
   componentDidMount() {
     const self = this;
     if (this.viewer) {
-      this.viewer.innerHTML = this.processor.render("");
+      this.viewer.innerHTML = this.processor.render(this.props.content || "");
     }
   }
   updateContent = () => {
@@ -72,8 +72,12 @@ class MarkDownEditorApp extends React.Component<any, any> {
       ));
   };
   render() {
+    const { readOnly = false } = this.props;
     return (
       <div
+        ref={(ele) => {
+          window.document.body.style.backgroundColor = "white";
+        }}
         style={{
           display: "flex",
           flexDirection: "column",
@@ -94,24 +98,26 @@ class MarkDownEditorApp extends React.Component<any, any> {
             justifyContent: "space-around",
           }}
         >
-          <div
-            onKeyUp={this.updateContent}
-            ref={(ele) => (this.editor = ele)}
-            style={{
-              width: "39vw",
-              minHeight: "100vh",
-              border: "solid 1px #CDCDCD",
-              borderRight: "none",
-              borderLeft: "none",
-              padding: 5,
-            }}
-            contentEditable={true}
-          ></div>
+          {!readOnly && (
+            <div
+              onKeyUp={this.updateContent}
+              ref={(ele) => (this.editor = ele)}
+              style={{
+                width: "39vw",
+                minHeight: "100vh",
+                border: "solid 1px #CDCDCD",
+                borderRight: "none",
+                borderLeft: "none",
+                padding: 5,
+              }}
+              contentEditable={true}
+            ></div>
+          )}
           <article
             className="markdown-body"
             ref={(ele) => (this.viewer = ele)}
             style={{
-              width: "60vw",
+              width: readOnly ? "100vw" : "60vw",
               minHeight: "100vw",
               border: "solid 1px #CDCDCD",
               borderRight: "none",

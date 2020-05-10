@@ -76,6 +76,9 @@ class JSONEditorApp extends React.Component<any, any> {
           alignItems: "space-around",
           justifyContent: "space-around",
         }}
+        ref={(ele) => {
+          window.document.body.style.backgroundColor = "white";
+        }}
       >
         <div
           ref={this.createJsonEditorRef("code")}

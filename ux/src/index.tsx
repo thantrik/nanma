@@ -9,6 +9,7 @@ import { IPluginRoute } from "./routes";
 import "./plugins/md-editor";
 import "./plugins/json";
 import "./plugins/code";
+import "./plugins/dashboard";
 
 // plugins.map((plugin: string) => import(plugin));
 
@@ -16,28 +17,27 @@ const routes = getRoutes();
 
 const App = (props: any) => {
   const isRoot = (route: IPluginRoute) =>
-    route.path === "/" || route.path === "/";
+    route.path === "/" || route.path === "/dashboard";
   const createRouteComponent = (route: IPluginRoute, i: number) => (
     <Route
-      key={route.path}
+      key={`${route.path}-${i}`}
       path={route.path}
       component={route.component}
       exact={true}
     ></Route>
   );
-  let root = routes.find(isRoot);
-  const normalRoutes = routes
-    .filter((route) => !isRoot(route))
-    .map(createRouteComponent);
-  if (!root) {
-    root = { ...routes[0], path: "/" } as IPluginRoute;
-  }
+  let root = {
+    ...routes[routes.length - 1],
+    ...routes.find(isRoot),
+    path: "/",
+  } as IPluginRoute;
+  const normalRoutes = routes.map(createRouteComponent);
   return (
     <Provider store={store}>
       <ConnectedRouter history={history}>
         <Switch>
           {normalRoutes}
-          {root ? createRouteComponent(root, -1) : null}
+          {root ? createRouteComponent(root, 10000) : null}
         </Switch>
       </ConnectedRouter>
     </Provider>
@@ -48,14 +48,18 @@ const initializeView = () => ReactDOM.render(<App></App>, document.body);
 
 const { location } = window;
 //@ts-ignore
-window.editorView = initializeView;
+window.initializeView = initializeView;
 //@ts-ignore
 window.push = (path: string) => {
   store.dispatch(push(path));
 };
-if (
-  /^(chrome-extension:\/\/|http:\/\/localhost)/i.test(location.href) ||
-  /thantrik\.github\.io/i.test(location.href)
-) {
+const isChromeExtension = /^chrome-extension:\/\//i.test(location.href);
+
+const isLocalHost = /^http:\/\/localhost/i.test(location.href);
+const isGithub = /thantrik\.github\.io/i.test(location.href);
+
+//if (isLocalHost) {
+if (isChromeExtension || isGithub) {
+  push("/");
   initializeView();
 }
