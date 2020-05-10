@@ -1,9 +1,9 @@
 import { Register } from "../../app";
-import json from "./json.reducer";
-import route from "./json.routes";
+import json from "./chat.reducer";
+import route from "./chat.routes";
 
 const config = {
-  name: "json",
+  name: "chat",
   route,
   reducer: json,
 };

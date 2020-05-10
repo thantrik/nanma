@@ -1,11 +1,11 @@
 import { combineReducers, Reducer } from "redux";
 
-import { setJsonViewData } from "./json.actions";
+import { setJsonViewData } from"./vscode.actions";
 import { createReducer } from "@reduxjs/toolkit";
-import { JsonType } from "./json.types";
+import { VscodeType } from"./vscode.types";
 
 interface IState {
-  data: JsonType;
+  data: VscodeType;
 }
 
 const initialState = {

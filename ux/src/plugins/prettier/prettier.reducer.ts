@@ -1,11 +1,11 @@
 import { combineReducers, Reducer } from "redux";
 
-import { setJsonViewData } from "./json.actions";
+import { setJsonViewData } from"./prettier.actions";
 import { createReducer } from "@reduxjs/toolkit";
-import { JsonType } from "./json.types";
+import { PrettierType } from"./prettier.types";
 
 interface IState {
-  data: JsonType;
+  data: PrettierType;
 }
 
 const initialState = {

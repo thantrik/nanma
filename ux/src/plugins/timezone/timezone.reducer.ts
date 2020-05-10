@@ -1,11 +1,11 @@
 import { combineReducers, Reducer } from "redux";
 
-import { setJsonViewData } from "./json.actions";
+import { setJsonViewData } from"./timezone.actions";
 import { createReducer } from "@reduxjs/toolkit";
-import { JsonType } from "./json.types";
+import { TimezoneType } from"./timezone.types";
 
 interface IState {
-  data: JsonType;
+  data: TimezoneType;
 }
 
 const initialState = {

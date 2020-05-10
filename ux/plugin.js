@@ -1,7 +1,11 @@
 const path = require("path");
 const fs = require("fs");
+const replace = require("replace-in-file");
+const camelCase = require("camelcase");
+var rimraf = require("rimraf");
 
 const createTemplate = (pluginName) => {
+  pluginName = pluginName.toLowerCase();
   const pluginTemplatePath = path.join(__dirname, "/src/plugins/json");
   const newPluginPath = path.join(__dirname, "/src/plugins/" + pluginName);
   const newName = (file) => {
@@ -11,14 +15,33 @@ const createTemplate = (pluginName) => {
     if (err) {
       return console.error("Unable to scan directory: " + err);
     }
-    fs.mkdirSync(newPluginPath);
+    if (!fs.existsSync(newPluginPath)) fs.mkdirSync(newPluginPath);
+    const replaceOptions = {
+      files: [],
+      from: [/ ".\/json/g, / "\/json"/i, /JsonType/g, /name: "json",/i],
+      to: [
+        `"./${pluginName}`,
+        ` "/${pluginName}"`,
+        camelCase(`${pluginName}Type`, { pascalCase: true }),
+        `name: "${pluginName.toLowerCase()}",`,
+      ],
+    };
     files.forEach(function (file) {
-      fs.copyFileSync(
-        path.join(pluginTemplatePath, file),
-        path.join(newPluginPath, newName(file))
-      );
-      console.log(file, path.join(newPluginPath, newName(file)));
+      const newPath = path.join(newPluginPath, newName(file));
+      fs.copyFileSync(path.join(pluginTemplatePath, file), newPath);
+      replaceOptions.files.push(newPath);
+      console.log("Copied: ", path.join(newPluginPath, newName(file)));
     });
+
+    replace(replaceOptions)
+      .then((changedFiles) => {
+        changedFiles.forEach(
+          (ch) => ch.hasChanged && console.log("Modified: ", ch.file)
+        );
+      })
+      .catch((error) => {
+        console.error("Error occurred:", error);
+      });
   });
 };
 

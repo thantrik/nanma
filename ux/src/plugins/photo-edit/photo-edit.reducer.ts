@@ -1,11 +1,11 @@
 import { combineReducers, Reducer } from "redux";
 
-import { setJsonViewData } from "./json.actions";
+import { setJsonViewData } from"./photo-edit.actions";
 import { createReducer } from "@reduxjs/toolkit";
-import { JsonType } from "./json.types";
+import { PhotoEditType } from"./photo-edit.types";
 
 interface IState {
-  data: JsonType;
+  data: PhotoEditType;
 }
 
 const initialState = {

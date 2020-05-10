@@ -1,9 +1,9 @@
 import { Register } from "../../app";
-import json from "./json.reducer";
-import route from "./json.routes";
+import json from"./my-web.reducer";
+import route from"./my-web.routes";
 
 const config = {
-  name: "json",
+  name: "my-web",
   route,
   reducer: json,
 };

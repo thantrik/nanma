@@ -1,11 +1,11 @@
 import { combineReducers, Reducer } from "redux";
 
-import { setJsonViewData } from "./json.actions";
+import { setJsonViewData } from"./todo.actions";
 import { createReducer } from "@reduxjs/toolkit";
-import { JsonType } from "./json.types";
+import { TodoType } from"./todo.types";
 
 interface IState {
-  data: JsonType;
+  data: TodoType;
 }
 
 const initialState = {

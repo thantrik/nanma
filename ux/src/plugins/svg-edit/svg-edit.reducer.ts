@@ -1,11 +1,11 @@
 import { combineReducers, Reducer } from "redux";
 
-import { setJsonViewData } from "./json.actions";
+import { setJsonViewData } from"./svg-edit.actions";
 import { createReducer } from "@reduxjs/toolkit";
-import { JsonType } from "./json.types";
+import { SvgEditType } from"./svg-edit.types";
 
 interface IState {
-  data: JsonType;
+  data: SvgEditType;
 }
 
 const initialState = {

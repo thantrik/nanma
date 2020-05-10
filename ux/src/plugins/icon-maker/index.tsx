@@ -1,9 +1,9 @@
 import { Register } from "../../app";
-import json from "./json.reducer";
-import route from "./json.routes";
+import json from"./icon-maker.reducer";
+import route from"./icon-maker.routes";
 
 const config = {
-  name: "json",
+  name: "icon-maker",
   route,
   reducer: json,
 };

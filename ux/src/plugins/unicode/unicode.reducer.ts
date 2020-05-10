@@ -1,11 +1,11 @@
 import { combineReducers, Reducer } from "redux";
 
-import { setJsonViewData } from "./json.actions";
+import { setJsonViewData } from"./unicode.actions";
 import { createReducer } from "@reduxjs/toolkit";
-import { JsonType } from "./json.types";
+import { UnicodeType } from"./unicode.types";
 
 interface IState {
-  data: JsonType;
+  data: UnicodeType;
 }
 
 const initialState = {

@@ -1,11 +1,11 @@
 import { combineReducers, Reducer } from "redux";
 
-import { setJsonViewData } from "./json.actions";
+import { setJsonViewData } from"./awesome-links.actions";
 import { createReducer } from "@reduxjs/toolkit";
-import { JsonType } from "./json.types";
+import { AwesomeLinksType } from"./awesome-links.types";
 
 interface IState {
-  data: JsonType;
+  data: AwesomeLinksType;
 }
 
 const initialState = {

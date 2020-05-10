@@ -1,11 +1,11 @@
 import { combineReducers, Reducer } from "redux";
 
-import { setJsonViewData } from "./json.actions";
+import { setJsonViewData } from"./md-editor.actions";
 import { createReducer } from "@reduxjs/toolkit";
-import { JsonType } from "./json.types";
+import { MdEditorType } from"./md-editor.types";
 
 interface IState {
-  data: JsonType;
+  data: MdEditorType;
 }
 
 const initialState = {

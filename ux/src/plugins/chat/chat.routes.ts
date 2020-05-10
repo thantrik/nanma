@@ -1,5 +1,5 @@
 import { IPluginRoute } from "../../routes";
-import ConnectedJSONViewer from "./json.connected";
+import ConnectedJSONViewer from "./chat.connected";
 
 export default {
   path: "/json",

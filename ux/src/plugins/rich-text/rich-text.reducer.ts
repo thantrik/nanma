@@ -1,11 +1,11 @@
 import { combineReducers, Reducer } from "redux";
 
-import { setJsonViewData } from "./json.actions";
+import { setJsonViewData } from"./rich-text.actions";
 import { createReducer } from "@reduxjs/toolkit";
-import { JsonType } from "./json.types";
+import { RichTextType } from"./rich-text.types";
 
 interface IState {
-  data: JsonType;
+  data: RichTextType;
 }
 
 const initialState = {

@@ -2,8 +2,8 @@ import {
   createAction,
   ActionCreatorWithPreparedPayload,
 } from "@reduxjs/toolkit";
-import { SET_DATA, JsonType } from "./json.types";
+import { SET_DATA, MyWebType } from"./my-web.types";
 
-export const setJsonViewData = createAction(SET_DATA, (data: JsonType) => ({
+export const setJsonViewData = createAction(SET_DATA, (data: MyWebType) => ({
   payload: data,
 }));

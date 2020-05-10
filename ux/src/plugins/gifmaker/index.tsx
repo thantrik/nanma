@@ -1,9 +1,9 @@
 import { Register } from "../../app";
-import json from "./json.reducer";
-import route from "./json.routes";
+import json from"./gifmaker.reducer";
+import route from"./gifmaker.routes";
 
 const config = {
-  name: "json",
+  name: "gifmaker",
   route,
   reducer: json,
 };

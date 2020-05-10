@@ -1,9 +1,9 @@
 import { Register } from "../../app";
-import json from "./json.reducer";
-import route from "./json.routes";
+import json from"./svg-edit.reducer";
+import route from"./svg-edit.routes";
 
 const config = {
-  name: "json",
+  name: "svg-edit",
   route,
   reducer: json,
 };

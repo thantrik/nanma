@@ -1,7 +1,7 @@
 import { IPluginRoute } from "../../routes";
-import ConnectedJSONViewer from "./json.connected";
+import ConnectedJSONViewer from"./photo-edit.connected";
 
 export default {
-  path: "/json",
+  path: "/photo-edit",
   component: ConnectedJSONViewer,
 };

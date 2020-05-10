@@ -1,2 +1,2 @@
 export { GET_DATA, SET_DATA } from "./constants";
-export type JsonType = { [key: string]: any } | string;
+export type VscodeType = { [key: string]: any } | string;

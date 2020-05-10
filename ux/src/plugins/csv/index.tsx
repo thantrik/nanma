@@ -1,9 +1,9 @@
 import { Register } from "../../app";
-import json from "./json.reducer";
-import route from "./json.routes";
+import json from "./csv.reducer";
+import route from "./csv.routes";
 
 const config = {
-  name: "json",
+  name: "csv",
   route,
   reducer: json,
 };

@@ -1,9 +1,9 @@
 import { Register } from "../../app";
-import json from "./json.reducer";
-import route from "./json.routes";
+import json from"./vscode.reducer";
+import route from"./vscode.routes";
 
 const config = {
-  name: "json",
+  name: "vscode",
   route,
   reducer: json,
 };

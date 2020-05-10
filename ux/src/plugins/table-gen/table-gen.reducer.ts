@@ -1,11 +1,11 @@
 import { combineReducers, Reducer } from "redux";
 
-import { setJsonViewData } from "./json.actions";
+import { setJsonViewData } from"./table-gen.actions";
 import { createReducer } from "@reduxjs/toolkit";
-import { JsonType } from "./json.types";
+import { TableGenType } from"./table-gen.types";
 
 interface IState {
-  data: JsonType;
+  data: TableGenType;
 }
 
 const initialState = {

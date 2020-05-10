@@ -1,7 +1,7 @@
 import { IPluginRoute } from "../../routes";
-import ConnectedJSONViewer from "./json.connected";
+import ConnectedJSONViewer from"./my-data.connected";
 
 export default {
-  path: "/json",
+  path: "/my-data",
   component: ConnectedJSONViewer,
 };

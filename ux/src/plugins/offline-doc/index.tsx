@@ -1,9 +1,9 @@
 import { Register } from "../../app";
-import json from "./json.reducer";
-import route from "./json.routes";
+import json from"./offline-doc.reducer";
+import route from"./offline-doc.routes";
 
 const config = {
-  name: "json",
+  name: "offline-doc",
   route,
   reducer: json,
 };

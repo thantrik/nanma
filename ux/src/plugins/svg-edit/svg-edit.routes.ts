@@ -1,7 +1,7 @@
 import { IPluginRoute } from "../../routes";
-import ConnectedJSONViewer from "./json.connected";
+import ConnectedJSONViewer from"./svg-edit.connected";
 
 export default {
-  path: "/json",
+  path: "/svg-edit",
   component: ConnectedJSONViewer,
 };

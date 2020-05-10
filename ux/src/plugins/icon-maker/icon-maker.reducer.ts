@@ -1,11 +1,11 @@
 import { combineReducers, Reducer } from "redux";
 
-import { setJsonViewData } from "./json.actions";
+import { setJsonViewData } from"./icon-maker.actions";
 import { createReducer } from "@reduxjs/toolkit";
-import { JsonType } from "./json.types";
+import { IconMakerType } from"./icon-maker.types";
 
 interface IState {
-  data: JsonType;
+  data: IconMakerType;
 }
 
 const initialState = {

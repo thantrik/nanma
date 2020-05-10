@@ -1,9 +1,9 @@
 import { Register } from "../../app";
-import json from "./json.reducer";
-import route from "./json.routes";
+import json from "./clock.reducer";
+import route from "./clock.routes";
 
 const config = {
-  name: "json",
+  name: "clock",
   route,
   reducer: json,
 };

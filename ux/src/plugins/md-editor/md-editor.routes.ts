@@ -1,7 +1,7 @@
 import { IPluginRoute } from "../../routes";
-import ConnectedJSONViewer from "./json.connected";
+import ConnectedJSONViewer from"./md-editor.connected";
 
 export default {
-  path: "/json",
+  path: "/md-editor",
   component: ConnectedJSONViewer,
 };

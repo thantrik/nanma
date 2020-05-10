@@ -1,9 +1,9 @@
 import { Register } from "../../app";
-import json from "./json.reducer";
-import route from "./json.routes";
+import json from"./md-editor.reducer";
+import route from"./md-editor.routes";
 
 const config = {
-  name: "json",
+  name: "md-editor",
   route,
   reducer: json,
 };

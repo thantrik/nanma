@@ -1,11 +1,11 @@
 import { combineReducers, Reducer } from "redux";
 
-import { setJsonViewData } from "./json.actions";
+import { setJsonViewData } from"./dashboard.actions";
 import { createReducer } from "@reduxjs/toolkit";
-import { JsonType } from "./json.types";
+import { DashboardType } from"./dashboard.types";
 
 interface IState {
-  data: JsonType;
+  data: DashboardType;
 }
 
 const initialState = {

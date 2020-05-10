@@ -1,9 +1,9 @@
 import { Register } from "../../app";
-import json from "./json.reducer";
-import route from "./json.routes";
+import json from"./prettier.reducer";
+import route from"./prettier.routes";
 
 const config = {
-  name: "json",
+  name: "prettier",
   route,
   reducer: json,
 };

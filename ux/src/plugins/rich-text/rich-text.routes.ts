@@ -1,7 +1,7 @@
 import { IPluginRoute } from "../../routes";
-import ConnectedJSONViewer from "./json.connected";
+import ConnectedJSONViewer from"./rich-text.connected";
 
 export default {
-  path: "/json",
+  path: "/rich-text",
   component: ConnectedJSONViewer,
 };

@@ -7,7 +7,7 @@
     "build": "cd ux && cross-env PUBLIC_URL='/' node --max-old-space-size=8000 scripts/build.js",
     "test": "cd ux && node scripts/test.js",
     "app:setup": "cd ux && yarn install",
-    "new:plugin": "cd && node plugin.js"
+    "new:plugin": "cd ux && node plugin.js"
   },
   "description": "Web developer tool package",
   "main": "index.js",

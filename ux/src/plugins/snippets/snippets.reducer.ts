@@ -1,11 +1,11 @@
 import { combineReducers, Reducer } from "redux";
 
-import { setJsonViewData } from "./json.actions";
+import { setJsonViewData } from"./snippets.actions";
 import { createReducer } from "@reduxjs/toolkit";
-import { JsonType } from "./json.types";
+import { SnippetsType } from"./snippets.types";
 
 interface IState {
-  data: JsonType;
+  data: SnippetsType;
 }
 
 const initialState = {

@@ -1,8 +1,8 @@
 import { combineReducers, Reducer } from "redux";
 
-import { setJsonViewData } from "./json.actions";
+import { setJsonViewData } from "./chat.actions";
 import { createReducer } from "@reduxjs/toolkit";
-import { JsonType } from "./json.types";
+import { JsonType } from "./chat.types";
 
 interface IState {
   data: JsonType;

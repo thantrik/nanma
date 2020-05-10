@@ -53,6 +53,9 @@ window.editorView = initializeView;
 window.push = (path: string) => {
   store.dispatch(push(path));
 };
-if (/^(chrome-extension:\/\/|http:\/\/localhost)/i.test(location.href)) {
+if (
+  /^(chrome-extension:\/\/|http:\/\/localhost)/i.test(location.href) ||
+  /thantrik\.github\.io/i.test(location.href)
+) {
   initializeView();
 }
