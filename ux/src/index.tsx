@@ -6,6 +6,7 @@ import { push, ConnectedRouter } from "connected-react-router";
 import { getRoutes, store, history } from "./app";
 import { IPluginRoute } from "./routes";
 
+import "./plugins/md-editor";
 import "./plugins/json";
 import "./plugins/code";
 
@@ -24,11 +25,13 @@ const App = (props: any) => {
       exact={true}
     ></Route>
   );
-  const root = routes.find(isRoot);
+  let root = routes.find(isRoot);
   const normalRoutes = routes
     .filter((route) => !isRoot(route))
     .map(createRouteComponent);
-  console.log(normalRoutes.length);
+  if (!root) {
+    root = { ...routes[0], path: "/" } as IPluginRoute;
+  }
   return (
     <Provider store={store}>
       <ConnectedRouter history={history}>
@@ -42,9 +45,6 @@ const App = (props: any) => {
 };
 
 const initializeView = () => ReactDOM.render(<App></App>, document.body);
-
-//@ts-ignore
-window.jsonView = initializeView;
 
 const { location } = window;
 //@ts-ignore
