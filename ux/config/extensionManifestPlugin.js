@@ -6,8 +6,10 @@ class ExtensionManifestPlugin {
   apply(compiler) {
     compiler.hooks.done.tap("ExtensionManifestPlugin", (stats) => {
       try {
-        const assets = require(paths.appBuild + "/asset-manifest.json");
         const manifest = require(paths.appManifest);
+        const assetsFile = path.join(paths.appBuild, "/asset-manifest.json");
+        if (!fs.existsSync(assetsFile)) return;
+        const assets = require(assetsFile);
         const contentScripts = manifest.content_scripts[0];
         contentScripts.js = Object.values(assets.files || {}).filter((file) =>
           /^(?!.*(sw|service-worker|background-scripts)).*js$/i.test(file)
