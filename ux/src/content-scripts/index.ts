@@ -52,8 +52,8 @@
 //   }
 // };
 
-// initialize();
-
 export const initialize = () => {
   console.log("STARTED");
 };
+
+initialize();

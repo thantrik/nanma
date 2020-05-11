@@ -6,6 +6,7 @@ import { push, ConnectedRouter } from "connected-react-router";
 import { getRoutes, store, history } from "./app";
 import { IPluginRoute } from "./routes";
 
+import "./react-app-env.d.ts";
 import "./plugins/md-editor";
 import "./plugins/json";
 import "./plugins/code";
