@@ -193,12 +193,8 @@
       "react-app"
     ]
   },
-  "plugins": [
-    "./plugins/json",
-    "./plugins/code"
-  ],
   "description": "Web developer tool package",
-  "main": "index.js",
+  "main": "index.tsx",
   "repository": "https://github.com/thantrik/nanma",
   "author": "Krishna Kumar",
   "license": "MIT"

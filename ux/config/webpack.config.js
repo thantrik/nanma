@@ -27,9 +27,11 @@ const typescriptFormatter = require("react-dev-utils/typescriptFormatter");
 
 const postcssNormalize = require("postcss-normalize");
 const CopyPlugin = require("copy-webpack-plugin");
+const ExtensionManifestPlugin = new require("./extensionManifestPlugin");
 
 const appPackageJson = require(paths.appPackageJson);
 
+const enableServiceWorker = false;
 // Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== "false";
 // Some apps do not need the benefits of saving a web request, so not inlining the chunk
@@ -166,9 +168,15 @@ module.exports = function (webpackEnv) {
       pathinfo: isEnvDevelopment,
       // There will be one main bundle, and one file per asynchronous chunk.
       // In development, it does not produce real files.
-      filename: "static/js/bundle.js",
+      filename: isEnvProduction
+        ? "static/js/[name].[contenthash:8].js"
+        : isEnvDevelopment && "static/js/bundle.js",
       // TODO: remove this when upgrading to webpack 5
       futureEmitAssets: true,
+      // There are also additional JS chunk files if you use code splitting.
+      chunkFilename: isEnvProduction
+        ? "static/js/[name].[contenthash:8].chunk.js"
+        : isEnvDevelopment && "static/js/[name].chunk.js",
       // There are also additional JS chunk files if you use code splitting.
       // webpack uses `publicPath` to determine where the app is being served from.
       // It requires a trailing slash, or the file assets will get an incorrect path.
@@ -260,11 +268,8 @@ module.exports = function (webpackEnv) {
       // https://twitter.com/wSokra/status/969633336732905474
       // https://medium.com/webpack/webpack-4-code-splitting-chunk-graph-and-the-splitchunks-optimization-be739a861366
       splitChunks: {
-        cacheGroups: {
-          default: false,
-        },
-        // chunks: "all",
-        // name: false,
+        chunks: "all",
+        name: false,
       },
       // Keep the runtime chunk separated to enable long term caching
       // https://twitter.com/wSokra/status/969679223278505985
@@ -507,6 +512,7 @@ module.exports = function (webpackEnv) {
       ],
     },
     plugins: [
+      new ExtensionManifestPlugin(),
       new CopyPlugin([
         {
           from: "../*.js*",
@@ -587,8 +593,8 @@ module.exports = function (webpackEnv) {
         new MiniCssExtractPlugin({
           // Options similar to the same options in webpackOptions.output
           // both options are optional
-          filename: "static/css/style.css",
-          chunkFilename: "static/css/style.css",
+          filename: "static/css/[name].[contenthash:8].css",
+          chunkFilename: "static/css/[name].[contenthash:8].chunk.css",
         }),
       // Generate an asset manifest file with the following content:
       // - "files" key: Mapping of all asset filenames to their corresponding
@@ -623,6 +629,7 @@ module.exports = function (webpackEnv) {
       // Generate a service worker script that will precache, and keep up to date,
       // the HTML & assets that are part of the webpack build.
       isEnvProduction &&
+        enableServiceWorker &&
         new WorkboxWebpackPlugin.GenerateSW({
           clientsClaim: true,
           exclude: [/\.map$/, /asset-manifest\.json$/],
