@@ -8,10 +8,15 @@ import CodeEditor from "./code";
 // mapState;
 // mergeProps;
 
-// const mapDispatchToProps = (dispatch: any, ownProps: any) => ( {
-//     bindActionCreators({ getData }, dispatch),
-//     bindActionCreators({ setData }, dispatch)
-//   });
-// };
+const mapStateToProps = (state: any) => {
+  //@ts-ignore
+  return { app: state.app, code: state.code, data: window.___DATA || "" };
+};
 
-export default withRouter(connect()(CodeEditor));
+const mapDispatchToProps = (dispatch: any, ownProps: any) => ({
+  dispatch,
+});
+
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(CodeEditor)
+);

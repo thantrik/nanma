@@ -15,7 +15,7 @@ class DashBoard extends React.Component<any, any> {
     return (
       <div
         ref={(ele) => {
-          window.document.body.style.backgroundColor = "black";
+          window.document.body.style.backgroundColor = "#004367";
         }}
         className="dashboard"
       >

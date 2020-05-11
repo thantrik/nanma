@@ -1,19 +1,19 @@
 import { combineReducers, Reducer } from "redux";
 
-import { setJsonViewData } from "./json.actions";
+import { setJSONView } from "./json.actions";
 import { createReducer } from "@reduxjs/toolkit";
 import { JsonType } from "./json.types";
 
 interface IState {
-  data: JsonType;
+  type: JsonType;
 }
 
 const initialState = {
-  data: { tt: 10 },
+  type: "json",
 };
 
 const json: Reducer = createReducer(initialState, {
-  [setJsonViewData as any]: (state, action) => ({ data: action.payload }),
+  [setJSONView as any]: (state, action) => ({ type: action.payload }),
 });
 
 export default json;

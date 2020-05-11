@@ -1,6 +1,6 @@
 import React from "react";
 import * as monaco from "monaco-editor";
-
+import "../../global.d.ts";
 interface Props {
   language?: string;
   data?: string;
@@ -15,6 +15,7 @@ export default class CodeView extends React.Component<any, any> {
   componentDidMount() {
     if (this.editorPanel) {
       monaco.editor.create(this.editorPanel, {
+        //@ts-ignore
         value: this.props.data,
         theme: "vs-dark",
         language: this.props.language,

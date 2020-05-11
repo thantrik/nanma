@@ -4,14 +4,15 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import JSONEditor from "./json";
 
-//mapDispatch;
-// mapState;
-// mergeProps;
+const mapStateToProps = (state: any) => {
+  //@ts-ignore
+  return { app: state.app, code: state.code, data: window.___DATA || "{}" };
+};
 
-// const mapDispatchToProps = (dispatch: any, ownProps: any) => ( {
-//     bindActionCreators({ getData }, dispatch),
-//     bindActionCreators({ setData }, dispatch)
-//   });
-// };
+const mapDispatchToProps = (dispatch: any, ownProps: any) => ({
+  dispatch,
+});
 
-export default withRouter(connect()(JSONEditor));
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(JSONEditor)
+);

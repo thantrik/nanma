@@ -1,6 +1,6 @@
-import { combineReducers, Reducer } from "redux";
+import { combineReducers, Reducer, Dispatch } from "redux";
 
-import { setJsonViewData } from "./code.actions";
+import { setCodeView } from "./code.actions";
 import { createReducer } from "@reduxjs/toolkit";
 import { CodeType } from "./code.types";
 
@@ -9,11 +9,11 @@ interface IState {
 }
 
 const initialState = {
-  data: "function(){}",
+  language: "typescript",
 };
 
 const code: Reducer = createReducer(initialState, {
-  [setJsonViewData as any]: (state, action) => ({ data: action.payload }),
+  [setCodeView as any]: (state, action) => ({ language: action.payload }),
 });
 
 export default code;

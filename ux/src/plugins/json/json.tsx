@@ -50,7 +50,7 @@ class JSONEditorApp extends React.Component<any, any> {
         }
       );
       //@ts-ignore
-      setEditorValue(self.jsonEditor.code.editor, window.___JSON);
+      setEditorValue(self.jsonEditor.code.editor, this.props.data);
     }
     if (self.jsonEditor.tree.element) {
       self.jsonEditor.tree.editor = new JSONEditor(
@@ -63,7 +63,7 @@ class JSONEditorApp extends React.Component<any, any> {
         }
       );
       //@ts-ignore
-      setEditorValue(self.jsonEditor.tree.editor, window.___JSON);
+      setEditorValue(self.jsonEditor.tree.editor, this.props.data);
     }
   }
   render() {

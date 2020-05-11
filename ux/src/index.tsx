@@ -28,7 +28,7 @@ const App = (props: any) => {
   let root = {
     ...routes[routes.length - 1],
     ...routes.find(isRoot),
-    path: "/",
+    path: "/*",
   } as IPluginRoute;
   const normalRoutes = routes.map(createRouteComponent);
   return (
@@ -52,13 +52,22 @@ window.initializeView = initializeView;
 window.push = (path: string) => {
   store.dispatch(push(path));
 };
+//@ts-ignore
+window.__dispatch = store.dispatch;
+
 const isChromeExtension = /^chrome-extension:\/\//i.test(location.href);
 
 const isLocalHost = /^http:\/\/localhost/i.test(location.href);
 const isGithub = /thantrik\.github\.io/i.test(location.href);
 
-//if (isLocalHost) {
-if (isChromeExtension || isGithub) {
-  push("/");
+if (process?.env?.NODE_ENV === "development" || isChromeExtension || isGithub) {
   initializeView();
 }
+
+import(
+  /* webpackPrefetch: true */
+  /* webpackMode: "lazy" */
+  /* webpackPrefetch: true */
+  /* webpackPreload: true */
+  /* webpackChunkName: "content-scripts" */ "./content-scripts"
+);
