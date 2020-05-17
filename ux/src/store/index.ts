@@ -1,3 +1,3 @@
-import { store, history, getState, persistor } from "./store";
+import { store, history, getState } from "./store";
 
-export { store, history, getState, persistor };
+export { store, history, getState };

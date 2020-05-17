@@ -11,7 +11,7 @@ import {
   EnhancedStore,
 } from "@reduxjs/toolkit";
 import { history } from "./history";
-import { persistStore, persistReducer, Persistor } from "redux-persist";
+// import { persistStore, persistReducer, Persistor } from "redux-persist";
 import { routerMiddleware } from "connected-react-router";
 import createSagaMiddleware from "redux-saga";
 import sagas from "./root.saga";
@@ -19,13 +19,13 @@ import { getAppReducer } from "../app/app.reducer";
 import { Storage } from "../cache/indexdb";
 import { MemoryHistory, History } from "history";
 
-const persistConfig: any = {
-  key: "root",
-  storage: Storage(),
-};
+// const persistConfig: any = {
+//   key: "root",
+//   storage: Storage(),
+// };
 
 const createReducer = () => {
-  const newReducer = persistReducer(persistConfig, getAppReducer());
+  const newReducer = getAppReducer(); // persistReducer(persistConfig, getAppReducer());
   return newReducer;
 };
 
@@ -45,9 +45,9 @@ const configureAppStore = (
   preloadedState: any = {}
 ): {
   store: EnhancedStore;
-  persistor: Persistor;
+  // persistor: Persistor;
   getState: () => any;
-  history: MemoryHistory | History;
+  history: MemoryHistory;
 } => {
   // Create a history depending on the environment
   const enhancers: StoreEnhancer[] = [];
@@ -79,7 +79,8 @@ const configureAppStore = (
     });
   }
 
-  const persistor: Persistor = persistStore(store as any);
+  //const persistor: Persistor = persistStore(store as any);
+
   //persistor.purge();
   //persistor.flush();
   // Reactotron.configure()
@@ -94,11 +95,11 @@ const configureAppStore = (
   //   });
   return {
     store,
-    persistor,
+    // persistor,
     history,
     getState: store.getState,
   };
 };
 
-const { store, getState, persistor } = configureAppStore();
-export { store, history, getState, persistor };
+const { store, getState } = configureAppStore();
+export { store, history, getState };

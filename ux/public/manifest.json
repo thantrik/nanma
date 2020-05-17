@@ -20,7 +20,8 @@
     "<all_urls>",
     "contextMenus",
     "https://raw.githubusercontent.com/*",
-    "unlimitedStorage"
+    "unlimitedStorage",
+    "fileSystem"
   ],
   "version": "1.0.0",
   "content_scripts": [

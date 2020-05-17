@@ -1,19 +1,18 @@
 import { combineReducers, Reducer, Dispatch } from "redux";
 
-import { setCodeView } from "./code.actions";
+import { setCodeViewAction } from "./code.actions";
 import { createReducer } from "@reduxjs/toolkit";
-import { CodeType } from "./code.types";
+import { CodeType, IState } from "./code.types";
 
-interface IState {
-  data: CodeType;
-}
-
-const initialState = {
+const initialState: IState = {
+  data: "",
   language: "typescript",
 };
 
-const code: Reducer = createReducer(initialState, {
-  [setCodeView as any]: (state, action) => ({ language: action.payload }),
+const code: Reducer = createReducer<IState>(initialState, {
+  [setCodeViewAction as any]: (state, action) => {
+    return { ...state, ...action.payload };
+  },
 });
 
 export default code;

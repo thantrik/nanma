@@ -9,8 +9,8 @@ import CodeEditor from "./code";
 // mergeProps;
 
 const mapStateToProps = (state: any) => {
-  const { code } = state;
-  return code;
+  //@ts-ignore
+  return { app: state.app, code: state.code, data: window.___DATA || "" };
 };
 
 const mapDispatchToProps = (dispatch: any, ownProps: any) => ({

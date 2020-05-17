@@ -12,28 +12,21 @@ export default class CodeView extends React.Component<any, any> {
     super(props);
     this.editorPanel = null;
   }
-  setCodeView = () => {
-    console.log(this.props);
-    const modal = monaco.editor.createModel(
-      this.props.data,
-      this.props.language || "typescript"
-    );
+  componentDidMount() {
     if (this.editorPanel) {
       monaco.editor.create(this.editorPanel, {
         //@ts-ignore
-        model: modal,
+        value: this.props.data,
         theme: "vs-dark",
+        language: this.props.language,
       });
     }
-  };
+  }
   render() {
     return (
       <div
         style={{ width: "100vw", height: "100vh", overflow: "hidden" }}
-        ref={(ele) => {
-          this.editorPanel = ele;
-          this.setCodeView();
-        }}
+        ref={(ele) => (this.editorPanel = ele)}
       ></div>
     );
   }

@@ -1,6 +1,6 @@
 declare global {
   interface Window {
-    jsonView: () => void;
+    initializeView: () => void;
     __REDUX_DEVTOOLS_EXTENSION__: Function;
     ___DATA: any;
   }
