@@ -47,7 +47,7 @@ const configureAppStore = (
   store: EnhancedStore;
   // persistor: Persistor;
   getState: () => any;
-  history: MemoryHistory;
+  history: History;
 } => {
   // Create a history depending on the environment
   const enhancers: StoreEnhancer[] = [];

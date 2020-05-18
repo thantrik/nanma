@@ -1,93 +1,75 @@
 import React from "react";
-import JSONEditor from "jsoneditor";
+import * as monaco from "monaco-editor";
+import {
+  Dropdown,
+  DropdownMenuItemType,
+  IDropdownStyles,
+  IDropdownOption,
+} from "office-ui-fabric-react/lib/Dropdown";
+import { DropdownOption } from "bootstrap";
 
-import "jsoneditor/dist/jsoneditor.min.css";
+const dropdownStyles: Partial<IDropdownStyles> = {
+  dropdown: { width: 200, right: 0, position: "absolute", zIndex: 1000 },
+};
 
-class IEditorRef {
-  constructor(
-    public element: HTMLDivElement | undefined = undefined,
-    public editor: JSONEditor | undefined = undefined
-  ) {}
-}
+type DiffViewType = HTMLDivElement | null;
 
-type IEditorRefRecord = Record<string, IEditorRef>;
-
-class JSONEditorApp extends React.Component<any, any> {
-  private jsonEditor: IEditorRefRecord;
-  constructor(props: any) {
+class DiffView extends React.Component<any, any> {
+  private diffView: DiffViewType = null;
+  private options: IDropdownOption[] = monaco.languages.getLanguages().map(
+    (language): IDropdownOption => ({
+      key: language.aliases?.[0] || "",
+      text: language.aliases?.[0] || "",
+      data: language.mimetypes,
+    })
+  );
+  constructor(props: {}) {
     super(props);
-    this.jsonEditor = {
-      code: new IEditorRef(),
-      tree: new IEditorRef(),
+    this.state = {
+      language: "TypeScript",
     };
   }
-
-  createJsonEditorRef = (type: string) => (ele: HTMLDivElement) => {
-    this.jsonEditor[type].element = ele;
-  };
   componentDidMount() {
-    const self = this;
-    const setEditorValue = (editor: JSONEditor, value: any) => {
-      if (!editor) return;
-      if (!value) return;
-      switch (typeof value) {
-        case "string":
-          editor.setText(value);
-          break;
-        case "object":
-        default:
-          editor.set(value);
-      }
-    };
-    if (this.jsonEditor?.code?.element) {
-      self.jsonEditor.code.editor = new JSONEditor(
-        this.jsonEditor.code.element,
-        {
-          mode: "text",
-          onChangeText: function (jsonString) {
-            self.jsonEditor.tree.editor?.updateText(jsonString);
-          },
-        }
-      );
-      //@ts-ignore
-      setEditorValue(self.jsonEditor.code.editor, window.___JSON);
-    }
-    if (self.jsonEditor.tree.element) {
-      self.jsonEditor.tree.editor = new JSONEditor(
-        self.jsonEditor.tree.element,
-        {
-          mode: "tree",
-          onChangeText: function (jsonString) {
-            self.jsonEditor?.code?.editor?.updateText(jsonString);
-          },
-        }
-      );
-      //@ts-ignore
-      setEditorValue(self.jsonEditor.tree.editor, window.___JSON);
-    }
+    if (!this.diffView) return;
+    // The diff editor offers a navigator to jump between changes. Once the diff is computed the <em>next()</em> and <em>previous()</em> method allow navigation. By default setting the selection in the editor manually resets the navigation state.
+    var originalModel = monaco.editor.createModel("", this.state.language);
+    var modifiedModel = monaco.editor.createModel("", this.state.language);
+
+    var diffEditor = monaco.editor.createDiffEditor(this.diffView, {
+      originalEditable: true,
+      contextmenu: true,
+      renderSideBySide: true,
+    });
+    diffEditor.setModel({
+      original: originalModel,
+      modified: modifiedModel,
+    });
   }
+  selectLanguage = (_: any, option: IDropdownOption | undefined) => {
+    this.setState({
+      language: option?.text || "TypeScript",
+    });
+  };
   render() {
     return (
-      <div
-        className="App"
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "space-around",
-          justifyContent: "space-around",
-        }}
-      >
+      <>
+        <Dropdown
+          placeholder="Language"
+          options={this.options}
+          styles={dropdownStyles}
+          onChange={this.selectLanguage}
+        />
+
         <div
-          ref={this.createJsonEditorRef("code")}
-          style={{ width: "50vw", height: "100vh" }}
+          ref={(ele) => (this.diffView = ele)}
+          style={{
+            width: "100vw",
+            height: "100vh",
+          }}
         ></div>
-        <div
-          ref={this.createJsonEditorRef("tree")}
-          style={{ width: "50vw", height: "100vh" }}
-        ></div>
-      </div>
+      </>
     );
   }
 }
 
-export default JSONEditorApp;
+export default DiffView;

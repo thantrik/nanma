@@ -526,24 +526,25 @@ module.exports = function (webpackEnv) {
       new webpack.optimize.LimitChunkCountPlugin({
         maxChunks: 1,
       }),
-      new ExtensionManifestPlugin(),
-      new CopyPlugin([
-        {
-          from: "../*.js*",
-          to: paths.appBuild,
-          toType: "dir",
-          force: true,
-          transformPath(targetPath, absolutePath) {
-            return targetPath.replace("..", "");
+      isEnvProduction && new ExtensionManifestPlugin(),
+      isEnvProduction &&
+        new CopyPlugin([
+          {
+            from: "../*.js*",
+            to: paths.appBuild,
+            toType: "dir",
+            force: true,
+            transformPath(targetPath, absolutePath) {
+              return targetPath.replace("..", "");
+            },
           },
-        },
-        {
-          from: "../icons",
-          to: paths.appBuild + "/icons/",
-          toType: "dir",
-          force: true,
-        },
-      ]),
+          {
+            from: "../icons",
+            to: paths.appBuild + "/icons/",
+            toType: "dir",
+            force: true,
+          },
+        ]),
       // Generates an `index.html` file with the <script> injected.
       new HtmlWebpackPlugin(
         Object.assign(

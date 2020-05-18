@@ -6,7 +6,6 @@ import { push, ConnectedRouter } from "connected-react-router";
 import { getRoutes, store, history, getPlugins } from "./index";
 import { IPluginRoute } from "../routes";
 import { IPluginConfig } from "./app.types";
-import context from "./context";
 
 const bundleLoad = Promise.all(
   [

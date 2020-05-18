@@ -1,7 +1,7 @@
 import { IPluginRoute } from "../../routes";
-import ConnectedJSONViewer from"./diff.connected";
+import ConnectedDiffView from "./diff.connected";
 
 export default {
   path: "/diff",
-  component: ConnectedJSONViewer,
+  component: ConnectedDiffView,
 };
