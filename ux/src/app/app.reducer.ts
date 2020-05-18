@@ -26,7 +26,11 @@ export const createAppReducer = (
   plugins: ReadonlyArray<IPluginConfig>
 ): Record<string, Reducer> => {
   const appReducers: Record<string, Reducer> = APP_REDUCERS;
-  plugins.forEach((plugin) => (appReducers[plugin.name] = plugin.reducer));
+  plugins.forEach((plugin) => {
+    if (plugin.reducer) {
+      appReducers[plugin.name] = plugin.reducer;
+    }
+  });
   return appReducers;
 };
 

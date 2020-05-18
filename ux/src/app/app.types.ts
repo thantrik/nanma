@@ -5,7 +5,7 @@ import { AppContext } from "./context";
 export interface IPluginConfig {
   readonly name: string;
   readonly route: IPluginRoute;
-  readonly reducer: Reducer;
+  readonly reducer?: Reducer;
   readonly hook?: PluginStartupHook;
 }
 

@@ -15,6 +15,7 @@ const bundleLoad = Promise.all(
     "diff",
     "md-editor",
     "code",
+    "ts-play",
     "dashboard",
   ].map((plugin: string) => import(`../plugins/${plugin}`).catch(console.error))
 );
