@@ -2,16 +2,13 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import JSONEditor from"./md-editor";
+import MarkDownEditorApp from "./md-editor";
 
 //mapDispatch;
 // mapState;
 // mergeProps;
+const mapStateToProps = (state: any) => {
+  return state["md-editor"];
+};
 
-// const mapDispatchToProps = (dispatch: any, ownProps: any) => ( {
-//     bindActionCreators({ getData }, dispatch),
-//     bindActionCreators({ setData }, dispatch)
-//   });
-// };
-
-export default withRouter(connect()(JSONEditor));
+export default withRouter(connect(mapStateToProps)(MarkDownEditorApp));

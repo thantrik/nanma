@@ -1,19 +1,21 @@
 import { combineReducers, Reducer } from "redux";
 
-import { setJsonViewData } from"./md-editor.actions";
+import { setMdViewData } from "./md-editor.actions";
 import { createReducer } from "@reduxjs/toolkit";
-import { MdEditorType } from"./md-editor.types";
-
-interface IState {
-  data: MdEditorType;
-}
+import { MdEditorType, IState } from "./md-editor.types";
 
 const initialState = {
-  data: { tt: 10 },
+  data: "",
+  readOnly: false,
 };
 
-const json: Reducer = createReducer(initialState, {
-  [setJsonViewData as any]: (state, action) => ({ data: action.payload }),
+const mdEditor: Reducer = createReducer(initialState, {
+  [setMdViewData as any]: (state, action) => {
+    return {
+      ...state,
+      ...action.payload,
+    };
+  },
 });
 
-export default json;
+export default mdEditor;

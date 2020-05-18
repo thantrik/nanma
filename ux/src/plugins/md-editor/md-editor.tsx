@@ -58,21 +58,40 @@ class MarkDownEditorApp extends React.Component<any, any> {
 
   componentDidMount() {
     const self = this;
+    const { data } = this.props;
     if (this.viewer) {
-      this.viewer.innerHTML = this.processor.render(this.props.content || "");
+      this.viewer.innerHTML = this.processor.render(
+        //@ts-ignore
+        window.__DATA || data || ""
+      );
     }
   }
   updateContent = () => {
     const content = this.editor?.innerText;
+    const { readOnly, data } = this.props;
     this.viewer &&
       //@ts-ignore
       (this.viewer.innerHTML = this.processor.render(
         //@ts-ignore
-        content || window.__DATA || ""
+        window.__DATA || (readOnly ? data : content) || ""
       ));
   };
   render() {
     const { readOnly = false } = this.props;
+    const article = (
+      <article
+        className="markdown-body"
+        ref={(ele) => (this.viewer = ele)}
+        style={{
+          width: readOnly ? "100vw" : "60vw",
+          minHeight: "100vw",
+          border: "solid 1px #CDCDCD",
+          borderRight: "none",
+          padding: 10,
+        }}
+      ></article>
+    );
+    if (readOnly) return article;
     return (
       <div
         ref={(ele) => {
@@ -98,32 +117,20 @@ class MarkDownEditorApp extends React.Component<any, any> {
             justifyContent: "space-around",
           }}
         >
-          {!readOnly && (
-            <div
-              onKeyUp={this.updateContent}
-              ref={(ele) => (this.editor = ele)}
-              style={{
-                width: "39vw",
-                minHeight: "100vh",
-                border: "solid 1px #CDCDCD",
-                borderRight: "none",
-                borderLeft: "none",
-                padding: 5,
-              }}
-              contentEditable={true}
-            ></div>
-          )}
-          <article
-            className="markdown-body"
-            ref={(ele) => (this.viewer = ele)}
+          <div
+            onKeyUp={this.updateContent}
+            ref={(ele) => (this.editor = ele)}
             style={{
-              width: readOnly ? "100vw" : "60vw",
-              minHeight: "100vw",
+              width: "39vw",
+              minHeight: "100vh",
               border: "solid 1px #CDCDCD",
               borderRight: "none",
-              padding: 10,
+              borderLeft: "none",
+              padding: 5,
             }}
-          ></article>
+            contentEditable={true}
+          ></div>
+          {article}
         </div>
       </div>
     );

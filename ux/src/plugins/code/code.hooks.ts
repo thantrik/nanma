@@ -38,9 +38,6 @@ const hook = (context: AppContext) => {
   if (/\.(text|txt|log)$/.test(location.href)) {
     return codeView("text", data);
   }
-  if (/\.md$/i.test(location.href)) {
-    return codeView("markdown", data);
-  }
 };
 
 export default hook;

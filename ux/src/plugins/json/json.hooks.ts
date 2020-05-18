@@ -64,7 +64,7 @@ const hook = (context: AppContext) => {
     }
   } catch (e) {}
 
-  if (/\.(json)$/.test(window.location.href)) {
+  if (/\.(json)$/i.test(window.location.href)) {
     jsonView(data, false);
   }
 };
