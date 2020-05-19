@@ -8,30 +8,6 @@ declare global {
   }
 }
 
-// window.setCodeView;
-// window.setJSONView;
-// const jsonView = () => window.setJSONView && window.setJSONView();
-// const setUpApp = (data, type, route) => {
-//   window.initializeView && window.initializeView(data, type);
-//   route && window.push && window.push(route);
-// };
-
-// const location = window.location;
-// if (/\.(js|mjs|jsx|ts|tsx|c|cpp|cs)$/.test(location.href)) {
-//   window.push && window.push("/code");
-//   return editorView(data, "typescript", "/code");
-// }
-// if (/\.(css)$/.test(location.href)) {
-//   window.push && window.push();
-//   return editorView(data, "css", "/code");
-// }
-// if (/\.(text|txt|log)$/.test(location.href)) {
-//   return editorView(data, null, "/code");
-// }
-// if (/\.md$/i.test(location.href)) {
-//   return editorView(data, null, "/md-editor");
-// }
-
 const jsonView = (data: any, parse = false) => {
   context.setDOMOwner(config);
   if (parse) window.___DATA = JSON.parse(data);

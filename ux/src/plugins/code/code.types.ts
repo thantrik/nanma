@@ -3,5 +3,6 @@ export type CodeType = string;
 
 export interface IState {
   data: CodeType;
-  language: string;
+  language?: string;
+  url: string;
 }

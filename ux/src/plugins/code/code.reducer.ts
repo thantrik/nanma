@@ -7,6 +7,7 @@ import { CodeType, IState } from "./code.types";
 const initialState: IState = {
   data: "",
   language: "typescript",
+  url: "",
 };
 
 const code: Reducer = createReducer<IState>(initialState, {

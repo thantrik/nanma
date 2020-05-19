@@ -1639,12 +1639,6 @@
   dependencies:
     prop-types "^15.6.2"
 
-"@types/@primer/css":
-  version "14.3.0"
-  resolved "https://codeload.github.com/primer/css/tar.gz/b0198cb124ac7884ea0056bf726cd787d4475270"
-  dependencies:
-    "@primer/octicons" "^9.1.1"
-
 "@types/ace@*":
   version "0.0.43"
   resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/@types/ace/-/ace-0.0.43.tgz#9f0916174b6060dabbccd36ba4868ea769a1c633"
@@ -8113,6 +8107,13 @@ mobius1-selectr@^2.4.13:
   version "2.4.13"
   resolved "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/mobius1-selectr/-/mobius1-selectr-2.4.13.tgz#0019dfd9f984840d6e40f70683ab3ec78ce3b5df"
   integrity sha1-ABnf2fmEhA1uQPcGg6s+x4zjtd8=
+
+monaco-editor-webpack-plugin@^1.9.0:
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/monaco-editor-webpack-plugin/-/monaco-editor-webpack-plugin-1.9.0.tgz#5b547281b9f404057dc5d8c5722390df9ac90be6"
+  integrity sha512-tOiiToc94E1sb50BgZ8q8WK/bxus77SRrwCqIpAB5er3cpX78SULbEBY4YPOB8kDolOzKRt30WIHG/D6gz69Ww==
+  dependencies:
+    loader-utils "^1.2.3"
 
 monaco-editor@^0.20.0:
   version "0.20.0"

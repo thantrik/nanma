@@ -11,13 +11,14 @@ declare global {
 
 const location = window.location;
 
-const codeView = (language: string, data: string) => {
+const codeView = (url: string, data: string) => {
   context.setDOMOwner(config);
   window.___DATA = data;
   setCodeView({
-    data: data,
-    language: language || "typescript",
+    data,
+    url,
   });
+  return true;
 };
 
 const hook = (context: AppContext) => {
@@ -26,18 +27,31 @@ const hook = (context: AppContext) => {
   if (!data) {
     return;
   }
-  if (/\.(js|mjs|jsx)$/.test(location.href)) {
-    return codeView("javascript", data);
-  }
-  if (/\.(ts|tsx|c|cpp|cs)$/.test(location.href)) {
-    return codeView("typescript", data);
-  }
-  if (/\.(css)$/.test(location.href)) {
-    return codeView("css", data);
-  }
-  if (/\.(text|txt|log)$/.test(location.href)) {
-    return codeView("text", data);
-  }
+  return codeView(window.location.href, data);
+  // interface Language {
+  //   regex: RegExp;
+  //   mime: string;
+  //   alias: string;
+  // }
+  // const listExtensions: Language[] = languages
+  //   .getLanguages()
+  //   .reduce((listLang: Language[], language) => {
+  //     if (language?.extensions?.[0]) {
+  //       listLang.push({
+  //         regex: new RegExp(`.(${language?.extensions?.join("|")})$`, "ig"),
+  //         mime: language.mimetypes?.[0] || "",
+  //         alias: language.aliases?.[0] as string,
+  //       });
+  //     }
+  //     return listLang;
+  //   }, []);
+  // console.log("list file Extensions", listExtensions);
+  // listExtensions.some((value) => {
+  //   if (value.regex.test(location.href)) {
+  //     return codeView(value.alias, data);
+  //   }
+  //   return false;
+  // });
 };
 
 export default hook;
