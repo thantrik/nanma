@@ -1,9 +1,9 @@
 import React from "react";
 
-class AwesomeLinks extends React.Component<any, any> {
+class ConnectedAwesomeLinksViewer extends React.Component<any, any> {
   render() {
     return <div></div>;
   }
 }
 
-export default AwesomeLinks;
+export default ConnectedAwesomeLinksViewer;

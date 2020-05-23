@@ -1,4 +1,3 @@
-import { Register } from "../../app";
 import route from "./diff.routes";
 
 const config = {

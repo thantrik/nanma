@@ -1,10 +1,10 @@
-import appReducer from "./app.reducer";
-import { IPluginConfig, ReducerType, PluginStartupHook } from "./app.types";
+//import appReducer from "./app.reducer";
+import { IPluginConfig, PluginStartupHook } from "./app.types";
 import { RegisterRoute } from "./../routes";
 import { RegisterState } from "./app.reducer";
-import { store } from "../store";
-import { combineReducers, Reducer } from "redux";
-import { createReducer } from "@reduxjs/toolkit";
+// import { store } from "../store";
+// import { combineReducers, Reducer } from "redux";
+// import { createReducer } from "@reduxjs/toolkit";
 
 const PLUGINS: Array<IPluginConfig> = [];
 const HOOKS: Array<PluginStartupHook> = [];

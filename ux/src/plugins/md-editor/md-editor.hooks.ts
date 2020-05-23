@@ -1,5 +1,4 @@
-import { context, AppContext, store } from "../../app";
-import { push } from "connected-react-router";
+import { context, AppContext } from "../../app";
 import config from "./md-editor.config";
 import { setMdView } from "./md-editor.actions";
 

@@ -1,8 +1,8 @@
-import { combineReducers, Reducer, Dispatch } from "redux";
+import { Reducer } from "redux";
 
 import { setCodeViewAction } from "./code.actions";
 import { createReducer } from "@reduxjs/toolkit";
-import { CodeType, IState } from "./code.types";
+import { IState } from "./code.types";
 
 const initialState: IState = {
   data: "",

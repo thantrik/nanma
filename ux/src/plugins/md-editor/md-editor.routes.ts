@@ -1,4 +1,3 @@
-import { IPluginRoute } from "../../routes";
 import MarkDownEditorApp from "./md-editor.connected";
 
 export default {

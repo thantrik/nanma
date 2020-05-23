@@ -1,11 +1,7 @@
 import { store } from "../../app";
-import {
-  createAction,
-  ActionCreatorWithPreparedPayload,
-} from "@reduxjs/toolkit";
-import { Dispatch } from "redux";
+import { createAction } from "@reduxjs/toolkit";
 import { push } from "connected-react-router";
-import { SET_DATA, CodeType, IState } from "./code.types";
+import { SET_DATA, IState } from "./code.types";
 
 export const setCodeViewAction = createAction(
   SET_DATA,

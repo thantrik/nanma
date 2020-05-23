@@ -1,5 +1,4 @@
-import { combineReducers, Reducer } from "redux";
-
+import { Reducer } from "redux";
 import { setJSONView } from "./json.actions";
 import { createReducer } from "@reduxjs/toolkit";
 import { JsonType } from "./json.types";

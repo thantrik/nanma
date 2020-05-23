@@ -7,6 +7,7 @@ export interface IPluginConfig {
   readonly route: IPluginRoute;
   readonly reducer?: Reducer;
   readonly hook?: PluginStartupHook;
+  readonly icon?: any;
 }
 
 export interface PluginStartupHook {

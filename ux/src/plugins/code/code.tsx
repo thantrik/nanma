@@ -2,18 +2,12 @@ import React from "react";
 import * as monaco from "monaco-editor";
 import "../../global.d.ts";
 import { context } from "../../app";
-import {
-  Dropdown,
-  DropdownMenuItemType,
-  IDropdownStyles,
-  IDropdownOption,
-} from "office-ui-fabric-react/lib/Dropdown";
-import { DropdownOption } from "bootstrap";
+import { IDropdownOption } from "office-ui-fabric-react/lib/Dropdown";
 import SelectLanguage from "../../components/dropdown/language";
 
-const dropdownStyles: Partial<IDropdownStyles> = {
-  dropdown: { width: 200, right: 0, position: "absolute", zIndex: 1000 },
-};
+// const dropdownStyles: Partial<IDropdownStyles> = {
+//   dropdown: { width: 200, right: 0, position: "absolute", zIndex: 1000 },
+// };
 
 interface Props {
   language?: string;
@@ -42,16 +36,12 @@ export default class CodeView extends React.Component<any, any> {
       );
     }
     if (this.editorPanel) {
-      if (editor) {
+      editor = monaco.editor.create(this.editorPanel, {
         //@ts-ignore
-        const oldModal = monaco.editor.getModel(this.props.url)?.dispose();
-      } else
-        editor = monaco.editor.create(this.editorPanel, {
-          //@ts-ignore
-          model: modal,
-          theme: "vs-dark",
-          automaticLayout: true,
-        });
+        model: modal,
+        theme: "vs-dark",
+        automaticLayout: true,
+      });
     }
   };
 
@@ -60,7 +50,6 @@ export default class CodeView extends React.Component<any, any> {
     this.setCodeView();
   }
   onLangaugeChange = (_: React.FormEvent, option?: IDropdownOption): void => {
-    console.log(modal);
     modal && monaco.editor.setModelLanguage(modal, option?.id || "typescript");
   };
 

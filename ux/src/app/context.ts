@@ -1,4 +1,4 @@
-import { IPluginConfig, ReducerType } from "./app.types";
+import { IPluginConfig } from "./app.types";
 import initAppView from "./view";
 let context: AppContext;
 

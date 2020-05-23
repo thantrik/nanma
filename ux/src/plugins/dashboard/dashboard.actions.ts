@@ -1,9 +1,9 @@
-import {
-  createAction,
-  ActionCreatorWithPreparedPayload,
-} from "@reduxjs/toolkit";
-import { SET_DATA, DashboardType } from"./dashboard.types";
+import { createAction } from "@reduxjs/toolkit";
+import { SET_DATA, DashboardType } from "./dashboard.types";
 
-export const setJsonViewData = createAction(SET_DATA, (data: DashboardType) => ({
-  payload: data,
-}));
+export const setDashBoardData = createAction(
+  SET_DATA,
+  (data: DashboardType) => ({
+    payload: data,
+  })
+);

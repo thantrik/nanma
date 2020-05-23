@@ -57,7 +57,7 @@ class MarkDownEditorApp extends React.Component<any, any> {
   }
 
   componentDidMount() {
-    const self = this;
+    //const self = this;
     const { data } = this.props;
     if (this.viewer) {
       this.viewer.innerHTML = this.processor.render(

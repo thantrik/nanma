@@ -4,6 +4,7 @@ class TSPlayGround extends React.Component<any, any> {
   render() {
     return (
       <iframe
+        title={"Typescript play"}
         src="https://www.typescriptlang.org/play"
         style={{
           width: "100vw",

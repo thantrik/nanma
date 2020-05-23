@@ -12,7 +12,7 @@ export interface IPluginRoute {
 
 export const RegisterRoute = (config: IPluginConfig) => {
   const { route } = config;
-  const parentRoute = ROUTES.find((r) => route.path.indexOf(r.path) == 0);
+  const parentRoute = ROUTES.find((r) => route.path.indexOf(r.path) === 0);
   if (parentRoute && parentRoute.routes) {
     parentRoute.routes.push(route);
   } else ROUTES.push(route);

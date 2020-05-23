@@ -1,8 +1,8 @@
-import { combineReducers, Reducer } from "redux";
+import { Reducer } from "redux";
 
-import { setJsonViewData } from"./dashboard.actions";
+import { setDashBoardData } from "./dashboard.actions";
 import { createReducer } from "@reduxjs/toolkit";
-import { DashboardType } from"./dashboard.types";
+import { DashboardType } from "./dashboard.types";
 
 interface IState {
   data: DashboardType;
@@ -13,7 +13,7 @@ const initialState = {
 };
 
 const json: Reducer = createReducer(initialState, {
-  [setJsonViewData as any]: (state, action) => ({ data: action.payload }),
+  [setDashBoardData as any]: (state, action) => ({ data: action.payload }),
 });
 
 export default json;

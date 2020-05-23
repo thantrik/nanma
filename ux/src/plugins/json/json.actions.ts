@@ -1,7 +1,4 @@
-import {
-  createAction,
-  ActionCreatorWithPreparedPayload,
-} from "@reduxjs/toolkit";
+import { createAction } from "@reduxjs/toolkit";
 import { Dispatch } from "redux";
 import { push } from "connected-react-router";
 import { SET_DATA, JsonType } from "./json.types";

@@ -1,5 +1,4 @@
-import { context, AppContext, store } from "../../app";
-import { push } from "connected-react-router";
+import { context, AppContext } from "../../app";
 import config from "./code.config";
 import { setCodeView } from "./code.actions";
 
@@ -9,7 +8,7 @@ declare global {
   }
 }
 
-const location = window.location;
+// const location = window.location;
 
 const codeView = (url: string, data: string) => {
   context.setDOMOwner(config);

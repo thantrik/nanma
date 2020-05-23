@@ -1,4 +1,3 @@
-import { IPluginRoute } from "../../routes";
 import ConnectedCodeViewer from "./code.connected";
 
 export default {

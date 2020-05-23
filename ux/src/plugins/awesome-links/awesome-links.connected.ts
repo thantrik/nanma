@@ -1,8 +1,7 @@
-import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import JSONEditor from"./awesome-links";
+//import { bindActionCreators } from "redux";
+import ConnectedAwesomeLinksViewer from "./awesome-links";
 
 const mapStateToProps = (state: any) => {
   //@ts-ignore
@@ -14,5 +13,5 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => ({
 });
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(JSONEditor)
+  connect(mapStateToProps, mapDispatchToProps)(ConnectedAwesomeLinksViewer)
 );

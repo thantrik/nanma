@@ -1,10 +1,10 @@
-import {
-  combineReducers,
-  compose,
-  StoreEnhancer,
-  Store,
-  applyMiddleware,
-} from "redux";
+// import {
+//   ///combineReducers,
+//   ///compose,
+//   ///StoreEnhancer,
+//   /// Store,
+//   /// applyMiddleware,
+// } from "redux";
 import {
   configureStore,
   getDefaultMiddleware,
@@ -16,8 +16,9 @@ import { routerMiddleware } from "connected-react-router";
 import createSagaMiddleware from "redux-saga";
 import sagas from "./root.saga";
 import { getAppReducer } from "../app/app.reducer";
-import { Storage } from "../cache/indexdb";
-import { MemoryHistory, History } from "history";
+//import { Storage } from "../cache/indexdb";
+// MemoryHistory
+import { History } from "history";
 
 // const persistConfig: any = {
 //   key: "root",
@@ -50,7 +51,7 @@ const configureAppStore = (
   history: History;
 } => {
   // Create a history depending on the environment
-  const enhancers: StoreEnhancer[] = [];
+  /// const enhancers: StoreEnhancer[] = [];
   //  [
   //   window.__REDUX_DEVTOOLS_EXTENSION__ &&
   //     window.__REDUX_DEVTOOLS_EXTENSION__({ name: "SearchUX", trace: true }),
@@ -64,7 +65,7 @@ const configureAppStore = (
     sagaMiddleware,
   ];
 
-  const composedEnhancers: StoreEnhancer = compose(...enhancers);
+  /// const composedEnhancers: StoreEnhancer = compose(...enhancers);
   const store: EnhancedStore = configureStore({
     devTools: true,
     preloadedState: preloadedState,

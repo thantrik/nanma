@@ -1,4 +1,4 @@
-import { store, context, AppContext } from "../../app";
+import { store, AppContext } from "../../app";
 import { push } from "connected-react-router";
 import config from "./dashboard.config";
 
