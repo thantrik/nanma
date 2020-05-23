@@ -1,18 +1,10 @@
-import { store, context, AppContext } from "../../app";
-import { push } from "connected-react-router";
+import { context, AppContext } from "../../app";
+import { setJsonView } from "./json.actions";
 import config from "./json.config";
 
-declare global {
-  interface Window {
-    ___DATA: any;
-  }
-}
-
-const jsonView = (data: any, parse = false) => {
+const jsonView = (data: string, parse = false) => {
   context.setDOMOwner(config);
-  if (parse) window.___DATA = JSON.parse(data);
-  window.___DATA = data;
-  store.dispatch(push("/json"));
+  setJsonView({ data });
 };
 
 const hook = (context: AppContext) => {
@@ -22,6 +14,7 @@ const hook = (context: AppContext) => {
     return;
   }
   try {
+    JSON.parse(data);
     jsonView(data, true);
     return;
   } catch (e) {}

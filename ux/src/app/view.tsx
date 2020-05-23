@@ -9,8 +9,8 @@ import { IPluginConfig } from "./app.types";
 import { ApplicationNavMenu } from "../components/menu/bottom";
 import { initializeIcons } from "office-ui-fabric-react/lib/Icons";
 import context from "./context";
-import "../plugins/awesome-links";
 import "../plugins/json";
+import "../plugins/awesome-links";
 import "../plugins/diff";
 import "../plugins/md-editor";
 import "../plugins/code";
@@ -44,6 +44,7 @@ const App = ({ config }: any) => {
     ></Route>
   );
   let root = {
+    ...routes[0],
     ...routes.find(isRoot),
     path: "/*",
   } as IPluginRoute;
@@ -55,9 +56,7 @@ const App = ({ config }: any) => {
           {normalRoutes}
           {root ? createRouteComponent(root, 10000) : null}
         </Switch>
-        {(context.isChromeExtension || context.isLocalHost) && (
-          <ApplicationNavMenu />
-        )}
+        {context.isAnyOf3() && <ApplicationNavMenu />}
       </ConnectedRouter>
     </Provider>
   );

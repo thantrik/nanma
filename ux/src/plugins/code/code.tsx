@@ -1,7 +1,7 @@
 import React from "react";
 import * as monaco from "monaco-editor";
 import "../../global.d.ts";
-import { context } from "../../app";
+//import { context } from "../../app";
 import { IDropdownOption } from "office-ui-fabric-react/lib/Dropdown";
 import SelectLanguage from "../../components/dropdown/language";
 
@@ -28,16 +28,7 @@ export default class CodeView extends React.Component<any, any> {
     };
   }
   setCodeView = () => {
-    console.log(
-      context.isChromeExtension ? this.state.language : undefined,
-      !context.isChromeExtension ? this.props.url : undefined
-    );
     if (!modal) {
-      console.log(
-        this.state.language,
-        this.props.url,
-        monaco.Uri.parse(this.props.url)
-      );
       modal = monaco.editor.createModel(
         this.props.data,
         this.state.language,
@@ -51,6 +42,10 @@ export default class CodeView extends React.Component<any, any> {
         theme: "vs-dark",
         automaticLayout: true,
       });
+    }
+    if (this.props.data) {
+      modal.setValue(this.props.data);
+      console.log("VALUE", modal.getValue());
     }
   };
 

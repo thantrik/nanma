@@ -13,7 +13,9 @@ export class AppContext {
   set DOMAccess(owner: IPluginConfig | undefined) {
     this.__semCurrentDOM = owner;
   }
-
+  public isAnyOf3() {
+    return this.isChromeExtension || this.isLocalHost || this.isGithub;
+  }
   public async setDOMOwner(config: IPluginConfig) {
     this.__semCurrentDOM = config;
     await initAppView(config);

@@ -4,7 +4,7 @@ import JSONEditor from "./json";
 
 const mapStateToProps = (state: any) => {
   //@ts-ignore
-  return { app: state.app, code: state.code, data: window.___DATA || "{}" };
+  return { app: state.app, ...state.json, data: state.json.data || "{}" };
 };
 
 const mapDispatchToProps = (dispatch: any, ownProps: any) => ({
