@@ -1,5 +1,3 @@
-import "./app.styles.css";
-
 export { getRoutes, RegisterRoute } from "../routes";
 export { getState, history, store } from "../store";
 export { Register, getPlugins } from "./register-plugin";

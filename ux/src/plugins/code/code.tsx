@@ -24,15 +24,24 @@ export default class CodeView extends React.Component<any, any> {
     super(props);
     this.editorPanel = null;
     this.state = {
-      language: "TypeScript",
+      language: "typescript",
     };
   }
   setCodeView = () => {
+    console.log(
+      context.isChromeExtension ? this.state.language : undefined,
+      !context.isChromeExtension ? this.props.url : undefined
+    );
     if (!modal) {
+      console.log(
+        this.state.language,
+        this.props.url,
+        monaco.Uri.parse(this.props.url)
+      );
       modal = monaco.editor.createModel(
         this.props.data,
-        context.isChromeExtension ? this.state.language : undefined,
-        !context.isChromeExtension ? this.props.url : undefined
+        this.state.language,
+        monaco.Uri.parse(this.props.url)
       );
     }
     if (this.editorPanel) {

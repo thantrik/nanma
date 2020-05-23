@@ -6,7 +6,7 @@ import { ConnectedRouter } from "connected-react-router";
 import { getRoutes, store, history } from "./index";
 import { IPluginRoute } from "../routes";
 import { IPluginConfig } from "./app.types";
-import { ApplicationNavSideMenu } from "../components/menu/side-bar";
+import { ApplicationNavMenu } from "../components/menu/bottom";
 import { initializeIcons } from "office-ui-fabric-react/lib/Icons";
 import context from "./context";
 
@@ -37,7 +37,6 @@ const App = ({ config }: any) => {
     ></Route>
   );
   let root = {
-    ...routes[routes.length - 1],
     ...routes.find(isRoot),
     path: "/*",
   } as IPluginRoute;
@@ -45,14 +44,13 @@ const App = ({ config }: any) => {
   return (
     <Provider store={store}>
       <ConnectedRouter history={history}>
-        {(context.isChromeExtension || context.isLocalHost) && (
-          <ApplicationNavSideMenu></ApplicationNavSideMenu>
-        )}
-
         <Switch>
           {normalRoutes}
           {root ? createRouteComponent(root, 10000) : null}
         </Switch>
+        {(context.isChromeExtension || context.isLocalHost) && (
+          <ApplicationNavMenu />
+        )}
       </ConnectedRouter>
     </Provider>
   );
@@ -61,6 +59,10 @@ const App = ({ config }: any) => {
 const initializeView = async (config?: IPluginConfig) => {
   await bundleLoad;
   ReactDOM.render(<App config={config}></App>, document.body);
+  if (context?.isChromeExtension) {
+    await require("./app.styles.css");
+    window.document.body.classList.add("noscroll");
+  }
 };
 
 export default initializeView;

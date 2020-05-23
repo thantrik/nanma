@@ -9,8 +9,10 @@ class TSPlayGround extends React.Component<any, any> {
         style={{
           width: "100vw",
           height: "100vh",
+          overflow: "hidden",
         }}
         frameBorder={0}
+        onLoad={(e) => {}}
       ></iframe>
     );
   }

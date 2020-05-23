@@ -119,7 +119,7 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "cross-env PUBLIC_URL='/' node --max-old-space-size=8000 scripts/build.js",
+    "build": "cross-env PUBLIC_URL='/' node --max-old-space-size=12000 scripts/build.js",
     "test": "node scripts/test.js"
   },
   "eslintConfig": {
