@@ -48,15 +48,15 @@ Static Plug and play mode
 | ❌awesome-links | pending | 300KB | krishna   |         |
 | ❌chat          | pending | 300KB | krishna   |         |
 | ❌clock         | pending | 300KB | krishna   |         |
-| ✔️code          | pending | 300KB | krishna   |         |
+| ✔️code          | done    | 300KB | krishna   |         |
 | ❌csv-view      | pending | 300KB | krishna   |         |
 | ❌dashboard     | pending | 300KB | krishna   |         |
-| ✔️diff          | pending | 300KB | krishna   |         |
+| ✔️diff          | done    | 300KB | krishna   |         |
 | ❌gifmaker      | pending | 300KB | krishna   |         |
 | ❌github        | pending | 300KB | krishna   |         |
 | ❌html          | pending | 300KB | krishna   |         |
 | ❌icon-maker    | pending | 300KB | krishna   |         |
-| ✔️json          | pending | 300KB | krishna   |         |
+| ✔️json          | done    | 300KB | krishna   |         |
 | ❌live-code     | pending | 300KB | krishna   |         |
 | ❌my-data       | pending | 300KB | krishna   |         |
 | ❌my-web        | pending | 300KB | krishna   |         |
@@ -75,124 +75,126 @@ Static Plug and play mode
 | ❌url           | pending | 300KB | krishna   |         |
 | ❌vscode        | pending | 300KB | krishna   |         |
 | ❌web-server    | pending | 300KB | krishna   |         |
-| ❌md-editor     | pending | 300KB | krishna   |         |
+| ✔️md-editor     | done    | 300KB | krishna   |         |
 | ❌table-gen     | pending | 300KB | krishna   |         |
+| ✔️color picker  | done    | 300KB | krishna   |         |
+| ✔️ts play       | done    | 300KB | krishna   |         |
 
-#### Code (in progress)
+#### Code
 
     Code viewer, while accessing web links, code viewer will format code based on extensions
 
-#### Awesome links (pending)
+#### Awesome links
 
     Store & Manage all links which developer found as awesome tools
 
-#### CSV (pending)
+#### CSV
 
     CSV will be viewable as Excel instead of text
 
-#### Dashboard (pending)
+#### Dashboard
 
     View and manage plugins
 
-#### diff (pending)
+#### diff
 
     View code diff, text diff
 
-#### Gif Maker (pending)
+#### Gif Maker
 
     create dynamic gif images (loading etc)
 
-#### Github (pending)
+#### Github
 
     Octree, custom github pages
 
-#### Html (pending)
+#### Html
 
     Live HTML editor
 
-#### Icon-maker (pending)
+#### Icon-maker
 
     .ico image, 16,32 bit icon maker
 
-#### Json (in progress)
+#### Json
 
     JSON viewer and editor
 
-#### live code (pending)
+#### live code
 
     Live code editor between peer to peer connected in same network
 
-#### my data (pending)
+#### my data
 
     To Store some personal data in encrypted space
 
-#### my web (pending)
+#### my web
 
     Custom style, javascript snippets to run while accessing the respective website
     eg: I want to modify my facebook. I just need to add some custom styling. it will inject to facebook while accessing
 
-#### performance (pending)
+#### performance
 
     Analyse performance of website without opening dev tools
 
-#### photo-edit (pending)
+#### photo-edit
 
     Image editor
 
-#### prettier (pending)
+#### prettier
 
     Code prettier
 
-#### read-later (pending)
+#### read-later
 
     Same as offline-doc
 
-#### Rich Text (pending)
+#### Rich Text
 
     Rich text editor
 
-#### Snippets (pending)
+#### Snippets
 
     Javascript code snippets to execute with form inputs
 
-#### SvgEdit (pending)
+#### SvgEdit
 
     SVG Editor
 
-#### Timer (pending)
+#### Timer
 
     Timer
     Task Timer
     Beep Timer
 
-#### Todo (pending)
+#### Todo
 
     Todo app with static calender
 
-#### Unicode (pending)
+#### Unicode
 
     Unicode table
 
-#### Vscode (pending)
+#### Vscode
 
     File editor for scoped directories
 
-#### Web Server (pending)
+#### Web Server
 
     Run a local webserver from give directory in a local port
 
-#### TCP Chat (pending)
+#### TCP Chat
 
     TCP/IP, UDP based chat, file transfer etc.
 
-#### Markdown Editor (pending)
+#### Markdown Editor
 
     Markdown and preview
 
-#### Table-gen (pending)
+#### Table-gen
 
     Table generator
 
-#### UI Collection (pending)
+#### UI Collection
 
     I component library collection
