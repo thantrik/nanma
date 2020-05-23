@@ -3,11 +3,12 @@ body {
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
-  background-color: #babac0;
+  background-color: white;
 }
 
 .noscroll {
   overflow: hidden;
+  background-color: #babac0;
 }
 
 *::-webkit-scrollbar {

@@ -15,6 +15,7 @@ import "../plugins/diff";
 import "../plugins/md-editor";
 import "../plugins/code";
 import "../plugins/ts-play";
+import "../plugins/color";
 
 initializeIcons();
 
