@@ -2,7 +2,7 @@ import { Provider } from "react-redux";
 import { Switch, Route } from "react-router-dom";
 import React from "react";
 import ReactDOM from "react-dom";
-import { ConnectedRouter } from "connected-react-router";
+import { ConnectedRouter, push } from "connected-react-router";
 import { getRoutes, store, history } from "./index";
 import { IPluginRoute } from "../routes";
 import { IPluginConfig } from "./app.types";
@@ -70,6 +70,10 @@ const initializeView = async (config?: IPluginConfig) => {
     await require("./app.styles.css");
     window.document.body.classList.add("noscroll");
   }
+  push("/");
 };
+
+//@ts-ignore
+window.push = push;
 
 export default initializeView;
