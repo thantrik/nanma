@@ -82,13 +82,17 @@ class MarkDownEditorApp extends React.Component<any, any> {
       <article
         className="markdown-body"
         ref={(ele) => (this.viewer = ele)}
-        style={{
-          width: readOnly ? "100vw" : "60vw",
-          minHeight: "100vw",
-          border: "solid 1px #CDCDCD",
-          borderRight: "none",
-          padding: 10,
-        }}
+        style={
+          !readOnly
+            ? {
+                width: "60vw",
+                minHeight: "100vw",
+                border: "solid 1px #CDCDCD",
+                borderRight: "none",
+                padding: 10,
+              }
+            : {}
+        }
       ></article>
     );
     if (readOnly) return article;

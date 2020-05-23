@@ -9,19 +9,25 @@ import { IPluginConfig } from "./app.types";
 import { ApplicationNavMenu } from "../components/menu/bottom";
 import { initializeIcons } from "office-ui-fabric-react/lib/Icons";
 import context from "./context";
+import "../plugins/awesome-links";
+import "../plugins/json";
+import "../plugins/diff";
+import "../plugins/md-editor";
+import "../plugins/code";
+import "../plugins/ts-play";
 
 initializeIcons();
 
-const bundleLoad = Promise.all(
-  [
-    "awesome-links",
-    "json",
-    "diff",
-    "md-editor",
-    "code",
-    "ts-play",
-  ].map((plugin: string) => import(`../plugins/${plugin}`).catch(console.error))
-);
+// const bundleLoad = Promise.all(
+//   [
+//     "awesome-links",
+//     "json",
+//     "diff",
+//     "md-editor",
+//     "code",
+//     "ts-play",
+//   ].map((plugin: string) => { import(`../plugins/${plugin}`).catch(console.error))
+// );
 
 const App = ({ config }: any) => {
   const routes = getRoutes();
@@ -57,7 +63,7 @@ const App = ({ config }: any) => {
 };
 
 const initializeView = async (config?: IPluginConfig) => {
-  await bundleLoad;
+  // await bundleLoad;
   ReactDOM.render(<App config={config}></App>, document.body);
   if (context?.isChromeExtension) {
     await require("./app.styles.css");

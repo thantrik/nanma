@@ -21,7 +21,7 @@ const codeView = (url: string, data: string) => {
 };
 
 const hook = (context: AppContext) => {
-  if (/\.md$/i.test(window.location.href)) {
+  if (/\.(md|json)$/i.test(window.location.href)) {
     return;
   }
   if (document?.doctype?.name === "html") return;
