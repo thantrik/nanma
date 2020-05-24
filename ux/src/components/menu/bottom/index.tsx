@@ -63,7 +63,6 @@ export class ApplicationNavMenu extends React.Component<any, any> {
                   checked={checked}
                   styles={{
                     root: {
-                      paddingLeft: 10,
                       textAlign: "left",
                       boxSizing: "border-box",
                       maxWidth: 150,
@@ -85,7 +84,7 @@ export class ApplicationNavMenu extends React.Component<any, any> {
                   onRenderIcon={() =>
                     plugin.icon || (
                       <AssessmentGroupIcon
-                        style={{ width: 16, height: 16, marginRight: 6 }}
+                        style={{ width: 16, height: 16 }}
                       ></AssessmentGroupIcon>
                     )
                   }

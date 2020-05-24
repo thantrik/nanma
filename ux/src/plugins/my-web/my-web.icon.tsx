@@ -1,14 +1,13 @@
 import React from "react";
-import { FontIcon } from "office-ui-fabric-react/lib/Icon";
-import { mergeStyles, registerIcons } from "office-ui-fabric-react/lib/Styling";
+import { FontIcon, mergeStyles } from "@fluentui/react";
 
 const icon = (
   <FontIcon
-    iconName="word"
+    iconName="world"
     className={mergeStyles({
-      width: 16,
-      height: 16,
-      marginRight: 6,
+      fontSize: 12,
+      marginRight: 0,
+      textDecoration: "none",
     })}
   />
 );

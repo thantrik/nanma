@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import JsonEditorApp from "./json";
 
 const mapStateToProps = (state: any) => {
+  console.log(state);
   //@ts-ignore
   return { app: state.app, ...state.json, data: state.json.data || "{}" };
 };

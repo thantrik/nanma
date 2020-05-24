@@ -1,9 +1,9 @@
 import React from "react";
 
 class MyWebEditorApp extends React.Component<any, any> {
-  constructor(props: any) {
-    super(props);
-  }
+  // constructor(props: any) {
+  //   super(props);
+  // }
 
   componentDidMount() {}
   render() {
