@@ -12,7 +12,7 @@ class IEditorRef {
 
 type IEditorRefRecord = Record<string, IEditorRef>;
 
-class JSONEditorApp extends React.Component<any, any> {
+class JsonEditorApp extends React.Component<any, any> {
   private jsonEditor: IEditorRefRecord;
   constructor(props: any) {
     super(props);
@@ -94,4 +94,4 @@ class JSONEditorApp extends React.Component<any, any> {
   }
 }
 
-export default JSONEditorApp;
+export default JsonEditorApp;

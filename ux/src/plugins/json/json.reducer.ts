@@ -1,5 +1,5 @@
 import { Reducer } from "redux";
-import { setJSON } from "./json.actions";
+import { setJsonData } from "./json.actions";
 import { createReducer } from "@reduxjs/toolkit";
 import { IState } from "./json.types";
 
@@ -8,7 +8,7 @@ const initialState: IState = {
 };
 
 const json: Reducer = createReducer(initialState, {
-  [setJSON as any]: (state, action) => ({ ...action.payload }),
+  [setJsonData as any]: (state, action) => ({ ...action.payload }),
 });
 
 export default json;

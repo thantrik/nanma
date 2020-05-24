@@ -9,13 +9,7 @@ import { IPluginConfig } from "./app.types";
 import { ApplicationNavMenu } from "../components/menu/bottom";
 import { initializeIcons } from "office-ui-fabric-react/lib/Icons";
 import context from "./context";
-import "../plugins/json";
-import "../plugins/awesome-links";
-import "../plugins/diff";
-import "../plugins/md-editor";
-import "../plugins/code";
-import "../plugins/ts-play";
-import "../plugins/color";
+import "./app.plugins";
 
 initializeIcons();
 

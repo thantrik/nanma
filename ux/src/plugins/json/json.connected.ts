@@ -1,6 +1,6 @@
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import JSONEditor from "./json";
+import JsonEditorApp from "./json";
 
 const mapStateToProps = (state: any) => {
   //@ts-ignore
@@ -12,5 +12,5 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => ({
 });
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(JSONEditor)
+  connect(mapStateToProps, mapDispatchToProps)(JsonEditorApp)
 );

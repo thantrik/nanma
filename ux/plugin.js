@@ -16,14 +16,30 @@ const createTemplate = (pluginName) => {
       return console.error("Unable to scan directory: " + err);
     }
     if (!fs.existsSync(newPluginPath)) fs.mkdirSync(newPluginPath);
+    const TypeName = camelCase(`${pluginName}Type`, { pascalCase: true });
+    const VarName = camelCase(`${pluginName}`, { pascalCase: true });
+    const varName = camelCase(pluginName);
     const replaceOptions = {
       files: [],
-      from: [/ ".\/json/g, / "\/json"/i, /JsonType/g, /name: "json",/i],
+      from: [
+        / ".\/json/gi,
+        /Json/g,
+        /JSON/g,
+        /\"\/json\"/i,
+        /JsonType/g,
+        /name: "json",/gi,
+        /json-/,
+        /json/g,
+      ],
       to: [
         `"./${pluginName}`,
+        VarName,
+        VarName.toUpperCase(),
         ` "/${pluginName}"`,
-        camelCase(`${pluginName}Type`, { pascalCase: true }),
+        TypeName,
         `name: "${pluginName.toLowerCase()}",`,
+        `${varName.toLowerCase()}-`,
+        varName,
       ],
     };
     files.forEach(function (file) {
