@@ -1,1 +1,1 @@
-export { default as Storage } from "./Indexdb";
+export { AsyncIndexDBStorage } from "./Indexdb";
