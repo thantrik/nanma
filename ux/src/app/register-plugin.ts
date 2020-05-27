@@ -2,6 +2,7 @@
 import { IPluginConfig, PluginStartupHook } from "./app.types";
 import { RegisterRoute } from "./../routes";
 import { RegisterState } from "./app.reducer";
+import { RegisterService } from "./app.services";
 // import { store } from "../store";
 // import { combineReducers, Reducer } from "redux";
 // import { createReducer } from "@reduxjs/toolkit";
@@ -16,6 +17,7 @@ export const Register = (config: IPluginConfig) => {
   PLUGINS.push(config);
   RegisterRoute(config);
   RegisterState(PLUGINS);
+  if (config.service) RegisterService(config.service);
 };
 
 export const getPlugins = () => PLUGINS;

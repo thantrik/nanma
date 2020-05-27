@@ -8,6 +8,7 @@ export interface IPluginConfig {
   readonly reducer?: Reducer;
   readonly hook?: PluginStartupHook;
   readonly icon?: any;
+  readonly service?: IPluginService;
 }
 
 export interface PluginStartupHook {
@@ -15,3 +16,8 @@ export interface PluginStartupHook {
 }
 
 export type ReducerType = { [key: string]: Reducer };
+
+export interface IPluginService {
+  start: () => void;
+  stop: () => void;
+}

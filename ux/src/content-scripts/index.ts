@@ -5,7 +5,13 @@ export const initialize = () => {
   const hooks = getHooks();
   if (hooks && hooks.length) {
     if (!context.DOMAccess) {
-      hooks.forEach((hook) => hook(context));
+      hooks.forEach((hook) => {
+        try {
+          hook(context);
+        } catch (e) {
+          console.error(e);
+        }
+      });
     }
   }
 };

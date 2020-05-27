@@ -12,7 +12,7 @@ class ExtensionManifestPlugin {
         const assets = require(assetsFile);
         const contentScripts = manifest.content_scripts[0];
         contentScripts.js = Object.values(assets.files || {}).filter((file) =>
-          /^(?!.*(sw|service-worker|background-scripts)).*js$/i.test(file)
+          /^(?!.*(sw|service-worker|background)).*js$/i.test(file)
         );
         contentScripts.css = Object.values(assets.files || {}).filter((file) =>
           /.*.css$/i.test(file)
@@ -20,7 +20,7 @@ class ExtensionManifestPlugin {
         manifest.background.scripts = Object.values(
           assets.files || {}
         ).filter((file) =>
-          /^(\.*(sw|service-worker|background-scripts)).*js$/i.test(file)
+          /^.*([\\/](sw|service-worker|background))\.bundle\.js$/i.test(file)
         );
 
         const manifestName = paths.appBuild + "/manifest.json";

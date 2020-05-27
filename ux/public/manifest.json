@@ -21,7 +21,7 @@
     "contextMenus",
     "https://raw.githubusercontent.com/*",
     "unlimitedStorage",
-    "fileSystem"
+    { "fileSystem": ["write", "retainEntries", "directory"] }
   ],
   "version": "1.0.0",
   "content_scripts": [
