@@ -93,8 +93,8 @@ const MyWebSnippetInputForm = (props: any) => {
     props.onSubmit &&
       props.onSubmit({
         test: txtUrlToMatch,
-        css: txtDomainCSS,
-        script: txtDomainScript,
+        css: [txtDomainCSS],
+        script: [txtDomainScript],
       });
   };
 

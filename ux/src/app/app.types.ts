@@ -1,9 +1,13 @@
 import { IPluginRoute } from "../routes";
 import { Reducer } from "redux";
 import { AppContext } from "./context";
+import { IPluginService } from "./app.services";
 
-export interface IPluginConfig {
+export interface IPluginConfigBase {
   readonly name: string;
+}
+
+export interface IPluginConfig extends IPluginConfigBase {
   readonly route: IPluginRoute;
   readonly reducer?: Reducer;
   readonly hook?: PluginStartupHook;
@@ -16,8 +20,3 @@ export interface PluginStartupHook {
 }
 
 export type ReducerType = { [key: string]: Reducer };
-
-export interface IPluginService {
-  start: () => void;
-  stop: () => void;
-}

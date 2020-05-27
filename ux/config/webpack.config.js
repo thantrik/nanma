@@ -29,6 +29,8 @@ const postcssNormalize = require("postcss-normalize");
 const CopyPlugin = require("copy-webpack-plugin");
 const ExtensionManifestPlugin = new require("./extensionManifestPlugin");
 const MonacoWebpackPlugin = require("monaco-editor-webpack-plugin");
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+  .BundleAnalyzerPlugin;
 
 const appPackageJson = require(paths.appPackageJson);
 
@@ -64,6 +66,8 @@ module.exports = function (webpackEnv) {
   // passed into alias object. Uses a flag if passed into the build command
   const isEnvProductionProfile =
     isEnvProduction && process.argv.includes("--profile");
+  const shouldEnableChunks =
+    isEnvProduction && process.argv.includes("--chunks");
 
   // We will provide `paths.publicUrlOrPath` to our app
   // as %PUBLIC_URL% in `index.html` and `process.env.PUBLIC_URL` in JavaScript.
@@ -178,9 +182,9 @@ module.exports = function (webpackEnv) {
       // TODO: remove this when upgrading to webpack 5
       futureEmitAssets: false,
       // There are also additional JS chunk files if you use code splitting.
-      // chunkFilename: isEnvProduction
-      //   ? "static/js/[name].[contenthash:8].chunk.js"
-      //   : isEnvDevelopment && "static/js/[name].chunk.js",
+      ...(shouldEnableChunks
+        ? { chunkFilename: "static/js/[name].[contenthash:8].chunk.js" }
+        : {}),
       // There are also additional JS chunk files if you use code splitting.
       // webpack uses `publicPath` to determine where the app is being served from.
       // It requires a trailing slash, or the file assets will get an incorrect path.
@@ -276,16 +280,21 @@ module.exports = function (webpackEnv) {
       // https://twitter.com/wSokra/status/969633336732905474
       // https://medium.com/webpack/webpack-4-code-splitting-chunk-graph-and-the-splitchunks-optimization-be739a861366
       splitChunks: {
-        // cacheGroups: {
-        //   defaultVendors: {
-        //     enforce: true,
-        //   },
-        //   commons: {
-        //     name: "commons",
-        //     chunks: "initial",
-        //     maxSize: 0,
-        //   },
-        // },
+        ...(shouldEnableChunks
+          ? {
+              cacheGroups: {
+                defaultVendors: {
+                  enforce: true,
+                },
+                commons: {
+                  enforce: true,
+                  name: "commons",
+                  chunks: "initial",
+                  maxSize: 0,
+                },
+              },
+            }
+          : {}),
       },
 
       // Keep the runtime chunk separated to enable long term caching
@@ -529,9 +538,10 @@ module.exports = function (webpackEnv) {
       ],
     },
     plugins: [
-      new webpack.optimize.LimitChunkCountPlugin({
-        maxChunks: 1,
-      }),
+      !shouldEnableChunks &&
+        new webpack.optimize.LimitChunkCountPlugin({
+          maxChunks: 1,
+        }),
       isEnvProduction && new ExtensionManifestPlugin(),
       isEnvProduction &&
         new CopyPlugin([
@@ -699,6 +709,7 @@ module.exports = function (webpackEnv) {
           formatter: isEnvProduction ? typescriptFormatter : undefined,
         }),
       new MonacoWebpackPlugin([]),
+      isEnvProductionProfile && new BundleAnalyzerPlugin(),
     ].filter(Boolean),
     // Some libraries import Node modules but don't use them in the browser.
     // Tell webpack to provide empty mocks for them so importing them works.

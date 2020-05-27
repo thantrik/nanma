@@ -1,13 +1,13 @@
 import { v4 } from "uuid";
-import { AsyncIndexDBStorage, IAsyncStorage } from "../../../../app";
-import config from "../../../my-web/my-web.config";
+import { AsyncIndexDBStorage, IAsyncStorage } from "../../../../cache";
+import { MYWEB_PLUGIN_NAME } from "../../../my-web/my-web.constants";
 
 let storage: IAsyncStorage; // = new AsyncIndexDBStorage(config);
 
-type IDoc = object & { _id: string };
+type IDoc = Record<string, any>;
 interface IModal {
   toDoc: () => IDoc;
-  //   toJSON: () => {};
+  toJSON: () => IDoc;
   //   toString: () => {};
   //   from: () => {};
 }
@@ -61,19 +61,32 @@ export class MyWebSnippetsModal implements IMyWebSnippetsModal, IModal {
     this._id = doc._id || v4();
   }
 
-  toDoc = (): any => {
+  toDoc = (): IDoc => {
     return {
+      id: this._id,
       test: this._test,
       script: this._script,
       css: this._css,
     };
   };
+  toJSON = (): IDoc => this.toDoc();
   save = async () => await storage.addItem(this.toDoc());
-  public static getAll = async () => {
-    storage = new AsyncIndexDBStorage(config);
+  public static getAll = async (json: boolean = false) => {
+    storage = new AsyncIndexDBStorage(MYWEB_PLUGIN_NAME);
     const result = await storage.getAll();
-    console.log(result);
-    const records = result.rows.map((row) => new MyWebSnippetsModal(row.doc));
+    const records = result.rows.map((row) => {
+      const snippet = new MyWebSnippetsModal(row.doc);
+      if (json) return snippet.toJSON();
+      return snippet;
+    });
+    return records;
+  };
+  public static getJsonRecords = async () => {
+    storage = new AsyncIndexDBStorage(MYWEB_PLUGIN_NAME);
+    const result = await storage.getAll();
+    const records = result.rows.map((row) =>
+      new MyWebSnippetsModal(row.doc).toJSON()
+    );
     return records;
   };
 }

@@ -1,12 +1,11 @@
 import { getDataBase } from "./database";
 import { v4 } from "uuid";
 import { IAsyncStorage } from "../types";
-import { IPluginConfig } from "../../app/app.types";
 
 export class AsyncIndexDBStorage implements IAsyncStorage {
   private db: PouchDB.Database;
-  constructor(config?: IPluginConfig) {
-    this.db = getDataBase(config?.name);
+  constructor(name?: string) {
+    this.db = getDataBase(name);
   }
   setItem = (
     _id: string = v4(),
