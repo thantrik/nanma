@@ -24,13 +24,13 @@ const getClientEnvironment = require("./env");
 const ModuleNotFoundPlugin = require("react-dev-utils/ModuleNotFoundPlugin");
 const ForkTsCheckerWebpackPlugin = require("react-dev-utils/ForkTsCheckerWebpackPlugin");
 const typescriptFormatter = require("react-dev-utils/typescriptFormatter");
-
 const postcssNormalize = require("postcss-normalize");
 const CopyPlugin = require("copy-webpack-plugin");
 const ExtensionManifestPlugin = new require("./extensionManifestPlugin");
 const MonacoWebpackPlugin = require("monaco-editor-webpack-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
   .BundleAnalyzerPlugin;
+const getHtmlPlugins = require("./html.plugins");
 
 const appPackageJson = require(paths.appPackageJson);
 
@@ -166,7 +166,10 @@ module.exports = function (webpackEnv) {
       // We include the app code last so that if there is a runtime error during
       // initialization, it doesn't blow up the WebpackDevServer client, and
       // changing JS code would still trigger a refresh.
-      background: paths.backgroundJs,
+      services: paths.servicesJs,
+      popup: paths.popupJs,
+      settings: paths.settingsJs,
+      devTools: paths.devToolsJs,
     },
     output: {
       // The build folder.
@@ -538,6 +541,7 @@ module.exports = function (webpackEnv) {
       ],
     },
     plugins: [
+      ...getHtmlPlugins(isEnvProduction),
       !shouldEnableChunks &&
         new webpack.optimize.LimitChunkCountPlugin({
           maxChunks: 1,
@@ -561,33 +565,6 @@ module.exports = function (webpackEnv) {
             force: true,
           },
         ]),
-      // Generates an `index.html` file with the <script> injected.
-      new HtmlWebpackPlugin(
-        Object.assign(
-          {},
-          {
-            inject: true,
-            template: paths.appHtml,
-            excludeChunks: ["background"],
-          },
-          isEnvProduction
-            ? {
-                minify: {
-                  removeComments: true,
-                  collapseWhitespace: true,
-                  removeRedundantAttributes: true,
-                  useShortDoctype: true,
-                  removeEmptyAttributes: true,
-                  removeStyleLinkTypeAttributes: true,
-                  keepClosingSlash: true,
-                  minifyJS: true,
-                  minifyCSS: true,
-                  minifyURLs: true,
-                },
-              }
-            : undefined
-        )
-      ),
       // Inlines the webpack runtime script. This script is too small to warrant
       // a network request.
       // https://github.com/facebook/create-react-app/issues/5358

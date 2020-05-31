@@ -1,0 +1,4 @@
+export const SCREEN_CAPTURE_SET_DATA = "SCREEN_CAPTURE_SET_DATA";
+export const SCREEN_CAPTURE_GET_DATA = "SCREEN_CAPTURE_GET_DATA";
+export const SCREEN_CAPTURE_ROUTE = "/screenCapture";
+export const SCREEN_CAPTURE_PLUGIN_NAME = "screenCapture";

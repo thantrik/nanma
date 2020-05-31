@@ -1,5 +1,5 @@
-import { getHooks } from "../app/register-plugin";
-import context from "../app/context";
+import { getHooks } from "../../app/register-plugin";
+import context from "../../app/context";
 
 export const initialize = () => {
   const hooks = getHooks();

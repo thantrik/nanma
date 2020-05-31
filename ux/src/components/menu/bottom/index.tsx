@@ -55,9 +55,9 @@ export class ApplicationNavMenu extends React.Component<any, any> {
       >
         <Stack tokens={stackTokens} horizontal>
           {plugins
-            .filter((plugin) => plugin.name !== "dashboard")
+            .filter((plugin) => plugin.name !== "dashboard" && plugin.route)
             .map((plugin) => (
-              <Link key={plugin.name} to={plugin.route.path}>
+              <Link key={plugin.name} to={plugin.route?.path}>
                 <DefaultButton
                   disabled={disabled}
                   checked={checked}

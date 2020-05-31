@@ -11,16 +11,19 @@ class ExtensionManifestPlugin {
         if (!fs.existsSync(assetsFile)) return;
         const assets = require(assetsFile);
         const contentScripts = manifest.content_scripts[0];
+        // /^(?!.*(sw|service-worker|background|popup|services|devTools)).*js$/i.test(file)
         contentScripts.js = Object.values(assets.files || {}).filter((file) =>
-          /^(?!.*(sw|service-worker|background)).*js$/i.test(file)
+          /^.*(app).*js$/i.test(file)
         );
         contentScripts.css = Object.values(assets.files || {}).filter((file) =>
-          /.*.css$/i.test(file)
+          /^.*(app).*css$/i.test(file)
         );
         manifest.background.scripts = Object.values(
           assets.files || {}
         ).filter((file) =>
-          /^.*([\\/](sw|service-worker|background))\.bundle\.js$/i.test(file)
+          /^.*([\\/](sw|service-worker|background|services))\.bundle\.js$/i.test(
+            file
+          )
         );
 
         const manifestName = paths.appBuild + "/manifest.json";

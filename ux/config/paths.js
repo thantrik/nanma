@@ -57,10 +57,22 @@ module.exports = {
   appPath: resolveApp("."),
   appBuild: resolveApp("../" + Package.version),
   appPublic: resolveApp("public"),
-  appHtml: resolveApp("public/index.html"),
-  appManifest: resolveApp("public/manifest.json"),
+
+  appHtml: resolveApp("src/app/index.html"),
   appIndexJs: resolveModule(resolveApp, "src/index"),
-  backgroundJs: resolveModule(resolveApp, "src/background-scripts/index"),
+
+  popupHtml: resolveApp("src/modules/popup/popup.html"),
+  popupJs: resolveModule(resolveApp, "src/modules/popup/index"),
+
+  devToolHtml: resolveApp("src/modules/devtools/devtools.html"),
+  devToolsJs: resolveModule(resolveApp, "src/modules/devtools/index"),
+
+  settingsHtml: resolveApp("src/modules/settings/settings.html"),
+  settingsJs: resolveModule(resolveApp, "src/modules/settings/index"),
+
+  servicesJs: resolveModule(resolveApp, "src/modules/services/index"),
+
+  appManifest: resolveApp("public/manifest.json"),
   appPackageJson: resolveApp("package.json"),
   appSrc: resolveApp("src"),
   appTsConfig: resolveApp("tsconfig.json"),

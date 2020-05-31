@@ -24,8 +24,9 @@ const createTemplate = (pluginName) => {
       from: [
         / ".\/json/gi,
         /Json/g,
+        /JSON_/g,
         /JSON/g,
-        /\"\/json\"/i,
+        /\\"\/json\\"/i,
         /JsonType/g,
         /name: "json",/gi,
         /json-/,
@@ -34,6 +35,7 @@ const createTemplate = (pluginName) => {
       to: [
         `"./${pluginName}`,
         VarName,
+        `${pluginName.toUpperCase().replace(/[\\.\\-]/g, "_")}_`,
         VarName.toUpperCase(),
         ` "/${pluginName}"`,
         TypeName,
