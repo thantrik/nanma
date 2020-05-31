@@ -69,7 +69,6 @@ const registerMenuActions = () => {
  */
 
 const start = () => {
-  console.log("Starting MyWeb service");
   addMessageListener("getAllSnippets", MyWebSnippetsModal.getJsonRecords);
   registerMessageHandler();
   registerMenuActions();
@@ -82,6 +81,7 @@ const start = () => {
 const stop = () => {};
 
 const service: IPluginService = {
+  name: MYWEB_PLUGIN_NAME,
   start,
   stop,
 };
