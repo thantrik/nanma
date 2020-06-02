@@ -3,8 +3,35 @@ import { SCREEN_CAPTURE_PLUGIN_NAME } from "./screen-capture.constants";
 
 var id = 100;
 
+// window.scrollTo(0, window.scrollY +  window.innerHeight)
+// window.document.body.scrollHeight
+
 const ScreenCapture = (callback: Function) => {
+  const imageData = [];
+
   chrome.tabs.captureVisibleTab(function (screenshotUrl) {
+    imageData.push(screenshotUrl);
+    chrome.tabs.executeScript(
+      {
+        file: "scroll.js",
+      },
+      (result) => {
+        console.log("Result File", result);
+      }
+    );
+  });
+
+  //chrome.tabs.executeScript
+  chrome.tabs.captureVisibleTab(function (screenshotUrl) {
+    chrome.tabs.executeScript(
+      {
+        code:
+          "window.scrollTo(0, window.scrollY +  window.innerHeight); window.scrollY; window.innerHeight; ",
+      },
+      (result) => {
+        console.log("Result", result);
+      }
+    );
     var viewTabUrl = chrome.extension.getURL("screenshot.html?id=" + id++);
     var targetId: any = null;
 
@@ -24,6 +51,7 @@ const ScreenCapture = (callback: Function) => {
       // screenshot includes a query parameter with a unique id, which
       // ensures that exactly one view will have the matching URL.
       var views = chrome.extension.getViews();
+      console.log(views);
       for (var i = 0; i < views.length; i++) {
         var view = views[i];
         if (view.location.href === viewTabUrl) {
@@ -48,7 +76,7 @@ const registerScreenShotHandler = () => {
       sender: chrome.runtime.MessageSender,
       sendResponse: (response?: any) => void
     ) => {
-      if (request.name !== SCREEN_CAPTURE_PLUGIN_NAME) return sendResponse();
+      if (request.name !== SCREEN_CAPTURE_PLUGIN_NAME) return true;
       try {
         ScreenCapture((result: any) => {
           sendResponse(result);

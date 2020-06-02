@@ -22,11 +22,8 @@ const registerMessageHandler = () => {
       sendResponse: (response?: any) => void
     ) => {
       let method;
-      if (
-        request.name !== MYWEB_PLUGIN_NAME ||
-        !(method = methods[request.method])
-      )
-        return sendResponse();
+      if (request.name !== MYWEB_PLUGIN_NAME) return true;
+      if (!(method = methods[request.method])) return sendResponse();
 
       try {
         (async () => {

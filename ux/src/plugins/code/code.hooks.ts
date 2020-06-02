@@ -21,10 +21,12 @@ const codeView = (url: string, data: string) => {
 };
 
 const hook = (context: AppContext) => {
-  if (/\.(md|json)$/i.test(window.location.href)) {
+  if (
+    /\.(md|json)$/i.test(window.location.href) ||
+    context.isHTML() ||
+    context.isChromeExtension
+  )
     return;
-  }
-  if (document?.doctype?.name === "html") return;
   const data = String(document.body.innerText).trim();
 
   if (!data) {

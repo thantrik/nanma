@@ -30,6 +30,16 @@ export class AppContext {
     }
     return context;
   }
+  public isHTML() {
+    return (
+      window?.document?.doctype?.name ||
+      window?.document?.contentType ||
+      ""
+    )
+      .toString()
+      .toLowerCase()
+      .includes("html");
+  }
 }
 
 context = AppContext.getInstance();

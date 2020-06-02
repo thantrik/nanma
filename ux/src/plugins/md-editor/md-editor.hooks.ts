@@ -17,7 +17,7 @@ const mdView = (data: string) => {
 };
 
 const hook = (context: AppContext) => {
-  if (document?.doctype?.name === "html") return;
+  if (context.isHTML()) return;
   const data = String(document.body.innerText).trim();
 
   if (!data) {

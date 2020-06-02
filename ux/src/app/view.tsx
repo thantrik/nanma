@@ -10,7 +10,6 @@ import { ApplicationNavMenu } from "../components/menu/bottom";
 import { initializeIcons } from "office-ui-fabric-react/lib/Icons";
 import context from "./context";
 import "./app.plugins";
-
 initializeIcons();
 
 // const bundleLoad = Promise.all(
