@@ -6,11 +6,26 @@ A collection of tools which used by a web developer. It can be installed as a ch
 > No Analytics integrated with this extension.
 > Completely under user control. I won't be knowing any errors about tools execution. So please create issues in github once you face any error.
 
+## Architecture
+
+This system created in plugin model. You can write your component with instruct format and plug it into the code.
+
+Plugin have following components
+
+1. Web interface - interface to show when route/menu option selected
+2. popup interface - interface section to show in chrome popup
+3. URL Hook - code to run while user accessing a domain - eg: json view while accessing json file
+4. Background service - to access and interact with indexdb and CPU oriented tasks
+5. DevTool interface - to show report and detailed information of current tab web related
+6. Settings interface - settings option related to the plugin
+7. Redux Action, Reducers - redux interface for data storage and usage
+8. Normalizers & Selectors - redux data processing functions
+
 ### Status
 
 In development, will publish once it complete
 
-### How to build from source ?
+### How to build from source
 
 > ```
 >   git clone git@github.com:thantrik/nanma.git
@@ -43,42 +58,43 @@ Static Plug and play mode
 
 ### Plugins
 
-| Name            | Status  | Size  | Developer | Remarks |
-| --------------- | ------- | ----- | --------- | ------- |
-| ❌awesome-links | pending | 300KB | krishna   |         |
-| ❌chat          | pending | 300KB | krishna   |         |
-| ❌clock         | pending | 300KB | krishna   |         |
-| ✔️code          | done    | 300KB | krishna   |         |
-| ❌csv-view      | pending | 300KB | krishna   |         |
-| ❌dashboard     | pending | 300KB | krishna   |         |
-| ✔️diff          | done    | 300KB | krishna   |         |
-| ❌gifmaker      | pending | 300KB | krishna   |         |
-| ❌github        | pending | 300KB | krishna   |         |
-| ❌html          | pending | 300KB | krishna   |         |
-| ❌icon-maker    | pending | 300KB | krishna   |         |
-| ✔️json          | done    | 300KB | krishna   |         |
-| ❌live-code     | pending | 300KB | krishna   |         |
-| ❌my-data       | pending | 300KB | krishna   |         |
-| ❌my-web        | pending | 300KB | krishna   |         |
-| ❌offline-doc   | pending | 300KB | krishna   |         |
-| ❌performance   | pending | 300KB | krishna   |         |
-| ❌photo-edit    | pending | 300KB | krishna   |         |
-| ❌prettier      | pending | 300KB | krishna   |         |
-| ❌read-later    | pending | 300KB | krishna   |         |
-| ❌rich-text     | pending | 300KB | krishna   |         |
-| ❌snippets      | pending | 300KB | krishna   |         |
-| ❌svg-edit      | pending | 300KB | krishna   |         |
-| ❌timer         | pending | 300KB | krishna   |         |
-| ❌timezone      | pending | 300KB | krishna   |         |
-| ❌todo          | pending | 300KB | krishna   |         |
-| ❌unicode       | pending | 300KB | krishna   |         |
-| ❌url           | pending | 300KB | krishna   |         |
-| ❌vscode        | pending | 300KB | krishna   |         |
-| ❌web-server    | pending | 300KB | krishna   |         |
-| ✔️md-editor     | done    | 300KB | krishna   |         |
-| ❌table-gen     | pending | 300KB | krishna   |         |
-| ✔️color picker  | done    | 300KB | krishna   |         |
-| ✔️ts play       | done    | 300KB | krishna   |         |
+| Name             | Status  | Size  | Developer | Remarks |
+| ---------------- | ------- | ----- | --------- | ------- |
+| ❌awesome-links  | pending | 300KB | krishna   |         |
+| ❌chat           | pending | 300KB | krishna   |         |
+| ❌clock          | pending | 300KB | krishna   |         |
+| ✔️code           | done    | 300KB | krishna   |         |
+| ❌csv-view       | pending | 300KB | krishna   |         |
+| ❌dashboard      | pending | 300KB | krishna   |         |
+| ✔️diff           | done    | 300KB | krishna   |         |
+| ❌gifmaker       | pending | 300KB | krishna   |         |
+| ❌github         | pending | 300KB | krishna   |         |
+| ❌html           | pending | 300KB | krishna   |         |
+| ❌icon-maker     | pending | 300KB | krishna   |         |
+| ✔️json           | done    | 300KB | krishna   |         |
+| ❌live-code      | pending | 300KB | krishna   |         |
+| ❌my-data        | pending | 300KB | krishna   |         |
+| ✔️my-web         | pending | 300KB | krishna   |         |
+| ❌offline-doc    | pending | 300KB | krishna   |         |
+| ❌performance    | pending | 300KB | krishna   |         |
+| ❌photo-edit     | pending | 300KB | krishna   |         |
+| ❌prettier       | pending | 300KB | krishna   |         |
+| ❌read-later     | pending | 300KB | krishna   |         |
+| ❌rich-text      | pending | 300KB | krishna   |         |
+| ❌snippets       | pending | 300KB | krishna   |         |
+| ❌svg-edit       | pending | 300KB | krishna   |         |
+| ❌timer          | pending | 300KB | krishna   |         |
+| ❌timezone       | pending | 300KB | krishna   |         |
+| ❌todo           | pending | 300KB | krishna   |         |
+| ❌unicode        | pending | 300KB | krishna   |         |
+| ❌url            | pending | 300KB | krishna   |         |
+| ❌vscode         | pending | 300KB | krishna   |         |
+| ❌web-server     | pending | 300KB | krishna   |         |
+| ✔️md-editor      | done    | 300KB | krishna   |         |
+| ❌table-gen      | pending | 300KB | krishna   |         |
+| ✔️color picker   | done    | 300KB | krishna   |         |
+| ✔️ts play        | done    | 300KB | krishna   |         |
+| ✔️screen-capture | done    | 300KB | krishna   |         |
 
 #### Code
 
@@ -197,4 +213,8 @@ Static Plug and play mode
 
 #### UI Collection
 
-    I component library collection
+    UI component library collection
+
+#### Screen capture
+
+    Full screen, current view capture & Edit tool
