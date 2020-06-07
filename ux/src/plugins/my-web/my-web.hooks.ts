@@ -61,7 +61,7 @@ const handleSnippets = (snippets: MyWebSnippetsModal[]) => {
 };
 
 const hook = async (context: AppContext) => {
-  if (context.isChromeExtension) return;
+  if (context.isChromeExtension || context.isLocalHost) return;
   chrome.runtime.sendMessage(
     {
       name: config.name,
