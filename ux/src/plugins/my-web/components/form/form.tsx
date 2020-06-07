@@ -102,11 +102,12 @@ const MyWebSnippetInputForm = (props: any) => {
     <fieldset
       style={{
         border: "solid 1px gray",
-        width: "50vw",
+        width: "100%",
         marginRight: "auto",
         marginLeft: "auto",
         padding: "1vw",
         borderRadius: 4,
+        boxSizing: "border-box",
       }}
     >
       <legend>

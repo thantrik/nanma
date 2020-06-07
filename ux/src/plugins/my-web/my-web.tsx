@@ -9,6 +9,7 @@ import {
   PersonaSize,
   PersonaPresence,
 } from "office-ui-fabric-react/lib/Persona";
+import { Stack, Grid, GridCell } from "@fluentui/react";
 
 class MyWebSnippetsApp extends React.Component<
   any,
@@ -76,8 +77,8 @@ class MyWebSnippetsApp extends React.Component<
       },
       {}
     );
-    return (
-      <div>
+    const domainColumn = (
+      <Stack tokens={{ childrenGap: 3 }}>
         {Object.keys(domainMap).map((domain) => {
           const data = domainMap[domain];
           const domainData = {
@@ -86,23 +87,33 @@ class MyWebSnippetsApp extends React.Component<
             text: domain,
             secondaryText: `css: ${data.css.length} rules, js: ${data.script.length}`,
           };
-          console.log(domainMap);
           return (
-            <Persona
-              {...domainData}
-              presence={PersonaPresence.online}
-              size={PersonaSize.size32}
-              hidePersonaDetails={false}
-              imageShouldFadeIn={false}
-              showSecondaryText={true}
-            ></Persona>
+            <div>
+              <Persona
+                {...domainData}
+                presence={PersonaPresence.online}
+                size={PersonaSize.size32}
+                hidePersonaDetails={false}
+                imageShouldFadeIn={false}
+                showSecondaryText={true}
+              ></Persona>
+            </div>
           );
         })}
-        <MyWebSnippetInputForm
-          onSubmit={this.AddNewDomainScript}
-          readOnly={this.state.form.preview}
-          {...this.state.form.data}
-        ></MyWebSnippetInputForm>
+      </Stack>
+    );
+    const detailsPanel = <div></div>;
+    return (
+      <div style={{ display: "flex" }}>
+        <div style={{ width: "20%" }}>{domainColumn}</div>
+        <div style={{ width: "45%" }}>{detailsPanel}</div>
+        <div style={{ width: "35%" }}>
+          <MyWebSnippetInputForm
+            onSubmit={this.AddNewDomainScript}
+            readOnly={this.state.form.preview}
+            {...this.state.form.data}
+          ></MyWebSnippetInputForm>
+        </div>
       </div>
     );
   }
