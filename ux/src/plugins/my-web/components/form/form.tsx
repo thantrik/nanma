@@ -1,94 +1,42 @@
 import React, { useRef } from "react";
 import {
-  TextField,
-  Label,
   PrimaryButton,
   Button,
   Stack,
   TextFieldBase,
+  RefObject,
 } from "@fluentui/react";
 import { useId } from "@uifabric/react-hooks";
-
-const FormField = (props: any) => {
-  const {
-    isPreview,
-    value,
-    id,
-    label,
-    placeholder,
-    setRef,
-    multiline = false,
-  } = props;
-  const ref = useRef(null);
-  setRef(ref);
-  console.log(value);
-  return (
-    <>
-      <Label htmlFor={id}>{label}</Label>
-      {!isPreview ? (
-        <TextField
-          multiline={multiline}
-          defaultValue={value}
-          id={id}
-          componentRef={setRef}
-          placeholder={placeholder}
-        />
-      ) : (
-        <Label>{value}</Label>
-      )}
-    </>
-  );
-};
-
-interface IFormField {
-  isPreview: boolean;
-  id: string;
-  ref: React.MutableRefObject<TextFieldBase> | undefined;
-  value: string;
-  label: string;
-  setRef: (ref: React.MutableRefObject<TextFieldBase>) => void;
-}
+import { IFormField, FormField } from "./FormField";
+import CodeField from "../code-field";
 
 const MyWebSnippetInputForm = (props: any) => {
-  const {
+  let {
     readOnly: isPreview = false,
     urlToMatch: txtUrlToMatch = "",
-    domainCSS: txtDomainCSS = "",
-    domainScript: txtDomainScript = "",
+    domainCSS = "",
+    domainScript = "",
   } = props;
 
   const urlToMatch: IFormField = {
-      isPreview,
-      ref: undefined,
-      id: useId("urlToMatch"),
-      value: txtUrlToMatch,
-      label: "Regexp for url match",
-      setRef: (ref: any) => (urlToMatch.ref = ref),
-    },
-    domainCSS: IFormField = {
-      isPreview,
-      ref: undefined,
-      id: useId("domainCSS"),
-      value: txtDomainCSS,
-      label: "CSS for domain",
-      setRef: (ref: any) => (domainCSS.ref = ref),
-    },
-    domainScript: IFormField = {
-      isPreview,
-      ref: undefined,
-      id: useId("domainScript"),
-      value: txtDomainScript,
-      label: "Scripts for domain",
-      setRef: (ref: any) => (domainScript.ref = ref),
-    };
+    isPreview,
+    ref: undefined,
+    id: useId("urlToMatch"),
+    value: txtUrlToMatch,
+    label: "Regexp for url match",
+    setRef: (ref: any) => (urlToMatch.ref = ref),
+  };
+  const refDomainCSS = useRef<CodeField>() as RefObject<CodeField>,
+    refDomainScript = useRef<CodeField>() as RefObject<CodeField>;
 
   //useEffect(() => console.log(props), [...Object.values(props)]);
 
   const onSubmit = () => {
     console.log(urlToMatch?.ref);
     const txtUrlToMatch = ((urlToMatch?.ref as unknown) as TextFieldBase).value,
-      txtDomainCSS = ((domainCSS?.ref as unknown) as TextFieldBase).value,
-      txtDomainScript = ((domainScript?.ref as unknown) as TextFieldBase).value;
+      txtDomainCSS = ((refDomainCSS.current as unknown) as CodeField)?.value,
+      txtDomainScript = ((refDomainScript.current as unknown) as CodeField)
+        ?.value;
     console.log(txtUrlToMatch, txtDomainCSS, txtDomainScript);
     props.onSubmit &&
       props.onSubmit({
@@ -117,13 +65,18 @@ const MyWebSnippetInputForm = (props: any) => {
 
       <form>
         <FormField {...urlToMatch}></FormField>
-        <FormField isPreview={isPreview} {...domainCSS} multiline></FormField>
-        <FormField
-          isPreview={isPreview}
-          {...domainScript}
-          multiline
-        ></FormField>
-
+        <h5>CSS for domain</h5>
+        <CodeField
+          ref={refDomainCSS}
+          language="css"
+          data={domainCSS}
+        ></CodeField>
+        <h5>Scripts for domain</h5>
+        <CodeField
+          ref={refDomainScript}
+          language="javascript"
+          data={domainScript}
+        ></CodeField>
         <br />
         {!isPreview && (
           <Stack horizontal reversed tokens={{ childrenGap: 3 }}>
