@@ -101,12 +101,13 @@ const MyWebSnippetInputForm = (props: any) => {
   return (
     <fieldset
       style={{
-        border: "solid 1px gray",
+        boxShadow:
+          "0 1px 1.5px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24)",
         width: "100%",
         marginRight: "auto",
         marginLeft: "auto",
         padding: "1vw",
-        borderRadius: 4,
+        borderRadius: 2,
         boxSizing: "border-box",
       }}
     >

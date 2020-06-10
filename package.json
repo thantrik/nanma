@@ -13,5 +13,8 @@
   "main": "index.js",
   "repository": "https://github.com/thantrik/nanma",
   "author": "Krishna Kumar",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "gsap": "^3.3.1"
+  }
 }
