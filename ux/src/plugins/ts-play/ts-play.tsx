@@ -1,6 +1,9 @@
 import React from "react";
 
 class TSPlayGround extends React.Component<any, any> {
+  componentDidMount() {
+    window.document.body.classList.remove("noscroll");
+  }
   render() {
     return (
       <iframe

@@ -9,3 +9,5 @@ declare global {
 type DeepReadonly<T> = {
   readonly [P in keyof T]: DeepReadonly<T[P]>;
 };
+
+declare module "@toast-ui/react-image-editor";

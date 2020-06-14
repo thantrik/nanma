@@ -6,3 +6,4 @@ import "../plugins/code";
 import "../plugins/ts-play";
 import "../plugins/color";
 import "../plugins/my-web";
+import "../plugins/image-editor";

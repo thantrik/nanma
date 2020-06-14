@@ -77,7 +77,7 @@ Static Plug and play mode
 | ✔️my-web         | pending | 300KB | krishna   |         |
 | ❌offline-doc    | pending | 300KB | krishna   |         |
 | ❌performance    | pending | 300KB | krishna   |         |
-| ❌photo-edit     | pending | 300KB | krishna   |         |
+| ✔️image-editor   | pending | 300KB | krishna   |         |
 | ❌prettier       | pending | 300KB | krishna   |         |
 | ❌read-later     | pending | 300KB | krishna   |         |
 | ❌rich-text      | pending | 300KB | krishna   |         |
@@ -153,9 +153,9 @@ Static Plug and play mode
 
     Analyse performance of website without opening dev tools
 
-#### photo-edit
+#### Image-edit
 
-    Image editor
+    Simple Image editor
 
 #### prettier
 

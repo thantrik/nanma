@@ -65,6 +65,10 @@ class MarkDownEditorApp extends React.Component<any, any> {
         window.__DATA || data || ""
       );
     }
+    window.document.body.classList.remove("noscroll");
+  }
+  componentWillUnmount() {
+    window.document.body.classList.remove("noscroll");
   }
   updateContent = () => {
     const content = this.editor?.innerText;

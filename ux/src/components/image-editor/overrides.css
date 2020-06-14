@@ -1,0 +1,20 @@
+.tui-image-editor-controls-logo {
+  display: none !important;
+}
+
+.tui-image-editor-controls-buttons {
+  height: auto !important;
+  width: auto !important;
+  min-width: 190px !important;
+}
+
+.tui-image-editor-controls-buttons > div,
+.tui-image-editor-controls-buttons > button {
+  border-radius: 4px !important;
+  height: 30px !important;
+  width: 80px !important;
+  line-height: 2.5 !important;
+  color: gray !important;
+  border: solid 1px gray !important;
+  background-color: black !important;
+}
