@@ -4,7 +4,7 @@
   "private": false,
   "scripts": {
     "start": "cd ux && cross-env GENERATE_SOURCEMAP=\"true\" node scripts/start.js",
-    "build": "cd ux && cross-env PUBLIC_URL='/' node --max-old-space-size=12000 scripts/build.js",
+    "build": "cd ux && cross-env PUBLIC_URL='' node --max-old-space-size=12000 scripts/build.js",
     "test": "cd ux && node scripts/test.js",
     "app:setup": "cd ux && yarn install",
     "new:plugin": "cd ux && node plugin.js"

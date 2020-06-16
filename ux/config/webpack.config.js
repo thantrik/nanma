@@ -547,24 +547,25 @@ module.exports = function (webpackEnv) {
           maxChunks: 1,
         }),
       isEnvProduction && new ExtensionManifestPlugin(),
-      isEnvProduction &&
-        new CopyPlugin([
-          {
-            from: "../*.js*",
-            to: paths.appBuild,
-            toType: "dir",
-            force: true,
-            transformPath(targetPath, absolutePath) {
-              return targetPath.replace("..", "");
-            },
-          },
-          {
-            from: "../icons",
-            to: paths.appBuild + "/icons/",
-            toType: "dir",
-            force: true,
-          },
-        ]),
+      // Copy assets plugin
+      // isEnvProduction &&
+      //   new CopyPlugin([
+      //     {
+      //       from: "../*.js*",
+      //       to: paths.appBuild,
+      //       toType: "dir",
+      //       force: true,
+      //       transformPath(targetPath, absolutePath) {
+      //         return targetPath.replace("..", "");
+      //       },
+      //     },
+      //     {
+      //       from: "../icons",
+      //       to: paths.appBuild + "/icons/",
+      //       toType: "dir",
+      //       force: true,
+      //     },
+      //   ]),
       // Inlines the webpack runtime script. This script is too small to warrant
       // a network request.
       // https://github.com/facebook/create-react-app/issues/5358

@@ -37,6 +37,9 @@ class DiffView extends React.Component<any, any> {
       originalEditable: true,
       contextmenu: true,
       renderSideBySide: true,
+      fontLigatures: true,
+      fontFamily: "Fira code",
+      fontSize: 12,
     });
     diffEditor.setModel({
       original: originalModel,

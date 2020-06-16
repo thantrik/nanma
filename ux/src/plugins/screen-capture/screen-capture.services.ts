@@ -1,8 +1,6 @@
 import { IPluginService, IPluginServiceRequest } from "../../app/app.services";
 import { SCREEN_CAPTURE_PLUGIN_NAME } from "./screen-capture.constants";
 
-var id = 100;
-
 // window.scrollTo(0, window.scrollY +  window.innerHeight)
 // window.document.body.scrollHeight
 
@@ -32,7 +30,7 @@ const ScreenCapture = (callback: Function) => {
         console.log("Result", result);
       }
     );
-    var viewTabUrl = chrome.extension.getURL("screenshot.html?id=" + id++);
+    var viewTabUrl = chrome.extension.getURL("index.html");
     var targetId: any = null;
 
     chrome.tabs.onUpdated.addListener(function listener(tabId, changedProps) {

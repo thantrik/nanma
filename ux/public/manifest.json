@@ -21,13 +21,15 @@
   "manifest_version": 2,
   "name": "Web Tools",
   "permissions": [
-    "storage",
-    "activeTab",
-    "clipboardWrite",
     "<all_urls>",
     "contextMenus",
     "https://raw.githubusercontent.com/*",
     "unlimitedStorage",
+    "storage",
+    "activeTab",
+    "clipboardWrite",
+    "*://*/*",
+    "tabs",
     { "fileSystem": ["write", "retainEntries", "directory"] }
   ],
   "version": "1.0.1",

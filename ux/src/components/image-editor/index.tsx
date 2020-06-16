@@ -11,12 +11,18 @@ const myTheme = {
   // Theme object to extends default dark theme.
 };
 
-const NanmaImageEditor = ({ imageSrc }: { imageSrc?: string }) => (
+const NanmaImageEditor = ({
+  imageSrc,
+  imageName = Date.now.toString(),
+}: {
+  imageSrc?: string;
+  imageName?: string;
+}) => (
   <ImageEditor
     includeUI={{
       loadImage: {
         path: imageSrc,
-        name: imageSrc,
+        name: imageName,
       },
       theme: myTheme,
       uiSize: {

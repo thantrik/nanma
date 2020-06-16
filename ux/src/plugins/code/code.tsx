@@ -41,6 +41,9 @@ export default class CodeView extends React.Component<any, any> {
         model: modal,
         theme: "vs-dark",
         automaticLayout: true,
+        fontLigatures: true,
+        fontFamily: "Fira code",
+        fontSize: 12,
       });
     }
     if (this.props.data) {

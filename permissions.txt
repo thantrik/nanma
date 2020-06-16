@@ -1,0 +1,4 @@
+    "storage",
+    "activeTab",
+    "clipboardWrite",
+    { "fileSystem": ["write", "retainEntries", "directory"] }
