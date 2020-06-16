@@ -4,6 +4,9 @@ import {
   setImageEditorViewRoute,
 } from "./image-editor.actions";
 import NanmaImageEditor from "../../components/image-editor";
+// @ts-ignore
+import canvas from "../../components/image-editor/canvas.jpg";
+import { IState } from "../image-editor/image-editor.types";
 
 const base64toBlob = (
   b64Data: string,
@@ -36,19 +39,25 @@ window.setScreenshotUrl = function (dataUrl: string) {
   //@ts-ignore
   const url = URL.createObjectURL(base64toBlob(data));
   console.log("Created url", url);
-  setImageEditorView({ imageSrc: url });
+  setImageEditorView({ imageSrc: url, withImage: true });
 };
 
-class ImageEditorEditorApp extends React.Component<any, any> {
+class ImageEditorEditorApp extends React.Component<IState, any> {
   // constructor(props: any) {
   //   super(props);
   // }
 
   render() {
-    console.log("this.props.imageSrc", this.props.imageSrc);
+    console.log(
+      "this.props.imageSrc",
+      this.props.imageSrc,
+      this.props.withImage
+    );
+    if (!this.props.imageSrc) return null;
     return (
       <NanmaImageEditor
-        imageSrc={this.props.imageSrc || "#"}
+        imageSrc={this.props.imageSrc}
+        imageName={this.props.imageName}
       ></NanmaImageEditor>
     );
   }

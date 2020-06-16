@@ -20,5 +20,4 @@ export const setImageEditorViewRoute = () =>
 export const setImageEditorView = (view: IState) => {
   store.dispatch(setImageEditorData(view));
   setImageEditorViewRoute();
-  console.log("IMAGE_EDITOR_SET_DATA", store.getState());
 };

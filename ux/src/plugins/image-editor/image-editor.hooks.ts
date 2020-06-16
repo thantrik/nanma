@@ -4,7 +4,12 @@ import config from "./image-editor.config";
 
 const imageEditorView = (imageSrc: string, parse = false) => {
   context.setDOMOwner(config);
-  setImageEditorView({ imageSrc });
+
+  setImageEditorView({
+    imageSrc,
+    withImage: true,
+    imageName: imageSrc.split("/").pop(),
+  });
 };
 
 const hook = (context: AppContext) => {
