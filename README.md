@@ -218,3 +218,33 @@ Static Plug and play mode
 #### Screen capture
 
     Full screen, current view capture & Edit tool
+
+#### Some of screenshots
+
+## CODE EDIT
+
+![Code Edit](docs/images/code.jpg)
+
+## DIFF VIEW & EDIT
+
+![Diff Edit](docs/images/diff.jpg)
+
+## IMAGE EDIT & SCREEN CAPTURE EDIT
+
+![Image Edit](docs/images/image.jpg)
+
+## JSON VIEW & EDIT
+
+![JSON Edit](docs/images/json.jpg)
+
+## MD - MARKDOWN EDITOR
+
+![Markdown Edit](docs/images/md.jpg)
+
+## WEBSITE CUSTOMIZATION SNIPPETS
+
+![MyWeb Edit](docs/images/myweb.jpg)
+
+## HEX CODE COLOUR SELECTION
+
+![Color view](docs/images/color.jpg)
