@@ -18,3 +18,7 @@
   border: solid 1px gray !important;
   background-color: black !important;
 }
+
+.tui-image-editor-submenu {
+  height: auto !important;
+}
