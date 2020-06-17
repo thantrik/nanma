@@ -1,5 +1,5 @@
 import { Reducer } from "redux";
-import { setJSONView } from "./awesome-links.actions";
+//import { setAwesomeLinkView } from "./awesome-links.actions";
 import { createReducer } from "@reduxjs/toolkit";
 import { AwesomeLinksType } from "./awesome-links.types";
 
@@ -8,11 +8,11 @@ interface IState {
 }
 
 const initialState = {
-  type: "json",
+  type: "links",
 };
 
 const json: Reducer = createReducer(initialState, {
-  [setJSONView as any]: (state, action) => ({ type: action.payload }),
+  //[setJSONView as any]: (state, action) => ({ type: action.payload }),
 });
 
 export default json;

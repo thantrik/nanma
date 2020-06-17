@@ -22,9 +22,10 @@ const codeView = (url: string, data: string) => {
 
 const hook = (context: AppContext) => {
   if (
-    /\.(md|json)$/i.test(window.location.href) ||
     context.isHTML() ||
-    context.isChromeExtension
+    context.isChromeExtension ||
+    /\.(md|json)$/i.test(window.location.href) ||
+    /json/.test(document.contentType)
   )
     return;
   const data = String(document.body.innerText).trim();

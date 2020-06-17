@@ -12,5 +12,6 @@ export const setJsonData = createAction(
 
 export const setJsonView = (view: IState) => {
   store.dispatch(setJsonData(view));
-  store.dispatch(push(JSON_ROUTE));
 };
+
+export const setJsonViewRoute = () => store.dispatch(push(JSON_ROUTE));

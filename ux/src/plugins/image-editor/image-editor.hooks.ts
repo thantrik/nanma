@@ -7,13 +7,16 @@ const imageEditorView = (imageSrc: string, parse = false) => {
 
   setImageEditorView({
     imageSrc,
-    imageName: imageSrc.split("/").pop(),
+    imageName: imageSrc.split("?")[0].split("/").pop(),
   });
 };
 
 const hook = (context: AppContext) => {
   if (context.isHTML()) return;
-  if (/\.(jpg|jpeg|webp|png|svg|bmp)$/i.test(window.location.href)) {
+  if (
+    /\.(jpg|jpeg|webp|png|bmp)$/i.test(window.location.href) ||
+    /(jpg|jpeg|webp|png|bmp)$/i.test(document.contentType)
+  ) {
     imageEditorView(window.location.href);
   }
 };
