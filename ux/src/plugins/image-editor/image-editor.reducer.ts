@@ -4,7 +4,6 @@ import { createReducer } from "@reduxjs/toolkit";
 import { IState } from "./image-editor.types";
 
 const initialState: IState = {
-  withImage: false,
   imageSrc: "",
 };
 

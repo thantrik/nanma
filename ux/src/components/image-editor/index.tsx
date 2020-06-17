@@ -1,47 +1,95 @@
-import React from "react";
+import React, { createRef } from "react";
 import ImageEditor from "@toast-ui/react-image-editor";
+import TuiImageEditor from "tui-image-editor";
 import "tui-image-editor/dist/tui-image-editor.css";
 import "tui-color-picker/dist/tui-color-picker.css";
 import "./overrides.css";
 import "file-saver/dist/FileSaver";
+import { IState } from "../../plugins/image-editor/image-editor.types";
+import canvas from "./canvas.jpg";
 
 const myTheme = {
   "common.bi.image": "none",
   "common.backgroundImage": "none",
+  "colorpicker.button.border": "1px solid #1e1e1e",
+  "colorpicker.title.color": "#fff",
+  "menu.iconSize.width": "14px",
+  "menu.iconSize.height": "14px",
+  "submenu.iconSize.width": "22px",
+  "submenu.iconSize.height": "12px",
 };
 
-const NanmaImageEditor = ({
-  imageSrc,
-  imageName = `Screen-${Date.now().toString()}.jpg`,
-}: {
-  imageSrc?: string;
-  imageName?: string;
-}) => {
-  console.log("imageSrc, imageName", imageSrc, imageName);
-  return (
-    <ImageEditor
-      includeUI={{
-        loadImage: {
-          path: imageSrc,
-          name: imageName,
-        },
-        theme: myTheme,
-        uiSize: {
-          width: "100vw",
-          height: "100vh",
-        },
-        menuBarPosition: "top",
-      }}
-      cssMaxHeight={document.body.clientHeight}
-      cssMaxWidth={document.body.clientWidth * 0.9}
-      selectionStyle={{
-        cornerSize: 2,
-        rotatingPointOffset: 0,
-      }}
-      usageStatistics={false}
-    />
-  );
-};
+class NanmaImageEditor extends React.Component<IState, IState> {
+  private editorInstance = createRef<any>();
+  constructor(props: IState) {
+    super(props);
+    this.state = {
+      imageSrc: canvas,
+      imageName: NanmaImageEditor.getNewImageName(),
+    };
+  }
+  static getNewImageName = () =>
+    `Image-${Date().replace(/ /gi, "-").split("-GMT")[0]}`;
+  static getDerivedStateFromProps(props: IState, state: IState) {
+    return {
+      ...props,
+      imageName: props.imageName || NanmaImageEditor.getNewImageName(),
+    };
+  }
+  componentDidUpdate() {
+    const { imageSrc, imageName } = this.state;
+    const editor = this.editorInstance.current
+      ?.imageEditorInst as TuiImageEditor;
+    if (!editor) console.log("No editor instance");
+    console.log("imageSrc, imageName", imageSrc, imageName, this.state, editor);
+    //@ts-ignore
+    window.editor = editor;
+    //@ts-ignore
+    editor._invoker.unlock();
+    //@ts-ignore
+    editor
+      .loadImageFromURL(imageSrc, imageName)
+      .then(() => {
+        //@ts-ignore
+        editor.ui.activeMenuEvent();
+        editor.clearUndoStack();
+
+        imageSrc &&
+          imageSrc.indexOf("blob") > -1 &&
+          URL.revokeObjectURL(imageSrc);
+      })
+      .catch(console.log);
+  }
+
+  render() {
+    const { imageSrc, imageName } = this.state;
+
+    return (
+      <ImageEditor
+        ref={this.editorInstance}
+        includeUI={{
+          loadImage: {
+            path: imageSrc,
+            name: imageName,
+          },
+          theme: myTheme,
+          uiSize: {
+            width: "100vw",
+            height: "100vh",
+          },
+          menuBarPosition: "top",
+        }}
+        cssMaxHeight={document.body.clientHeight * 0.8}
+        cssMaxWidth={document.body.clientWidth * 0.8}
+        selectionStyle={{
+          cornerSize: 2,
+          rotatingPointOffset: 0,
+        }}
+        usageStatistics={false}
+      />
+    );
+  }
+}
 
 export default NanmaImageEditor;
 

@@ -23,12 +23,19 @@ initializeIcons();
 //   ].map((plugin: string) => { import(`../plugins/${plugin}`).catch(console.error))
 // );
 
+const getRequestRoute = () => {
+  const url = new URL(window.location.href);
+  const params = url?.searchParams;
+  return params.get("route");
+};
+
 const App = ({ config }: any) => {
+  const reqRoute = getRequestRoute();
   const routes = getRoutes();
   const isRoot = (route: IPluginRoute) =>
     config
       ? config.route.path === route.path
-      : route.path === "/" || route.path === "/dashboard";
+      : route.path === (reqRoute || "/") || route.path === "/dashboard";
   const createRouteComponent = (route: IPluginRoute, i: number) => (
     <Route
       key={`${route.path}-${i}`}
@@ -42,14 +49,19 @@ const App = ({ config }: any) => {
     path: "/*",
   } as IPluginRoute;
   const normalRoutes = routes.map(createRouteComponent);
+  const allRoutes = () => (
+    <React.Fragment>
+      {normalRoutes}
+      {root ? createRouteComponent(root, 10000) : null}
+    </React.Fragment>
+  );
   return (
     <Provider store={store}>
       <ConnectedRouter history={history}>
         <Switch>
-          {normalRoutes}
-          {root ? createRouteComponent(root, 10000) : null}
+          {reqRoute && root ? createRouteComponent(root, 0) : allRoutes()}
         </Switch>
-        {context.isAnyOf3() && <ApplicationNavMenu />}
+        {context.isAnyOf3() && !reqRoute && <ApplicationNavMenu />}
       </ConnectedRouter>
     </Provider>
   );

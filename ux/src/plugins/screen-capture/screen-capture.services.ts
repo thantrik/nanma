@@ -1,36 +1,42 @@
 import { IPluginService, IPluginServiceRequest } from "../../app/app.services";
 import { SCREEN_CAPTURE_PLUGIN_NAME } from "./screen-capture.constants";
+import { IMAGE_EDITOR_ROUTE } from "../image-editor/image-editor.types";
 
 // window.scrollTo(0, window.scrollY +  window.innerHeight)
 // window.document.body.scrollHeight
 
-const ScreenCapture = (callback: Function) => {
-  const imageData = [];
+let id = 100;
 
-  chrome.tabs.captureVisibleTab(function (screenshotUrl) {
-    imageData.push(screenshotUrl);
-    chrome.tabs.executeScript(
-      {
-        file: "scroll.js",
-      },
-      (result) => {
-        console.log("Result File", result);
-      }
-    );
-  });
+const ScreenCapture = (callback: Function) => {
+  //const imageData = [];
+
+  // chrome.tabs.captureVisibleTab(function (screenshotUrl) {
+  //   imageData.push(screenshotUrl);
+  //   chrome.tabs.executeScript(
+  //     {
+  //       file: "scroll.js",
+  //     },
+  //     (result) => {
+  //       console.log("Result File", result);
+  //     }
+  //   );
+  // });
 
   //chrome.tabs.executeScript
   chrome.tabs.captureVisibleTab(function (screenshotUrl) {
-    chrome.tabs.executeScript(
-      {
-        code:
-          "window.scrollTo(0, window.scrollY +  window.innerHeight); window.scrollY; window.innerHeight; ",
-      },
-      (result) => {
-        console.log("Result", result);
-      }
+    // chrome.tabs.executeScript(
+    //   {
+    //     code:
+    //       "window.scrollTo(0, window.scrollY +  window.innerHeight); window.scrollY; window.innerHeight; ",
+    //   },
+    //   (result) => {
+    //     console.log("Result", result);
+    //   }
+    // );
+    var viewTabUrl = chrome.extension.getURL(
+      `index.html?route=${IMAGE_EDITOR_ROUTE}&id=${id++}`
     );
-    var viewTabUrl = chrome.extension.getURL("index.html");
+    console.log("viewTabUrl", viewTabUrl);
     var targetId: any = null;
 
     chrome.tabs.onUpdated.addListener(function listener(tabId, changedProps) {
@@ -52,6 +58,11 @@ const ScreenCapture = (callback: Function) => {
       console.log(views);
       for (var i = 0; i < views.length; i++) {
         var view = views[i];
+        console.log(
+          "view.location.href === viewTabUrl",
+          view.location.href,
+          view.location.href === viewTabUrl
+        );
         if (view.location.href === viewTabUrl) {
           // @ts-ignore
           view.setScreenshotUrl(screenshotUrl);

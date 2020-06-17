@@ -7,7 +7,6 @@ const imageEditorView = (imageSrc: string, parse = false) => {
 
   setImageEditorView({
     imageSrc,
-    withImage: true,
     imageName: imageSrc.split("/").pop(),
   });
 };
