@@ -1,4 +1,4 @@
-import { Register } from "../../app";
+import { Register, context } from "../../app";
 import config from "./dashboard.config";
 
-Register(config);
+if (context.isExtension) Register(config);

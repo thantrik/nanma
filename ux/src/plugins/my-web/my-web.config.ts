@@ -5,10 +5,11 @@ import { IPluginConfig } from "../../app/app.types";
 import icon from "./my-web.icon";
 import { MYWEB_PLUGIN_NAME } from "./my-web.constants";
 import service from "./my-web.background";
+import context from "../../app/context";
 
 const config: IPluginConfig = {
   name: MYWEB_PLUGIN_NAME,
-  route,
+  route: context.isExtension ? route : undefined,
   reducer: myWeb,
   hook: hook,
   icon,

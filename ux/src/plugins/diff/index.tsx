@@ -1,4 +1,4 @@
 import config from "./diff.config";
-import { Register } from "../../app";
+import { Register, context } from "../../app";
 
-Register(config);
+if (context.isExtension) Register(config);

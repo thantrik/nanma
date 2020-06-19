@@ -1,4 +1,4 @@
-import { Register } from "../../app";
-import config from"./ts-play.config";
+import { Register, context } from "../../app";
+import config from "./ts-play.config";
 
-Register(config);
+if (context.isExtension) Register(config);

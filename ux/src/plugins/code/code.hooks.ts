@@ -1,4 +1,4 @@
-import { context, AppContext } from "../../app";
+import { AppContext, setDOMOwner } from "../../app";
 import config from "./code.config";
 import { setCodeView } from "./code.actions";
 
@@ -11,7 +11,7 @@ declare global {
 // const location = window.location;
 
 const codeView = (url: string, data: string) => {
-  context.setDOMOwner(config);
+  setDOMOwner(config);
   window.___DATA = data;
   setCodeView({
     data,
@@ -23,7 +23,7 @@ const codeView = (url: string, data: string) => {
 const hook = (context: AppContext) => {
   if (
     context.isHTML() ||
-    context.isChromeExtension ||
+    context.isExtension ||
     /\.(md|json)$/i.test(window.location.href) ||
     /json/.test(document.contentType)
   )

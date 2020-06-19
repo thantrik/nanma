@@ -1,4 +1,4 @@
-import { Register } from "../../app";
-import config from"./color.config";
+import { Register, context } from "../../app";
+import config from "./color.config";
 
-Register(config);
+if (context.isExtension) Register(config);

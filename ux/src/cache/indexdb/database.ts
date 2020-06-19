@@ -1,7 +1,7 @@
 import PouchDB from "pouchdb";
 import { name } from "../../../package.json";
 
-const db: PouchDB.Database = new PouchDB(name);
+let db: PouchDB.Database;
 const pluginDB: { [key: string]: PouchDB.Database } = {};
 
 const getPluginDatabase = (name: string): PouchDB.Database => {
@@ -11,6 +11,7 @@ const getPluginDatabase = (name: string): PouchDB.Database => {
   return pluginDB[name];
 };
 
-export const getDataBase = (name?: string): PouchDB.Database => {
-  return name ? getPluginDatabase(name) : db;
+export const getDataBase = (dbName: string = name): PouchDB.Database => {
+  if (!db) db = new PouchDB(name);
+  return dbName ? getPluginDatabase(dbName) : db;
 };

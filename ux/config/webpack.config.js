@@ -36,7 +36,10 @@ const appPackageJson = require(paths.appPackageJson);
 
 const enableServiceWorker = false;
 // Source maps are resource heavy and can cause out of memory issue for large source files.
-const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP === "true";
+const shouldUseSourceMap =
+  process.env.GENERATE_SOURCEMAP === "true" ||
+  process.env.NODE_ENV === "development" ||
+  !!process.env.DEBUG;
 // Some apps do not need the benefits of saving a web request, so not inlining the chunk
 // makes for a smoother build process.
 const shouldInlineRuntimeChunk = false; // process.env.INLINE_RUNTIME_CHUNK !== 'false';
@@ -61,6 +64,7 @@ const sassModuleRegex = /\.module\.(scss|sass)$/;
 module.exports = function (webpackEnv) {
   const isEnvDevelopment = webpackEnv === "development";
   const isEnvProduction = webpackEnv === "production";
+  const isDebug = !!process.env.DEBUG;
 
   // Variable used for enabling profiling in Production
   // passed into alias object. Uses a flag if passed into the build command
@@ -210,7 +214,7 @@ module.exports = function (webpackEnv) {
       globalObject: "this",
     },
     optimization: {
-      minimize: isEnvProduction,
+      minimize: isEnvProduction && !isDebug,
       minimizer: [
         // This is only used in production mode
         new TerserPlugin({

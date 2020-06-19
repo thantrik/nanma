@@ -1,4 +1,4 @@
-import { context, AppContext } from "../../app";
+import { AppContext, setDOMOwner } from "../../app";
 import config from "./md-editor.config";
 import { setMdView } from "./md-editor.actions";
 
@@ -11,7 +11,7 @@ declare global {
 const location = window.location;
 
 const mdView = (data: string) => {
-  context.setDOMOwner(config);
+  setDOMOwner(config);
   window.___DATA = data;
   setMdView(data);
 };

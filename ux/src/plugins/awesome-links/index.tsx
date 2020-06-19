@@ -1,4 +1,4 @@
-import { Register } from "../../app";
+import { Register, getCtx } from "../../app";
 import config from "./awesome-links.config";
 
-Register(config);
+if (getCtx().isExtension) Register(config);

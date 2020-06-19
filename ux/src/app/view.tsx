@@ -24,11 +24,11 @@ const getRequestRoute = () => {
 const App = ({ config }: { config?: IPluginConfig }) => {
   // If chrome plugin requested a route via url from background scripts
   // eg: screen capture and request route image-editor
-  const reqRoute = context.isChromeExtension && getRequestRoute();
+  const reqRoute = context.isExtension && getRequestRoute();
   const routes = getRoutes();
   const isSpecificRoute = (route: IPluginRoute) =>
     config
-      ? config.route.path === route.path
+      ? config.route?.path === route.path
       : route.path === (reqRoute || "/");
   const createRouteComponent = (
     route?: IPluginRoute,
@@ -65,7 +65,7 @@ const App = ({ config }: { config?: IPluginConfig }) => {
 const initializeView = async (config?: IPluginConfig) => {
   // await bundleLoad;
   ReactDOM.render(<App config={config}></App>, document.body, async () => {
-    if (context?.isChromeExtension) {
+    if (context?.isExtension) {
       await require("./app.styles.css");
       window.document.body.classList.add("noscroll");
       setJsonViewRoute();

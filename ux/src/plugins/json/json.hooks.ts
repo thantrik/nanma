@@ -1,9 +1,9 @@
-import { context, AppContext } from "../../app";
+import { AppContext, setDOMOwner } from "../../app";
 import { setJsonView } from "./json.actions";
 import config from "./json.config";
 
 const jsonView = (data: string, parse = false) => {
-  context.setDOMOwner(config);
+  setDOMOwner(config);
   setJsonView({ data });
 };
 

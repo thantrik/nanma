@@ -1,4 +1,4 @@
-import { context, AppContext } from "../../app";
+import { AppContext, setDOMOwner } from "../../app";
 import { setMyWebView } from "./my-web.actions";
 import config from "./my-web.config";
 import {
@@ -7,7 +7,7 @@ import {
 } from "./components/form/modal";
 
 const myWebView = (data: string, parse = false) => {
-  context.setDOMOwner(config);
+  setDOMOwner(config);
   setMyWebView({ data });
 };
 
@@ -61,7 +61,7 @@ const handleSnippets = (snippets: MyWebSnippetsModal[]) => {
 };
 
 const hook = async (context: AppContext) => {
-  if (context.isChromeExtension || context.isLocalHost) return;
+  if (context.isExtension || context.isLocalHost) return;
   chrome.runtime.sendMessage(
     {
       name: config.name,

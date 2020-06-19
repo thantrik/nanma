@@ -1,4 +1,4 @@
-import { Register } from "../../app";
-import config from"./screen-capture.config";
+import { Register, context } from "../../app";
+import config from "./screen-capture.config";
 
-Register(config);
+if (context.isExtension) Register(config);

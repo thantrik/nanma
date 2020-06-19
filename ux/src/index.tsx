@@ -1,8 +1,12 @@
 import "./react-app-env.d.ts";
-import { initAppView, context } from "./app";
+import { context } from "./app";
+import initAppView from "./app/view";
+
+//@ts-ignore
+window.initView = () => console.log("test", context);
 
 if (
-  context.isChromeExtension ||
+  context.isExtension ||
   context.isGithub ||
   (process.env.NODE_ENV !== "production" && context.isLocalHost)
 )

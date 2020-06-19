@@ -1,9 +1,10 @@
 import { IPluginConfig } from "./app.types";
-import initAppView from "./view";
 let context: AppContext;
 
 export class AppContext {
-  isChromeExtension = /^chrome-extension:\/\//i.test(window.location.href);
+  isExtension = /^(chrome-extension|extension|firefox|opera):\/\//i.test(
+    window.location.href
+  );
   isLocalHost = /^http:\/\/localhost/i.test(window.location.href);
   isGithub = /thantrik\.github\.io/i.test(window.location.href);
   private __semCurrentDOM: IPluginConfig | undefined;
@@ -14,11 +15,10 @@ export class AppContext {
     this.__semCurrentDOM = owner;
   }
   public isAnyOf3() {
-    return this.isChromeExtension || this.isLocalHost || this.isGithub;
+    return this.isExtension || this.isLocalHost || this.isGithub;
   }
-  public async setDOMOwner(config: IPluginConfig) {
+  public setDOMOwner(config: IPluginConfig) {
     this.__semCurrentDOM = config;
-    await initAppView(config);
   }
 
   private constructor() {
@@ -41,6 +41,14 @@ export class AppContext {
       .includes("html");
   }
 }
-
 context = AppContext.getInstance();
 export default context;
+
+export const getCtx = () => AppContext.getInstance();
+
+console.log("From the context", context);
+
+//@ts-ignore
+window.context = context;
+//@ts-ignore
+window.getCtx = getCtx;

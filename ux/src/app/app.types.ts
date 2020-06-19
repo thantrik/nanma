@@ -8,7 +8,7 @@ export interface IPluginConfigBase {
 }
 
 export interface IPluginConfig extends IPluginConfigBase {
-  readonly route: IPluginRoute;
+  readonly route?: IPluginRoute;
   readonly reducer?: Reducer;
   readonly hook?: PluginStartupHook;
   readonly icon?: any;
