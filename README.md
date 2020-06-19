@@ -6,6 +6,13 @@ A collection of tools which used by a web developer. It can be installed as a ch
 > No Analytics integrated with this extension.
 > Completely under user control. I won't be knowing any errors about tools execution. So please create issues in github once you face any error.
 
+#### Browsers
+
+- ![](https://www.google.com/chrome/static/images/favicons/favicon-16x16.png) Chrome
+- ![](docs/images/edge.svg) Edge
+- ![](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Vivaldi_web_browser_logo.svg/16px-Vivaldi_web_browser_logo.svg.png) Vivaldi
+- ![](docs/images/opera.png) Edge
+
 ## Architecture
 
 This system created in plugin model. You can write your component with instruct format and plug it into the code.
