@@ -1,16 +1,16 @@
-import { AppContext, setDOMOwner } from "../../app";
-import { setMyWebView } from "./my-web.actions";
+import { AppContext } from "../../app";
+// import { setMyWebView } from "./my-web.actions";
 import config from "./my-web.config";
 import {
   MyWebSnippetsModal,
   IMyWebSnippetsModal,
 } from "./components/form/modal";
 
-const myWebView = (data: string, parse = false) => {
-  setDOMOwner(config, () => {
-    setMyWebView({ data });
-  });
-};
+// const myWebView = (data: string, parse = false) => {
+//   setDOMOwner(config, () => {
+//     setMyWebView({ data });
+//   });
+// };
 
 const injectCSS = (css: string[]) => {
   const styleEl = document.createElement("style");

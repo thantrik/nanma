@@ -2,7 +2,7 @@ import { Provider } from "react-redux";
 import { Switch, Route } from "react-router-dom";
 import React from "react";
 import ReactDOM from "react-dom";
-import { ConnectedRouter, push } from "connected-react-router";
+import { ConnectedRouter } from "connected-react-router";
 import { getRoutes, store, history } from "./index";
 import { IPluginRoute } from "../routes";
 import { IPluginConfig } from "./app.types";
@@ -10,7 +10,7 @@ import { ApplicationNavMenu } from "../components/menu/bottom";
 import { initializeIcons } from "office-ui-fabric-react/lib/Icons";
 import context from "./context";
 import "./app.plugins";
-import { setJsonViewRoute } from "../plugins/json/json.actions";
+// import { setJsonViewRoute } from "../plugins/json/json.actions";
 initializeIcons();
 
 const getRequestRoute = () => {

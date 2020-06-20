@@ -70,6 +70,7 @@ const cmd = async (strCmd) => {
     // await cmd(
     //   `git tag -a v${version} -m "Release ${version}"`
     // );
+    await cmd(`git push origin`);
     await cmd(`git push origin --tags`);
 
     //if (flags.publish)
