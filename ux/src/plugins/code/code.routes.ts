@@ -1,6 +1,7 @@
 import ConnectedCodeViewer from "./code.connected";
+import { CODE_ROUTE_PATH } from "./code.constants";
 
 export default {
-  path: "/code",
+  path: CODE_ROUTE_PATH,
   component: ConnectedCodeViewer,
 };

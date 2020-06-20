@@ -1,11 +1,12 @@
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import JsonEditorApp from "./json";
+import { JSON_PLUGIN_NAME } from "./json.constants";
 
 const mapStateToProps = (state: any) => {
   console.log(state);
   //@ts-ignore
-  return { app: state.app, ...state.json, data: state.json.data || "{}" };
+  return { app: state.app, ...state[JSON_PLUGIN_NAME] };
 };
 
 const mapDispatchToProps = (dispatch: any, ownProps: any) => ({

@@ -11,9 +11,10 @@ declare global {
 const location = window.location;
 
 const mdView = (data: string) => {
-  setDOMOwner(config);
-  window.___DATA = data;
-  setMdView(data);
+  setDOMOwner(config, () => {
+    window.___DATA = data;
+    setMdView(data);
+  });
 };
 
 const hook = (context: AppContext) => {

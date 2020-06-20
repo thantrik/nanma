@@ -45,10 +45,3 @@ context = AppContext.getInstance();
 export default context;
 
 export const getCtx = () => AppContext.getInstance();
-
-console.log("From the context", context);
-
-//@ts-ignore
-window.context = context;
-//@ts-ignore
-window.getCtx = getCtx;

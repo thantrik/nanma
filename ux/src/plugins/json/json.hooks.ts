@@ -3,8 +3,7 @@ import { setJsonView } from "./json.actions";
 import config from "./json.config";
 
 const jsonView = (data: string, parse = false) => {
-  setDOMOwner(config);
-  setJsonView({ data });
+  setDOMOwner(config, () => setJsonView({ data }));
 };
 
 const hook = (context: AppContext) => {

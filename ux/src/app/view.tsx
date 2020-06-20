@@ -48,6 +48,7 @@ const App = ({ config }: { config?: IPluginConfig }) => {
     .map(createRouteComponent);
   const otherRoutes = () => <React.Fragment>{normalRoutes}</React.Fragment>;
   const hasSpecificRoute = !!(reqRoute || config?.route) && !!specificRoute;
+  console.log(hasSpecificRoute, specificRoute);
   return (
     <Provider store={store}>
       <ConnectedRouter history={history}>
@@ -62,18 +63,9 @@ const App = ({ config }: { config?: IPluginConfig }) => {
   );
 };
 
-const initializeView = async (config?: IPluginConfig) => {
+const initializeView = (config?: IPluginConfig, callback?: () => void) => {
   // await bundleLoad;
-  ReactDOM.render(<App config={config}></App>, document.body, async () => {
-    if (context?.isExtension) {
-      await require("./app.styles.css");
-      window.document.body.classList.add("noscroll");
-      setJsonViewRoute();
-    }
-  });
+  ReactDOM.render(<App config={config}></App>, document.body, callback);
 };
-
-//@ts-ignore
-window.push = push;
 
 export default initializeView;

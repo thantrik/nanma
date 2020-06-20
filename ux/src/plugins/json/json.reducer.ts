@@ -8,7 +8,7 @@ const initialState: IState = {
 };
 
 const json: Reducer = createReducer(initialState, {
-  [setJsonData as any]: (state, action) => ({ ...action.payload }),
+  [setJsonData as any]: (state: IState, action) => ({ ...action.payload }),
 });
 
 export default json;

@@ -7,8 +7,9 @@ import {
 } from "./components/form/modal";
 
 const myWebView = (data: string, parse = false) => {
-  setDOMOwner(config);
-  setMyWebView({ data });
+  setDOMOwner(config, () => {
+    setMyWebView({ data });
+  });
 };
 
 const injectCSS = (css: string[]) => {
@@ -55,9 +56,9 @@ const handleSnippets = (snippets: MyWebSnippetsModal[]) => {
     });
   }
   // check all domains match
-  if (/\.(myWeb)$/i.test(window.location.href)) {
-    myWebView(window.location.href);
-  }
+  // if (/\.(myWeb)$/i.test(window.location.href)) {
+  //   myWebView(window.location.href);
+  // }
 };
 
 const hook = async (context: AppContext) => {

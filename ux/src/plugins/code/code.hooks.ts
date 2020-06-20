@@ -11,11 +11,12 @@ declare global {
 // const location = window.location;
 
 const codeView = (url: string, data: string) => {
-  setDOMOwner(config);
-  window.___DATA = data;
-  setCodeView({
-    data,
-    url,
+  setDOMOwner(config, () => {
+    window.___DATA = data;
+    setCodeView({
+      data,
+      url,
+    });
   });
   return true;
 };

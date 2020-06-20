@@ -4,7 +4,11 @@ import ColorView from "./color";
 
 const mapStateToProps = (state: any) => {
   //@ts-ignore
-  return { app: state.app, code: state.code, data: window.___DATA || "{}" };
+  return {
+    app: state.app,
+    code: state.code,
+    data: window.___DATA || "#FFFFFF",
+  };
 };
 
 const mapDispatchToProps = (dispatch: any, ownProps: any) => ({

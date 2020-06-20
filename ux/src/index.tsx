@@ -1,15 +1,21 @@
 import "./react-app-env.d.ts";
 import { context } from "./app";
 import initAppView from "./app/view";
-
-//@ts-ignore
-window.initView = () => console.log("test", context);
+import { setJsonViewRoute } from "./plugins/json/json.actions";
 
 if (
   context.isExtension ||
   context.isGithub ||
   (process.env.NODE_ENV !== "production" && context.isLocalHost)
 )
-  initAppView();
+  initAppView(undefined, async () => {
+    if (context?.isExtension) {
+      await require("./app/app.styles.css");
+      if (context.isExtension) {
+        window.document.body.classList.add("no-scroll");
+        setJsonViewRoute();
+      }
+    }
+  });
 
 import("./modules/contents");

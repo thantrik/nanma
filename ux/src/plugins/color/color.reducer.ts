@@ -1,12 +1,8 @@
 import { Reducer } from "redux";
 import { createReducer } from "@reduxjs/toolkit";
-import { ColorType } from "./color.types";
+import { IState } from "./color.types";
 
-interface IState {
-  hexCode: ColorType;
-}
-
-const initialState = {
+const initialState: IState = {
   hexCode: "#FFFFFF",
 };
 

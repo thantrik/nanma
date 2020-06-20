@@ -1,7 +1,7 @@
-import ConnectedMYWEBViewer from"./my-web.connected";
-import { MYWEB_ROUTE_NAME } from"./my-web.constants";
+import ConnectedMyWebViewer from "./my-web.connected";
+import { MYWEB_ROUTE_PATH } from "./my-web.constants";
 
 export default {
-  path: MYWEB_ROUTE_NAME,
-  component: ConnectedMYWEBViewer,
+  path: MYWEB_ROUTE_PATH,
+  component: ConnectedMyWebViewer,
 };

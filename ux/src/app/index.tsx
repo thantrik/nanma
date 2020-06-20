@@ -8,11 +8,11 @@ export { getAppReducer } from "./app.reducer";
 export * from "../cache";
 export { default as context, getCtx, AppContext } from "./context";
 
-export const setDOMOwner = (config: IPluginConfig) => {
+export const setDOMOwner = (config: IPluginConfig, callback: () => void) => {
   context.setDOMOwner(config);
   (async () => {
     const viewModule = await import("./view");
     const initAppView = viewModule.default;
-    initAppView && initAppView(config);
+    initAppView && initAppView(config, callback);
   })();
 };

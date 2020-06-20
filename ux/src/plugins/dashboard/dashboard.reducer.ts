@@ -2,18 +2,16 @@ import { Reducer } from "redux";
 
 import { setDashBoardData } from "./dashboard.actions";
 import { createReducer } from "@reduxjs/toolkit";
-import { DashboardType } from "./dashboard.types";
+import { IState } from "./dashboard.types";
 
-interface IState {
-  data: DashboardType;
-}
-
-const initialState = {
-  data: { tt: 10 },
+const initialState: IState = {
+  data: {},
 };
 
 const json: Reducer = createReducer(initialState, {
-  [setDashBoardData as any]: (state, action) => ({ data: action.payload }),
+  [setDashBoardData as any]: (state: IState, action) => ({
+    data: action.payload,
+  }),
 });
 
 export default json;

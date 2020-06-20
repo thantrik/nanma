@@ -3,8 +3,7 @@ import { connect } from "react-redux";
 import TSPlayGround from "./ts-play";
 
 const mapStateToProps = (state: any) => {
-  //@ts-ignore
-  return { data: window.___DATA || "{}" };
+  return state;
 };
 
 export default withRouter(connect(mapStateToProps)(TSPlayGround));

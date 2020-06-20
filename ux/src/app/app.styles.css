@@ -6,6 +6,7 @@ body {
   background-color: white;
 }
 
+.no-scroll,
 .noscroll {
   overflow: hidden;
   background-color: #babac0;

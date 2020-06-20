@@ -11,8 +11,8 @@ const initialState = {
   type: "links",
 };
 
-const json: Reducer = createReducer(initialState, {
+const AwesomeLinks: Reducer = createReducer(initialState, {
   //[setJSONView as any]: (state, action) => ({ type: action.payload }),
 });
 
-export default json;
+export default AwesomeLinks;

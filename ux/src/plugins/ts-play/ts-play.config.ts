@@ -1,8 +1,9 @@
 import route from "./ts-play.routes";
 import { IPluginConfig } from "../../app/app.types";
+import { TS_PLAY_PLUGIN_NAME } from "./ts-play.constants";
 
 const config: IPluginConfig = {
-  name: "ts-play",
+  name: TS_PLAY_PLUGIN_NAME,
   route,
 };
 
