@@ -1,6 +1,6 @@
 {
   "name": "nanma",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "private": false,
   "scripts": {
     "start": "cd ux && cross-env GENERATE_SOURCEMAP=\"true\" node scripts/start.js",
