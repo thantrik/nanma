@@ -140,6 +140,7 @@ const unicodeGroups: SymbolsCategory[] = [
 class SymbolsViewer extends React.Component<any, any> {
   panel: HTMLDivElement | null = null;
   componentDidMount() {
+    window.document.body.classList.remove("no-scroll");
     if (this.panel) {
       for (const group of unicodeGroups) {
         const h: HTMLHeadingElement = document.createElement("h3");

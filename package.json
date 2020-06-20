@@ -6,6 +6,8 @@
     "start": "cd ux && cross-env GENERATE_SOURCEMAP=\"true\" node scripts/start.js",
     "build": "cd ux && cross-env PUBLIC_URL='' node --max-old-space-size=12000 scripts/build.js",
     "release": " node ./tools/release.js",
+    "release:minor": " node ./tools/release.js --bump minor",
+    "release:major": " node ./tools/release.js --bump major",
     "test": "cd ux && node scripts/test.js",
     "app:setup": "yarn install && cd ux && yarn install",
     "new:plugin": "node ./tools/plugin.js"
@@ -19,6 +21,7 @@
     "args": "^5.0.1",
     "camelcase": "^6.0.0",
     "chalk": "^4.1.0",
+    "cross-env": "^7.0.2",
     "gsap": "^3.3.1",
     "pwd-fs": "^1.2.13",
     "replace-in-file": "^6.1.0",
