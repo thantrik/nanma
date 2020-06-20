@@ -16,6 +16,8 @@
   "author": "Krishna Kumar",
   "license": "MIT",
   "dependencies": {
+    "args": "^5.0.1",
+    "chalk": "^4.1.0",
     "gsap": "^3.3.1"
   }
 }
