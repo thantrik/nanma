@@ -6,8 +6,8 @@ var rimraf = require("rimraf");
 
 const createTemplate = (pluginName) => {
   pluginName = pluginName.toLowerCase();
-  const pluginTemplatePath = path.join(__dirname, "/src/plugins/json");
-  const newPluginPath = path.join(__dirname, "/src/plugins/" + pluginName);
+  const pluginTemplatePath = path.join(__dirname, "ux/src/plugins/json");
+  const newPluginPath = path.join(__dirname, "ux/src/plugins/" + pluginName);
   const newName = (file) => {
     return file.replace(/json/g, pluginName);
   };

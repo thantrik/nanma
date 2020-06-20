@@ -5,9 +5,9 @@
   "scripts": {
     "start": "cd ux && cross-env GENERATE_SOURCEMAP=\"true\" node scripts/start.js",
     "build": "cd ux && cross-env PUBLIC_URL='' node --max-old-space-size=12000 scripts/build.js",
-    "release:patch": "npm version patch && cd ux && npm version patch && yarn build",
+    "release": " node ./tools/release.js",
     "test": "cd ux && node scripts/test.js",
-    "app:setup": "cd ux && yarn install",
+    "app:setup": "yarn install && cd ux && yarn install",
     "new:plugin": "cd ux && node ./tools/plugin.js"
   },
   "description": "Web developer tool package",
@@ -18,6 +18,7 @@
   "dependencies": {
     "args": "^5.0.1",
     "chalk": "^4.1.0",
-    "gsap": "^3.3.1"
+    "gsap": "^3.3.1",
+    "pwd-fs": "^1.2.13"
   }
 }
