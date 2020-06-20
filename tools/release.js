@@ -90,6 +90,7 @@ const cmd = async (strCmd) => {
       await cmd(
         `yarn publish --registry="https://registry.npmjs.org" --scope="@thantrik" --access public`
       );
+    console.log(chalk.bold.greenBright("RELEASE SUCCESS"));
   } catch (e) {
     logFailure("FAILED", e);
   }
