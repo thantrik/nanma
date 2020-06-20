@@ -1,13 +1,14 @@
 {
   "name": "nanma",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": false,
   "scripts": {
     "start": "cd ux && cross-env GENERATE_SOURCEMAP=\"true\" node scripts/start.js",
     "build": "cd ux && cross-env PUBLIC_URL='' node --max-old-space-size=12000 scripts/build.js",
+    "release:patch": "npm version patch && cd ux && npm version patch && yarn build",
     "test": "cd ux && node scripts/test.js",
     "app:setup": "cd ux && yarn install",
-    "new:plugin": "cd ux && node plugin.js"
+    "new:plugin": "cd ux && node ./tools/plugin.js"
   },
   "description": "Web developer tool package",
   "main": "index.js",

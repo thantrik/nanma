@@ -25,7 +25,7 @@ class ExtensionManifestPlugin {
             file
           )
         );
-
+        manifest.version = paths.package.version;
         const manifestName = paths.appBuild + "/manifest.json";
 
         fs.writeFileSync(

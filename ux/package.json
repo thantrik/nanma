@@ -1,6 +1,6 @@
 {
   "name": "nanma",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": false,
   "dependencies": {
     "@amcharts/amcharts4": "^4.9.24",
