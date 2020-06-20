@@ -8,7 +8,7 @@
     "release": " node ./tools/release.js",
     "test": "cd ux && node scripts/test.js",
     "app:setup": "yarn install && cd ux && yarn install",
-    "new:plugin": "cd ux && node ./tools/plugin.js"
+    "new:plugin": "node ./tools/plugin.js"
   },
   "description": "Web developer tool package",
   "main": "index.js",
@@ -17,8 +17,11 @@
   "license": "MIT",
   "dependencies": {
     "args": "^5.0.1",
+    "camelcase": "^6.0.0",
     "chalk": "^4.1.0",
     "gsap": "^3.3.1",
-    "pwd-fs": "^1.2.13"
+    "pwd-fs": "^1.2.13",
+    "replace-in-file": "^6.1.0",
+    "rimraf": "^3.0.2"
   }
 }
