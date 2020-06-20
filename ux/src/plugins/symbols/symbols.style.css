@@ -1,5 +1,13 @@
 .unicode-panel {
+  padding: 20px;
 }
+.unicode-panel h3 {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-bottom: solid 1px tomato;
+  margin-bottom: 5px;
+}
+
 .unicode-panel span {
   font-size: 14pt;
   display: inline-block;
