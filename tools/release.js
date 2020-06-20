@@ -54,7 +54,9 @@ const cmd = async (strCmd) => {
    * commit github io repo
    */
   try {
-    await cmd(`yarn build:${flags.bump}`);
+    await cmd(
+      `npm version ${flags.bump} && cd ux && npm version ${flags.bump} && yarn build`
+    );
     const { name, version } = require("../package.json");
     const APP_NAME = name;
     const GITHUB_IO_BASE = "../thantrik.github.io";
