@@ -4,7 +4,6 @@ import JsonEditorApp from "./json";
 import { JSON_PLUGIN_NAME } from "./json.constants";
 
 const mapStateToProps = (state: any) => {
-  console.log(state);
   //@ts-ignore
   return { app: state.app, ...state[JSON_PLUGIN_NAME] };
 };

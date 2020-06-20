@@ -11,7 +11,7 @@ if (
   initAppView(undefined, async () => {
     if (context?.isExtension) {
       await require("./app/app.styles.css");
-      if (context.isExtension) {
+      if (context.isExtension || context.isGithub) {
         window.document.body.classList.add("no-scroll");
         setJsonViewRoute();
       }

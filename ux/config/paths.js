@@ -67,6 +67,9 @@ module.exports = {
   devToolHtml: resolveApp("src/modules/devtools/devtools.html"),
   devToolsJs: resolveModule(resolveApp, "src/modules/devtools/index"),
 
+  devToolPageHtml: resolveApp("src/modules/devtools/page/page.html"),
+  devToolsPageJs: resolveModule(resolveApp, "src/modules/devtools/page/index"),
+
   settingsHtml: resolveApp("src/modules/settings/settings.html"),
   settingsJs: resolveModule(resolveApp, "src/modules/settings/index"),
 

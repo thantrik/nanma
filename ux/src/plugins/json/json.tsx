@@ -27,7 +27,6 @@ class JsonEditorApp extends React.Component<any, any> {
   };
   componentDidMount() {
     const self = this;
-    console.log("JSON", this.props);
     const setEditorValue = (editor: JSONEditor, value: any) => {
       if (!editor) return;
       if (!value) return;

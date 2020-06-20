@@ -174,6 +174,7 @@ module.exports = function (webpackEnv) {
       popup: paths.popupJs,
       settings: paths.settingsJs,
       devTools: paths.devToolsJs,
+      devToolsPage: paths.devToolsPageJs,
     },
     output: {
       // The build folder.

@@ -47,6 +47,11 @@ const getHtmlPlugins = (isEnvProduction) => [
     filename: "devtools.html",
   }),
   CreateHtmlWebpackPlugin({
+    template: paths.devToolPageHtml,
+    chunks: ["devToolsPage"],
+    filename: "devtools_page.html",
+  }),
+  CreateHtmlWebpackPlugin({
     template: paths.settingsHtml,
     chunks: ["settings"],
     filename: "settings.html",

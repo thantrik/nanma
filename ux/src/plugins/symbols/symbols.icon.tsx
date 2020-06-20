@@ -3,7 +3,7 @@ import { FontIcon, mergeStyles } from "@fluentui/react";
 
 const icon = (
   <FontIcon
-    iconName="code"
+    iconName="EmojiTabSymbols"
     className={mergeStyles({
       fontSize: 12,
       marginRight: 0,
