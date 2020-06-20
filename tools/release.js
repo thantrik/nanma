@@ -62,8 +62,10 @@ const cmd = async (strCmd) => {
     const GITHUB_IO_BASE = "../thantrik.github.io";
     const GITHUB_IO_NAME = `${GITHUB_IO_BASE}/${APP_NAME}`;
     const WORKING_DIR = cwd();
-    await cmd(`tar -czf releases/${version}.tar.gz ${version}`);
-    await cmd(`git add releases && git commit -m "Release ${version}"`);
+    // await cmd(`tar -czf releases/${version}.tar.gz ${version}`);
+    await cmd(
+      `git add releases ux package.json && git commit -m "Release ${version}"`
+    );
     // await cmd(`chrome.exe"--pack-extension=${path.resolve(__dirname, version)}`);
     await cmd(`git tag -a v${version} -m "Release ${version}"`);
     await cmd(`git push origin --tags`);
