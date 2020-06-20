@@ -67,8 +67,10 @@ const cmd = async (strCmd) => {
       `git add releases ux package.json && git commit -m "Release ${version}"`
     );
     // await cmd(`chrome.exe"--pack-extension=${path.resolve(__dirname, version)}`);
-    await cmd(`git tag -a v${version} -m "Release ${version}"`);
-    await cmd(`git push origin --tags`);
+    await cmd(
+      `git tag -a v${version} -m "Release ${version}" && git push origin --tags`
+    );
+
     //if (flags.publish)
     // await cmd(
     //   `npm publish --registry="https://registry.npmjs.org" --scope="@thantrik" --access public`
