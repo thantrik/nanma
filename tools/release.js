@@ -68,8 +68,9 @@ const cmd = async (strCmd) => {
     );
     // await cmd(`chrome.exe"--pack-extension=${path.resolve(__dirname, version)}`);
     // await cmd(
-    //   `git tag -a v${version} -m "Release ${version}" && git push origin --tags`
+    //   `git tag -a v${version} -m "Release ${version}"`
     // );
+    await cmd(`git push origin --tags`);
 
     //if (flags.publish)
     // await cmd(
