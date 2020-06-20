@@ -6,7 +6,7 @@ const args = require("args");
 args.option(
   "bump",
   "release version bump [<newversion> | major | minor | patch | premajor | preminor | prepatch | prerelease [--preid=<prerelease-id>] | from-git]",
-  3000
+  "patch"
 );
 
 let error, stdout, stderr;
