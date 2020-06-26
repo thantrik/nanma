@@ -1,7 +1,6 @@
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import JsonEditorApp from "./json";
-import { JSON_PLUGIN_NAME } from "./json.constants";
 
 const mapStateToProps = (state: any) => {
   //@ts-ignore

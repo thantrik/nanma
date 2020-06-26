@@ -1,7 +1,8 @@
 import React from "react";
 import JSONEditor from "jsoneditor";
-
+import { getSavedJsonRecords, saveJsonRecord } from "./json.actions";
 import "jsoneditor/dist/jsoneditor.min.css";
+import { JsonSnippetRecord } from "./json.types";
 
 class IEditorRef {
   constructor(
@@ -25,6 +26,12 @@ class JsonEditorApp extends React.Component<any, any> {
   createJsonEditorRef = (type: string) => (ele: HTMLDivElement) => {
     this.jsonEditor[type].element = ele;
   };
+  saveJson = (jsonString: string) =>
+    saveJsonRecord(
+      new JsonSnippetRecord({
+        data: jsonString,
+      })
+    );
   componentDidMount() {
     const self = this;
     const setEditorValue = (editor: JSONEditor, value: any) => {
@@ -46,6 +53,7 @@ class JsonEditorApp extends React.Component<any, any> {
           mode: "text",
           onChangeText: function (jsonString) {
             self.jsonEditor.tree.editor?.updateText(jsonString);
+            self.saveJson(jsonString);
           },
         }
       );
@@ -59,12 +67,14 @@ class JsonEditorApp extends React.Component<any, any> {
           mode: "tree",
           onChangeText: function (jsonString) {
             self.jsonEditor?.code?.editor?.updateText(jsonString);
+            self.saveJson(jsonString);
           },
         }
       );
       //@ts-ignore
       setEditorValue(self.jsonEditor.tree.editor, this.props.data);
     }
+    getSavedJsonRecords();
   }
   render() {
     return (
