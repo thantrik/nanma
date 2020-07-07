@@ -8,3 +8,4 @@ import "../plugins/my-web";
 import "../plugins/image-editor";
 import "../plugins/code";
 import "../plugins/symbols";
+import "../plugins/paste-bin";

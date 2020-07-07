@@ -1,0 +1,15 @@
+.tox.tox-tinymce
+  .tox-editor-container
+  .tox-editor-header
+  .tox-menubar
+  .tox-mbtn {
+  height: 22px;
+  font-size: 13px;
+}
+
+.tox.tox-tinymce
+  .tox-editor-container
+  .tox-editor-header
+  .tox-toolbar-overlord {
+  zoom: 0.8;
+}
