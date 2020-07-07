@@ -1,5 +1,6 @@
 import { default as MyWebService } from "../plugins/my-web/my-web.background";
 import { default as ScreenShotService } from "../plugins/screen-capture/screen-capture.services";
+import { default as JsonDataStoreService } from "../plugins/screen-capture/screen-capture.services";
 
 export interface IPluginService {
   name: string;
@@ -20,5 +21,6 @@ export const RegisterService = (service: IPluginService) => {
 };
 services.push(MyWebService);
 services.push(ScreenShotService);
+services.push(JsonDataStoreService);
 
 export const getRegisteredServices = () => services;

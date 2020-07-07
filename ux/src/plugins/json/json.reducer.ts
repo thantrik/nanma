@@ -1,7 +1,7 @@
 import { Reducer } from "redux";
 import { setJsonData, SetSavedJsonRecordsToState } from "./json.actions";
 import { createReducer } from "@reduxjs/toolkit";
-import { IState, IJsonStoredRecord } from "./json.types";
+import { IState } from "./json.types";
 
 const initialState: IState = {
   data: "{}",

@@ -3,6 +3,7 @@ declare global {
     initializeView: () => void;
     __REDUX_DEVTOOLS_EXTENSION__: Function;
     ___DATA: any;
+    NANMA_EXTENSION_ID: string;
   }
 }
 

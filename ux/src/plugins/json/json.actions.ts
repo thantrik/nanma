@@ -13,6 +13,7 @@ import {
   JSON_SET_RECORDS,
 } from "./json.constants";
 import { JsonViewStore } from "./json.modal";
+import context from "../../app/context";
 
 export const setJsonData = createAction(
   JSON_SET_DATA,
@@ -21,8 +22,10 @@ export const setJsonData = createAction(
   })
 );
 
-export const getSavedJsonRecords = () =>
-  chrome.runtime.sendMessage(
+export const getSavedJsonRecords = () => {
+  console.log(context.getId());
+  chrome.runtime?.sendMessage(
+    context.getId(),
     {
       name: JSON_PLUGIN_NAME,
       method: METHOD_GET_ALL_JSON_RECORDS,
@@ -32,6 +35,7 @@ export const getSavedJsonRecords = () =>
       setSavedJsonRecords(response);
     }
   );
+};
 
 export const setSavedJsonRecords = (records: IJsonStoredRecord[]) => {
   store.dispatch(SetSavedJsonRecordsToState(records));
@@ -44,7 +48,7 @@ export const SetSavedJsonRecordsToState = createAction(
   })
 );
 
-export const saveJsonData = (record: IJsonStoredRecord) => {
+export const saveJsonRecord = (record: IJsonStoredRecord) => {
   JsonViewStore.save(record);
   getSavedJsonRecords();
 };
