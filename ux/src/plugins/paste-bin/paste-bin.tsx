@@ -3,7 +3,7 @@ import moment from "moment";
 import { debounce } from "lodash";
 import DocumentEditor from "./components/editor";
 import { IDocument, DocumentId, DocumentType } from "./paste-bin.types";
-import { DocumentList } from "./components/list";
+import { DocumentList } from "./components/list/index";
 
 const documents: IDocument[] = [
   {
@@ -111,6 +111,18 @@ class PasteBinEditorApp extends React.Component<any, any> {
       >
         <div
           style={{
+            width: 200,
+            minHeight: "100vh",
+            zoom: 0.8,
+            background: "linear-gradient(180deg, white, #EFEFFE)",
+            wordWrap: "break-word",
+          }}
+        >
+          <DocumentList></DocumentList>
+          <DocumentTitle onChange={this.onTitleChange}></DocumentTitle>
+        </div>
+        <div
+          style={{
             width: "calc(100vw - 202px)",
             minHeight: "100vh",
             outline: "none",
@@ -120,17 +132,6 @@ class PasteBinEditorApp extends React.Component<any, any> {
             onUpdate={this.dataUpdate}
             {...this.state.activeDocument}
           ></DocumentEditor>
-        </div>
-        <div
-          style={{
-            width: 200,
-            minHeight: "100vh",
-            background:
-              "linear-gradient(180deg, rgb(0, 58, 115), rgb(0, 137, 222), rgb(255, 255, 255))",
-          }}
-        >
-          <DocumentList></DocumentList>
-          <DocumentTitle onChange={this.onTitleChange}></DocumentTitle>
         </div>
       </div>
     );

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { getPlugins } from "../../../app";
-import { DefaultButton, Stack, IStackTokens } from "office-ui-fabric-react";
+import { DefaultButton } from "office-ui-fabric-react";
 import { AssessmentGroupIcon } from "@fluentui/react-icons";
 //import { push } from "connected-react-router";
 
@@ -14,7 +14,7 @@ export interface IButtonExampleProps {
 }
 
 // Example formatting
-const stackTokens: IStackTokens = { childrenGap: 3 };
+//const stackTokens: IStackTokens = { childrenGap: 3 };
 
 export class ApplicationNavMenu extends React.Component<any, any> {
   instanceMenu: HTMLDivElement | null;
@@ -53,47 +53,45 @@ export class ApplicationNavMenu extends React.Component<any, any> {
           width: "100vw",
         }}
       >
-        <Stack tokens={stackTokens} horizontal>
-          {plugins
-            .filter((plugin) => plugin.name !== "dashboard" && plugin.route)
-            .map((plugin) => (
-              <Link key={plugin.name} to={plugin.route?.path as string}>
-                <DefaultButton
-                  disabled={disabled}
-                  checked={checked}
-                  styles={{
-                    root: {
-                      textAlign: "left",
-                      boxSizing: "border-box",
-                      maxWidth: 150,
-                      border: 0,
-                      fontSize: 10,
-                      borderRadius: 0,
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    },
-                    rootHovered: {
-                      backgroundColor: "#D5FAFF",
-                    },
-                    labelHovered: {
-                      textDecoration: "none",
-                    },
-                    iconHovered: {},
-                  }}
-                  onRenderIcon={() =>
-                    plugin.icon || (
-                      <AssessmentGroupIcon
-                        style={{ width: 16, height: 16 }}
-                      ></AssessmentGroupIcon>
-                    )
-                  }
-                >
-                  {plugin.name.toUpperCase()}
-                </DefaultButton>
-              </Link>
-            ))}
-        </Stack>
+        {plugins
+          .filter((plugin) => plugin.name !== "dashboard" && plugin.route)
+          .map((plugin) => (
+            <Link key={plugin.name} to={plugin.route?.path as string}>
+              <DefaultButton
+                disabled={disabled}
+                checked={checked}
+                styles={{
+                  root: {
+                    textAlign: "left",
+                    boxSizing: "border-box",
+                    maxWidth: 150,
+                    border: 0,
+                    fontSize: 10,
+                    borderRadius: 0,
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  },
+                  rootHovered: {
+                    backgroundColor: "#D5FAFF",
+                  },
+                  labelHovered: {
+                    textDecoration: "none",
+                  },
+                  iconHovered: {},
+                }}
+                onRenderIcon={() =>
+                  plugin.icon || (
+                    <AssessmentGroupIcon
+                      style={{ width: 16, height: 16 }}
+                    ></AssessmentGroupIcon>
+                  )
+                }
+              >
+                {plugin.name.toUpperCase()}
+              </DefaultButton>
+            </Link>
+          ))}
       </div>
     );
   }
