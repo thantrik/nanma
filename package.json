@@ -18,8 +18,6 @@
   "author": "Krishna Kumar",
   "license": "MIT",
   "dependencies": {
-    "@tinymce/tinymce-react": "^3.6.0",
-    "@types/tinymce": "^4.5.24",
     "args": "^5.0.1",
     "camelcase": "^6.0.0",
     "chalk": "^4.1.0",
@@ -27,7 +25,6 @@
     "gsap": "^3.3.1",
     "pwd-fs": "^1.2.13",
     "replace-in-file": "^6.1.0",
-    "rimraf": "^3.0.2",
-    "tinymce": "^5.4.0"
+    "rimraf": "^3.0.2"
   }
 }

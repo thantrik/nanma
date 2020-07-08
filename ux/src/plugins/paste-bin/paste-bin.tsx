@@ -3,6 +3,7 @@ import moment from "moment";
 import { debounce } from "lodash";
 import DocumentEditor from "./components/editor";
 import { IDocument, DocumentId, DocumentType } from "./paste-bin.types";
+import { DocumentList } from "./components/list";
 
 const documents: IDocument[] = [
   {
@@ -128,6 +129,7 @@ class PasteBinEditorApp extends React.Component<any, any> {
               "linear-gradient(180deg, rgb(0, 58, 115), rgb(0, 137, 222), rgb(255, 255, 255))",
           }}
         >
+          <DocumentList></DocumentList>
           <DocumentTitle onChange={this.onTitleChange}></DocumentTitle>
         </div>
       </div>
