@@ -111,7 +111,7 @@ class PasteBinEditorApp extends React.Component<any, any> {
       >
         <div
           style={{
-            width: 200,
+            width: "15%",
             minHeight: "100vh",
             zoom: 0.8,
             background: "linear-gradient(180deg, white, #EFEFFE)",
@@ -123,7 +123,7 @@ class PasteBinEditorApp extends React.Component<any, any> {
         </div>
         <div
           style={{
-            width: "calc(100vw - 202px)",
+            width: "85%",
             minHeight: "100vh",
             outline: "none",
           }}

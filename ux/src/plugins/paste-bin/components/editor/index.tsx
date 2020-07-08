@@ -39,7 +39,7 @@ class DocumentEditor extends React.Component<DocumentEditor, any> {
         alignleft aligncenter alignright alignjustify | 
         outdent indent | link image | code | print | save`,
           fullpage_default_doctype: "<!DOCTYPE html>",
-          fullpage_default_font_size: "12pt",
+          fullpage_default_font_size: "10pt",
           fullpage_default_font_family: "Fira Code",
           fullpage_default_title: this.props.meta.title || "Untitled",
           block_formats:
