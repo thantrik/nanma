@@ -41,7 +41,7 @@ class DocumentEditor extends React.Component<DocumentEditor, any> {
           fullpage_default_doctype: "<!DOCTYPE html>",
           fullpage_default_font_size: "10pt",
           fullpage_default_font_family: "Fira Code",
-          fullpage_default_title: this.props.meta.title || "Untitled",
+          fullpage_default_title: this.props?.meta?.title || "Untitled",
           block_formats:
             "Paragraph=span; Heading 1=h1; Heading 2=h2; Heading 3=h3; Heading 4=h4; Heading 5=h5; Heading 6=h6; Preformatted=pre",
           //   fontsize_formats:

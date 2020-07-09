@@ -26,3 +26,14 @@ export interface IDocument {
 export interface IState {
   data: IDocument[];
 }
+
+export interface IUpdateDocument {
+  title: string;
+  content?: string;
+}
+
+export interface IDocumentStore {
+  save: (updated: IUpdateDocument, old: IDocument) => Promise<IDocument>;
+  getAll: () => Promise<IDocument[]>;
+  get: (id: string) => Promise<IDocument>;
+}
