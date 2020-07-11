@@ -14,7 +14,7 @@ let storage: IAsyncStorage; // = new AsyncIndexDBStorage(config);
 const documentStore: IDocumentStore = {
   save: async (updated: IUpdateDocument, old: IDocument) => {
     console.log("Save", updated, old);
-    if (old?.id) {
+    if (old?._rev) {
       console.log("Update");
       return ((await storage.setItem(old.id, {
         ...old,

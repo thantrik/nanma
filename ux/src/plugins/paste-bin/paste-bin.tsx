@@ -1,7 +1,7 @@
 import React, { createRef } from "react";
 import { debounce } from "lodash";
 import DocumentEditor from "./components/editor";
-import { IDocument, DocumentId } from "./paste-bin.types";
+import { IDocument, DocumentId, Document } from "./paste-bin.types";
 import { DocumentList } from "./components/list/index";
 import { toDayString } from "../../lib/toDayString";
 import { documentStore } from "./model/document";
@@ -12,16 +12,26 @@ interface PasteBinEditorState {
   activeDocument: IDocument;
   root: DocumentId;
 }
-class PasteBinEditorApp extends React.Component<any, any> {
+class PasteBinEditorApp extends React.Component<
+  any,
+  {
+    documents: Map<DocumentId, IDocument>;
+    activeDocument: IDocument;
+    root: IDocument;
+  }
+> {
   content = createRef<HTMLDivElement>();
   titleInput = createRef<HTMLInputElement>();
 
   constructor(props: any) {
     super(props);
+    const newDocument = new Document();
     this.state = {
-      documents: new Map<DocumentId, IDocument>(),
-      activeDocument: undefined,
-      root: undefined,
+      documents: new Map<DocumentId, IDocument>([
+        [newDocument.id, newDocument],
+      ]),
+      activeDocument: newDocument,
+      root: newDocument,
     };
   }
 
@@ -36,13 +46,13 @@ class PasteBinEditorApp extends React.Component<any, any> {
       console.log("document", documents);
       documents.forEach((document: IDocument) => {
         newMap.set(document.id, document);
-        if (activeDocument?.id === document.id && (document as any)._rev) {
-          activeDocument._rev = (document as any)._rev;
+        if (activeDocument?.id === document.id && document._rev) {
+          activeDocument._rev = document._rev;
         }
       });
       this.setState({
         documents: newMap,
-        activeDocument: activeDocument || documents[0],
+        activeDocument: (activeDocument._rev && activeDocument) || documents[0],
         root: documents[0],
       });
     } catch (err) {
@@ -74,6 +84,7 @@ class PasteBinEditorApp extends React.Component<any, any> {
     );
   }, 600);
   render() {
+    const { meta: { title = toDayString() } = {} } = this.state.activeDocument;
     return (
       <div
         style={{
@@ -96,7 +107,10 @@ class PasteBinEditorApp extends React.Component<any, any> {
           }}
         >
           <DocumentList></DocumentList>
-          <DocumentTitle onChange={this.onTitleChange}></DocumentTitle>
+          <DocumentTitle
+            onChange={this.onTitleChange}
+            defaultValue={title}
+          ></DocumentTitle>
         </div>
         <div
           style={{
@@ -107,6 +121,7 @@ class PasteBinEditorApp extends React.Component<any, any> {
         >
           <DocumentEditor
             onUpdate={this.delayedDataUpdate}
+            onSave={this.dataUpdate}
             {...this.state.activeDocument}
           ></DocumentEditor>
         </div>
