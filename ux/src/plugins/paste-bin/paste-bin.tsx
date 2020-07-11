@@ -32,12 +32,17 @@ class PasteBinEditorApp extends React.Component<any, any> {
     const newMap = new Map<DocumentId, IDocument>();
     try {
       const documents = await documentStore.getAll();
-      documents.forEach((document: IDocument) =>
-        newMap.set(document.id, document)
-      );
+      let activeDocument = this.state.activeDocument;
+      console.log("document", documents);
+      documents.forEach((document: IDocument) => {
+        newMap.set(document.id, document);
+        if (activeDocument?.id === document.id && (document as any)._rev) {
+          activeDocument._rev = (document as any)._rev;
+        }
+      });
       this.setState({
         documents: newMap,
-        activeDocument: this.state.activeDocument || documents[0],
+        activeDocument: activeDocument || documents[0],
         root: documents[0],
       });
     } catch (err) {
@@ -52,9 +57,14 @@ class PasteBinEditorApp extends React.Component<any, any> {
     if (!this.titleInput.current?.value) {
       this.titleInput.current && (this.titleInput.current.value = title);
     }
-    await documentStore.save({ title, content }, this.state.activeDocument);
-    this.getAllDocuments();
+    try {
+      await documentStore.save({ title, content }, this.state.activeDocument);
+    } catch (err) {
+      console.log("Error on updating", err);
+    }
+    await this.getAllDocuments();
   };
+  delayedDataUpdate = debounce(this.dataUpdate, 2500, { maxWait: 2000 });
   onTitleChange = debounce(async (title: string) => {
     await documentStore.save(
       {
@@ -96,7 +106,7 @@ class PasteBinEditorApp extends React.Component<any, any> {
           }}
         >
           <DocumentEditor
-            onUpdate={this.dataUpdate}
+            onUpdate={this.delayedDataUpdate}
             {...this.state.activeDocument}
           ></DocumentEditor>
         </div>

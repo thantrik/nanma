@@ -17,16 +17,16 @@ const documentStore: IDocumentStore = {
     if (old?.id) {
       console.log("Update");
       return ((await storage.setItem(old.id, {
-        ...updated,
         ...old,
+        ...updated,
       })) as unknown) as IDocument;
     }
 
     const id = v4();
     console.log("SaInsert", id);
     return ((await storage.addItem({
-      ...updated,
       ...old,
+      ...updated,
       id,
     })) as unknown) as IDocument;
   },
@@ -39,6 +39,7 @@ const documentStore: IDocumentStore = {
         return document;
       }
     );
+    console.log(records);
     return records;
   },
   get: async (id: string) => {

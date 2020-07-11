@@ -12,7 +12,7 @@ export class AsyncIndexDBStorage implements IAsyncStorage {
     item: object | string
   ): Promise<PouchDB.Core.Response> =>
     this.db.put(
-      typeof item === "object" && !(item as any)._id
+      typeof item === "object"
         ? {
             _id,
             ...item,
