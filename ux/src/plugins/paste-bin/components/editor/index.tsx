@@ -15,35 +15,43 @@ interface DocumentEditor extends IDocument {
 
 class DocumentEditor extends React.Component<DocumentEditor, any> {
   content: string = "";
+
   handleEditorChange = (content: any, editor: any) => {
     this.content = content as string;
     this.props.onUpdate && this.props.onUpdate(this.content);
   };
 
+  componentDidCatch(error: any, errorInfo: any) {
+    console.log(error, errorInfo);
+  }
+
   render() {
+    const { content = "", meta: { title = "Untitled" } = {} } = this.props;
     return (
       <Editor
         apiKey="aemfbajq4pdf7ts4y3ncw8frkl9zvl7qxtc0pi3ypdcadiau"
+        initialValue={atob(content)}
+        plugins={`advlist | anchor | autolink | autosave | bbcode | 
+        charmap | code | codesample | colorpicker | contextmenu | directionality | 
+      emoticons | fullpage | fullscreen | help | hr | image | imagetools | importcss | 
+      insertdatetime | legacyoutput | link | lists | media | nonbreaking | noneditable | 
+      pagebreak | paste | preview | print | quickbars | save | searchreplace | spellchecker | 
+      tabfocus | table | template | textcolor | textpattern | toc | visualblocks | visualchars | wordcount`}
+        toolbar={`undo redo | fontselect | fontsizeselect | forecolor | bold italic strike | 
+        alignleft aligncenter alignright alignjustify | 
+        outdent indent | link image | code | print | save`}
         init={{
+          element_format: "html",
           height: "100%",
           menubar: true,
           inline: false,
           fullpage: "fullPage",
-          plugins: `advlist | anchor | autolink | autosave | bbcode | 
-          charmap | code | codesample | colorpicker | contextmenu | directionality | 
-        emoticons | fullpage | fullscreen | help | hr | image | imagetools | importcss | 
-        insertdatetime | legacyoutput | link | lists | media | nonbreaking | noneditable | 
-        pagebreak | paste | preview | print | quickbars | save | searchreplace | spellchecker | 
-        tabfocus | table | template | textcolor | textpattern | toc | visualblocks | visualchars | wordcount`,
-          toolbar: `undo redo | fontselect | fontsizeselect | forecolor | bold italic strike | 
-        alignleft aligncenter alignright alignjustify | 
-        outdent indent | link image | code | print | save`,
           fullpage_default_doctype: "<!DOCTYPE html>",
           fullpage_default_font_size: "10pt",
           fullpage_default_font_family: "Fira Code",
-          fullpage_default_title: this.props?.meta?.title || "Untitled",
-          block_formats:
-            "Paragraph=span; Heading 1=h1; Heading 2=h2; Heading 3=h3; Heading 4=h4; Heading 5=h5; Heading 6=h6; Preformatted=pre",
+          fullpage_default_title: title || "Untitled",
+          // block_formats:
+          //   "Paragraph=span; Heading 1=h1; Heading 2=h2; Heading 3=h3; Heading 4=h4; Heading 5=h5; Heading 6=h6; Preformatted=pre",
           //   fontsize_formats:
           //     "6pt 8pt 10pt 11pt 12pt 14pt 16pt 18pt 22pt 24pt 30pt 36pt 48pt",
           font_formats: `FiraCode=Fira Code;Andale Mono=andale mono,times; Arial=arial,helvetica,sans-serif; Arial Black=arial black,avant garde; Book Antiqua=book antiqua,palatino; Comic Sans MS=comic sans ms,sans-serif; Courier New=courier new,courier; Georgia=georgia,palatino; Helvetica=helvetica; Impact=impact,chicago; Symbol=symbol; Tahoma=tahoma,arial,helvetica,sans-serif; Terminal=terminal,monaco; Times New Roman=times new roman,times; Trebuchet MS=trebuchet ms,geneva; Verdana=verdana,geneva; Webdings=webdings; Wingdings=wingdings,zapf dingbats`,

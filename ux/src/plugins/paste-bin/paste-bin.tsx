@@ -33,7 +33,7 @@ class PasteBinEditorApp extends React.Component<any, any> {
     try {
       const documents = await documentStore.getAll();
       documents.forEach((document: IDocument) =>
-        newMap.set(document.meta.id, document)
+        newMap.set(document.id, document)
       );
       this.setState({
         documents: newMap,

@@ -7,7 +7,6 @@ export enum DocumentType {
 
 export type DocumentId = string;
 export interface DocumentMeta {
-  id: DocumentId;
   created: Date;
   updated: Date;
   title: string;
@@ -18,6 +17,7 @@ export interface IDocumentLink {
   children: Map<DocumentId, IDocument>;
 }
 export interface IDocument {
+  id: DocumentId;
   meta: DocumentMeta;
   content: string;
   link: IDocumentLink;
