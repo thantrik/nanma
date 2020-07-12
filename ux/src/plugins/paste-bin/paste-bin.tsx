@@ -11,16 +11,9 @@ import { toDayString } from "../../lib/toDayString";
 interface PasteBinEditorState {
   documents: Map<DocumentId, Document>;
   activeDocument: Document;
-  root: DocumentId;
+  root: Document;
 }
-class PasteBinEditorApp extends React.Component<
-  any,
-  {
-    documents: Map<DocumentId, Document>;
-    activeDocument: Document;
-    root: Document;
-  }
-> {
+class PasteBinEditorApp extends React.Component<any, PasteBinEditorState> {
   content = createRef<HTMLDivElement>();
   titleInput = createRef<HTMLInputElement>();
 
@@ -34,10 +27,11 @@ class PasteBinEditorApp extends React.Component<
       activeDocument: newDocument,
       root: newDocument,
     };
+    this.setState.bind(this);
   }
 
   componentDidMount() {
-    this.getAllDocuments();
+    setTimeout(() => this.getAllDocuments(), 0);
   }
   getAllDocuments = async () => {
     const newMap = new Map<DocumentId, IDocument>();
@@ -63,19 +57,18 @@ class PasteBinEditorApp extends React.Component<
   };
   dataUpdate = async (content: string) => {
     content = btoa(content);
-    const title = this.content.current?.innerText
-      ? this.content.current?.innerText.trimStart().substring(0, 30).trim()
-      : toDayString();
-    if (!this.titleInput.current?.value) {
-      this.titleInput.current && (this.titleInput.current.value = title);
-    }
+
     try {
-      await documentStore.save({ title, content }, this.state.activeDocument);
+      await documentStore.save(
+        { title: this.getTitle(), content },
+        this.state.activeDocument
+      );
     } catch (err) {
       console.log("Error on updating", err);
     }
     await this.getAllDocuments();
   };
+
   delayedDataUpdate = debounce(this.dataUpdate, 2500, { maxWait: 2000 });
   onTitleChange = debounce(async (title: string) => {
     await documentStore.save(
@@ -85,6 +78,15 @@ class PasteBinEditorApp extends React.Component<
       this.state.activeDocument
     );
   }, 600);
+  getTitle = (): string => {
+    const title = this.content.current?.innerText
+      ? this.content.current?.innerText.trimStart().substring(0, 30).trim()
+      : toDayString();
+    if (!this.titleInput.current?.value) {
+      this.titleInput.current && (this.titleInput.current.value = title);
+    }
+    return title;
+  };
   render() {
     const { meta: { title = toDayString() } = {} } =
       this.state.activeDocument || {};
@@ -107,6 +109,8 @@ class PasteBinEditorApp extends React.Component<
             zoom: 0.8,
             background: "linear-gradient(180deg, white, #EFEFFE)",
             wordWrap: "break-word",
+            overflow: "hidden",
+            overflowY: "auto",
           }}
         >
           <DocumentList documents={this.state.documents}></DocumentList>
@@ -115,6 +119,15 @@ class PasteBinEditorApp extends React.Component<
             defaultValue={title}
           ></DocumentTitle>
         </div>
+        <div
+          style={{
+            width: 2,
+            minHeight: "100vh",
+            background: "#EFEFEF",
+            cursor: "col-resize",
+            overflow: "hidden",
+          }}
+        ></div>
         <div
           style={{
             width: "85%",
