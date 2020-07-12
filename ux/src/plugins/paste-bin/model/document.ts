@@ -1,13 +1,13 @@
+import { AsyncIndexDBStorage, IAsyncStorage } from "../../../cache";
 import {
+  Document,
   IDocument,
-  // DocumentId,
-  // DocumentType,
   IDocumentStore,
   IUpdateDocument,
 } from "../paste-bin.types";
-import { v4 } from "uuid";
-import { AsyncIndexDBStorage, IAsyncStorage } from "../../../cache";
+
 import { PASTE_BIN_PLUGIN_NAME } from "../paste-bin.constants";
+import { v4 } from "uuid";
 
 let storage: IAsyncStorage; // = new AsyncIndexDBStorage(config);
 
@@ -35,7 +35,7 @@ const documentStore: IDocumentStore = {
     const result = await storage.getAll();
     const records = result.rows.map(
       (row): IDocument => {
-        const document = row.doc as IDocument;
+        const document = new Document(row.doc as Document);
         return document;
       }
     );

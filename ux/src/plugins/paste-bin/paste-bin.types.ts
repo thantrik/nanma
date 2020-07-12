@@ -22,6 +22,11 @@ export enum Flag {
   contact = "contact",
   pin = "pin",
   pink = "pink",
+  favorite = "favorite",
+  recycleBin = "recycle bin",
+  settings = "settings",
+  diamond = "diamond",
+  important = "important",
 }
 
 export type DocumentId = string;

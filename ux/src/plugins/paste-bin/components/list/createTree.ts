@@ -1,12 +1,6 @@
 import { Document, DocumentId, DocumentType } from "../../paste-bin.types";
 
-import IconDocument from "../../../../assets/document_48px.png";
-import IconFavorite from "../../../../assets/star_filled_48px.png";
-import IconFile from "../../../../assets/document_48px.png";
-import IconFolder from "../../../../assets/folder_48.png";
-import IconOpenFolder from "../../../../assets/opened_folder_48.png";
-import IconRecycle from "../../../../assets/recycle_bin_48px.png";
-import IconSettings from "../../../../assets/gears_48px.png";
+import { getIcon } from "./getIcon";
 
 interface TreeNodeType {
   icon: string;
@@ -19,7 +13,7 @@ const createTreeNode = (
   expanded?: boolean
 ): TreeNodeType => {
   return {
-    icon: document.link.type === DocumentType.file ? IconFile : IconFolder,
+    icon: getIcon(document.link.type),
     label: document.meta.title,
     expanded: !!expanded,
     items: [] as TreeNodeType[],
@@ -40,7 +34,7 @@ const isChildNode = (doc: Document, docs: DocumentMap) => {
 
 export const createTreeSource = (documents?: DocumentMap) => {
   const root = {
-    icon: IconFolder,
+    icon: getIcon(DocumentType.folder),
     label: "Documents",
     expanded: true,
     items: [] as TreeNodeType[],
