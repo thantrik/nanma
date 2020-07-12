@@ -13,9 +13,9 @@ let storage: IAsyncStorage; // = new AsyncIndexDBStorage(config);
 
 const documentStore: IDocumentStore = {
   save: async (updated: IUpdateDocument, old: IDocument) => {
-    console.log("Save", updated, old);
+    console.log("%cSave", "color: teal", updated, old);
     if (old?._rev) {
-      console.log("Update");
+      console.log("%cDocument Update", "color: green");
       return ((await storage.setItem(old.id, {
         ...old,
         ...updated,
@@ -23,7 +23,7 @@ const documentStore: IDocumentStore = {
     }
 
     const id = v4();
-    console.log("SaInsert", id);
+    console.log("%cDocument Insert", "color: orange", id);
     return ((await storage.addItem({
       ...old,
       ...updated,
@@ -45,6 +45,16 @@ const documentStore: IDocumentStore = {
   get: async (id: string) => {
     storage = new AsyncIndexDBStorage(PASTE_BIN_PLUGIN_NAME);
     const result = await storage.getItem(id);
+    return (result as unknown) as IDocument;
+  },
+  recycleBin: async (id: string) => {
+    storage = new AsyncIndexDBStorage(PASTE_BIN_PLUGIN_NAME);
+    const result = await storage.recycleBin(id);
+    return (result as unknown) as IDocument;
+  },
+  remove: async (id: string) => {
+    storage = new AsyncIndexDBStorage(PASTE_BIN_PLUGIN_NAME);
+    const result = await storage.removeItem(id);
     return (result as unknown) as IDocument;
   },
 } as IDocumentStore;

@@ -23,6 +23,12 @@ export class AsyncIndexDBStorage implements IAsyncStorage {
   addItem = (item: object | string) => this.setItem(v4(), item);
   removeItem = (id: string): Promise<PouchDB.Core.Response> =>
     this.db.get(id).then(this.db.remove);
+  recycleBin = (id: string): Promise<PouchDB.Core.Response> =>
+    this.db
+      .get(id)
+      .then((doc) =>
+        this.db.put({ ...doc, is_deleted: true, deleted: Date.now() })
+      );
   getAll = () =>
     this.db.allDocs({
       include_docs: true,

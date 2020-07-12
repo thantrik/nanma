@@ -1,5 +1,6 @@
 import * as React from "react";
 import JqxMenu from "jqwidgets-scripts/jqwidgets-react-tsx/jqxmenu";
+import { FontIcon, mergeStyles } from "@fluentui/react";
 
 import JqxTree, {
   ITreeProps,
@@ -74,8 +75,29 @@ class DocumentList extends React.PureComponent<{}, ITreeProps> {
       { icon: Favorite, label: "Favorites" },
     ];
 
+    const listIconStyles = mergeStyles({
+      marginRight: 0,
+      fontWeight: "bold",
+      cursor: "pointer",
+    });
     return (
       <>
+        <div
+          style={{
+            zoom: 1.3,
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-around",
+            minHeight: 30,
+            padding: 5,
+          }}
+        >
+          <FontIcon iconName="Delete" className={listIconStyles} />
+          <FontIcon iconName="Subscribe" className={listIconStyles} />
+          <FontIcon iconName="DownloadDocument" className={listIconStyles} />
+          <FontIcon iconName="NewFolder" className={listIconStyles} />
+          <FontIcon iconName="AddNotes" className={listIconStyles} />
+        </div>
         <JqxTree
           ref={this.myTree}
           width={this.state.width}
@@ -87,13 +109,20 @@ class DocumentList extends React.PureComponent<{}, ITreeProps> {
           ref={this.myMenu}
           onItemclick={this.myMenuOnItemClick}
           width={120}
-          height={56}
           autoOpenPopup={false}
           mode={"popup"}
+          style={{
+            fontSize: 9,
+          }}
         >
           <ul>
-            <li>Add Item</li>
-            <li>Remove Item</li>
+            <li>New File</li>
+            <li>Flag</li>
+            <li>Tag</li>
+            <li>Star</li>
+            <li>New Folder</li>
+            <li>Rename</li>
+            <li>Remove</li>
           </ul>
         </JqxMenu>
       </>
@@ -103,13 +132,43 @@ class DocumentList extends React.PureComponent<{}, ITreeProps> {
     const item = event.args.innerText;
     let selectedItem = null;
     switch (item) {
-      case "Add Item":
+      case "New File":
         selectedItem = this.myTree.current!.getSelectedItem();
         if (selectedItem != null) {
           this.myTree.current!.addTo({ label: "Item" }, selectedItem.element);
         }
         break;
-      case "Remove Item":
+      case "New Folder":
+        selectedItem = this.myTree.current!.getSelectedItem();
+        if (selectedItem != null) {
+          this.myTree.current!.addTo({ label: "Item" }, selectedItem.element);
+        }
+        break;
+      case "Rename":
+        selectedItem = this.myTree.current!.getSelectedItem();
+        if (selectedItem != null) {
+          this.myTree.current!.addTo({ label: "Item" }, selectedItem.element);
+        }
+        break;
+      case "Flag":
+        selectedItem = this.myTree.current!.getSelectedItem();
+        if (selectedItem != null) {
+          this.myTree.current!.addTo({ label: "Item" }, selectedItem.element);
+        }
+        break;
+      case "Tag":
+        selectedItem = this.myTree.current!.getSelectedItem();
+        if (selectedItem != null) {
+          this.myTree.current!.addTo({ label: "Item" }, selectedItem.element);
+        }
+        break;
+      case "Star":
+        selectedItem = this.myTree.current!.getSelectedItem();
+        if (selectedItem != null) {
+          this.myTree.current!.addTo({ label: "Item" }, selectedItem.element);
+        }
+        break;
+      case "Delete":
         selectedItem = this.myTree.current!.getSelectedItem();
         if (selectedItem != null) {
           this.myTree.current!.removeItem(selectedItem.element);

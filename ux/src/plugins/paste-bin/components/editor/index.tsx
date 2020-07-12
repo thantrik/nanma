@@ -1,7 +1,7 @@
 import React from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import { Document } from "../../paste-bin.types";
-
+import { wordArt } from "./format";
 import "./custom.style.css";
 
 // import "tinymce/tinymce";
@@ -100,7 +100,9 @@ const format_style = {
     ".italic { font-style: italic; } " +
     ".underline { text-decoration: underline; } " +
     ".example1 {} " +
-    ".tablerow1 { background-color: #D3D3D3; }",
+    ".tablerow1 { background-color: #D3D3D3; }" +
+    `.word-art-flame { ${wordArt.Flame} }`,
+
   formats: {
     alignleft: {
       selector: "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img",
@@ -128,6 +130,11 @@ const format_style = {
       attributes: { title: "My custom format" },
       classes: "example1",
     },
+    wordArtFlame: {
+      inline: "div",
+      attributes: { title: "Flame" },
+      classes: "word-art-flame",
+    },
   },
   style_formats: [
     { title: "Custom format1", format: "customformat" },
@@ -136,6 +143,8 @@ const format_style = {
     { title: "Align right", format: "alignright" },
     { title: "Align full", format: "alignfull" },
     { title: "Bold text", inline: "strong" },
+    { title: "Word Art" },
+    { title: "Flame", format: "wordArtFlame" },
     {
       title: "Red text",
       inline: "span",
@@ -158,17 +167,17 @@ const format_style = {
         color: "#2276d2",
       },
     },
-    { title: "Table row 1", selector: "tr", classes: "tablerow1" },
-    { title: "Image formats" },
-    {
-      title: "Image Left",
-      selector: "img",
-      styles: { float: "left", margin: "0 10px 0 10px" },
-    },
-    {
-      title: "Image Right",
-      selector: "img",
-      styles: { float: "right", margin: "0 0 10px 10px" },
-    },
+    // { title: "Table row 1", selector: "tr", classes: "tablerow1" },
+    // { title: "Image formats" },
+    // {
+    //   title: "Image Left",
+    //   selector: "img",
+    //   styles: { float: "left", margin: "0 10px 0 10px" },
+    // },
+    // {
+    //   title: "Image Right",
+    //   selector: "img",
+    //   styles: { float: "right", margin: "0 0 10px 10px" },
+    // },
   ],
 };

@@ -26,6 +26,8 @@ export interface IDocument {
   meta: DocumentMeta;
   content: string;
   link: IDocumentLink;
+  deleted: Date | undefined;
+  is_deleted: boolean;
 }
 
 export interface IState {
@@ -43,6 +45,8 @@ export class Document implements IDocument {
   public meta: DocumentMeta;
   public content: string;
   public link: IDocumentLink;
+  public is_deleted: boolean = false;
+  public deleted: Date | undefined = undefined;
   constructor(doc?: Partial<IDocument>) {
     this.id = doc?.id || v4();
     this._rev = doc?._rev || "";
