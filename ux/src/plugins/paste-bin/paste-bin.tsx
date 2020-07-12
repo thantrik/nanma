@@ -53,7 +53,8 @@ class PasteBinEditorApp extends React.Component<
       });
       this.setState({
         documents: newMap,
-        activeDocument: (activeDocument._rev && activeDocument) || documents[0],
+        activeDocument:
+          activeDocument && activeDocument._rev ? activeDocument : documents[0],
         root: documents[0],
       });
     } catch (err) {
@@ -85,7 +86,8 @@ class PasteBinEditorApp extends React.Component<
     );
   }, 600);
   render() {
-    const { meta: { title = toDayString() } = {} } = this.state.activeDocument;
+    const { meta: { title = toDayString() } = {} } =
+      this.state.activeDocument || {};
     return (
       <div
         style={{

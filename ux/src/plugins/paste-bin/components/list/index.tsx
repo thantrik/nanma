@@ -8,14 +8,21 @@ import { FontIcon, mergeStyles } from "@fluentui/react";
 import JqxTree, {
   ITreeProps,
 } from "jqwidgets-scripts/jqwidgets-react-tsx/jqxtree";
+import { TreeNodeType, createTreeSource } from "./createTree";
 
 import JqxMenu from "jqwidgets-scripts/jqwidgets-react-tsx/jqxmenu";
-import { createTreeSource } from "./createTree";
 
-interface IDocumentListProps {
+interface IDocumentListProps extends ITreeProps {
   documents: Map<DocumentId, Document>;
 }
-class DocumentList extends React.PureComponent<IDocumentListProps, ITreeProps> {
+interface IDocumentListState {
+  width: string;
+  source: TreeNodeType[];
+}
+class DocumentList extends React.Component<
+  IDocumentListProps,
+  IDocumentListState
+> {
   private myTree = React.createRef<JqxTree>();
   private myMenu = React.createRef<JqxMenu>();
   constructor(props: IDocumentListProps) {
@@ -42,12 +49,23 @@ class DocumentList extends React.PureComponent<IDocumentListProps, ITreeProps> {
       return false;
     });
   }
-  getSnapshotBeforeUpdate(props: IDocumentListProps) {
-    const source = createTreeSource(props.documents);
+  static getDerivedStateFromProps = (
+    props: IDocumentListProps,
+    state: IDocumentListState
+  ): IDocumentListState => {
+    let source: TreeNodeType[] = state.source;
+    try {
+      source = createTreeSource(props.documents);
+      console.log("%c Source", "color: blue", source);
+    } catch (err) {
+      console.log("Create Source ", err);
+    }
+
     return {
+      ...state,
       source,
     };
-  }
+  };
   public render() {
     const listIconStyles = mergeStyles({
       marginRight: 0,

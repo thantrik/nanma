@@ -2,7 +2,7 @@ import { Document, DocumentId, DocumentType } from "../../paste-bin.types";
 
 import { getIcon } from "./getIcon";
 
-interface TreeNodeType {
+export interface TreeNodeType {
   icon: string;
   label: string;
   expanded: boolean;
@@ -13,7 +13,7 @@ const createTreeNode = (
   expanded?: boolean
 ): TreeNodeType => {
   return {
-    icon: getIcon(document.link.type),
+    icon: getIcon(document.type),
     label: document.meta.title,
     expanded: !!expanded,
     items: [] as TreeNodeType[],
@@ -25,14 +25,14 @@ type DocumentMap = Map<DocumentId, Document>;
 const isChildNode = (doc: Document, docs: DocumentMap) => {
   if (!docs) return false;
   for (let parent of docs) {
-    if (parent[1].link.children.indexOf(doc.id) !== -1) {
+    if (parent[1].children.indexOf(doc.id) !== -1) {
       return true;
     }
   }
   return false;
 };
 
-export const createTreeSource = (documents?: DocumentMap) => {
+export const createTreeSource = (documents?: DocumentMap): TreeNodeType[] => {
   const root = {
     icon: getIcon(DocumentType.folder),
     label: "Documents",
@@ -48,8 +48,8 @@ export const createTreeSource = (documents?: DocumentMap) => {
     if (!isChildNode(document, documents)) {
       root.items.push(treeNode);
     }
-    if (document.link.children.length) {
-      for (let childId of document.link.children) {
+    if (document.children.length) {
+      for (let childId of document.children) {
         let child = documents.get(childId);
         if (child) {
           treeNode.items.push(createTreeNode(child));
@@ -57,7 +57,7 @@ export const createTreeSource = (documents?: DocumentMap) => {
       }
     }
   }
-
+  console.log([root]);
   return [root];
 
   //   var source = [

@@ -1,8 +1,9 @@
-import React from "react";
-import { Editor } from "@tinymce/tinymce-react";
-import { Document } from "../../paste-bin.types";
-import { wordArt } from "./format";
 import "./custom.style.css";
+
+import { Document } from "../../paste-bin.types";
+import { Editor } from "@tinymce/tinymce-react";
+import React from "react";
+import { wordArt } from "./format";
 
 // import "tinymce/tinymce";
 // import "tinymce/themes/silver";
@@ -57,7 +58,7 @@ class DocumentEditor extends React.Component<IDocumentEditor, any> {
           // fullpage_default_doctype: "<!DOCTYPE html>",
           // fullpage_default_font_size: "10pt",
           // fullpage_default_font_family: "Fira Code",
-          // fullpage_default_title: title || "Untitled",
+          fullpage_default_title: title || "Untitled",
           block_formats:
             "Paragraph=p; Heading 1=h1; Heading 2=h2; Heading 3=h3; Heading 4=h4; Heading 5=h5; Heading 6=h6; Preformatted=pre",
           // fontsize_formats:

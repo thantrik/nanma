@@ -41,16 +41,14 @@ export interface DocumentMeta {
   };
   tags: string[];
 }
-export interface IDocumentLink {
-  type: DocumentType;
-  children: string[];
-}
+
 export interface IDocument {
+  children: string[];
+  type: DocumentType;
   _rev: string;
   id: DocumentId;
   meta: DocumentMeta;
   content: string;
-  link: IDocumentLink;
   deleted: Date | undefined;
   is_deleted: boolean;
 }
@@ -69,7 +67,8 @@ export class Document implements IDocument {
   public id: DocumentId;
   public meta: DocumentMeta;
   public content: string;
-  public link: IDocumentLink;
+  public type: DocumentType;
+  public children: DocumentId[];
   public is_deleted: boolean = false;
   public deleted: Date | undefined = undefined;
   constructor(doc?: Partial<IDocument>) {
@@ -87,10 +86,8 @@ export class Document implements IDocument {
       tags: [],
     };
     this.content = doc?.content || "";
-    this.link = doc?.link || {
-      type: DocumentType.file,
-      children: [],
-    };
+    this.type = doc?.type || DocumentType.file;
+    this.children = doc?.children || [];
   }
 }
 
