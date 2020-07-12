@@ -9,12 +9,23 @@ export enum DocumentType {
   folder = "folder",
 }
 
+export enum Flag {
+  default = "default",
+  star = "star",
+  super = "superStar",
+}
+
 export type DocumentId = string;
 export interface DocumentMeta {
   created: number;
   updated: number;
   title: string;
   size: number;
+  flag: {
+    type: Flag;
+    style: string;
+  };
+  tags: string[];
 }
 export interface IDocumentLink {
   type: DocumentType;
@@ -55,6 +66,11 @@ export class Document implements IDocument {
       updated: Date.now(),
       title: toDayString(),
       size: 0,
+      flag: {
+        type: Flag.default,
+        style: "color:inherit",
+      },
+      tags: [],
     };
     this.content = doc?.content || "";
     this.link = doc?.link || {
