@@ -1,23 +1,24 @@
+import { Document, DocumentId, IDocument } from "./paste-bin.types";
 import React, { createRef } from "react";
-import { debounce } from "lodash";
+
 import DocumentEditor from "./components/editor";
-import { IDocument, DocumentId, Document } from "./paste-bin.types";
 import { DocumentList } from "./components/list/index";
-import { toDayString } from "../../lib/toDayString";
-import { documentStore } from "./model/document";
 import { DocumentTitle } from "./components/document-title";
+import { debounce } from "lodash";
+import { documentStore } from "./model/document";
+import { toDayString } from "../../lib/toDayString";
 
 interface PasteBinEditorState {
-  documents: Map<DocumentId, IDocument>;
-  activeDocument: IDocument;
+  documents: Map<DocumentId, Document>;
+  activeDocument: Document;
   root: DocumentId;
 }
 class PasteBinEditorApp extends React.Component<
   any,
   {
-    documents: Map<DocumentId, IDocument>;
-    activeDocument: IDocument;
-    root: IDocument;
+    documents: Map<DocumentId, Document>;
+    activeDocument: Document;
+    root: Document;
   }
 > {
   content = createRef<HTMLDivElement>();
@@ -106,7 +107,7 @@ class PasteBinEditorApp extends React.Component<
             wordWrap: "break-word",
           }}
         >
-          <DocumentList></DocumentList>
+          <DocumentList documents={this.state.documents}></DocumentList>
           <DocumentTitle
             onChange={this.onTitleChange}
             defaultValue={title}

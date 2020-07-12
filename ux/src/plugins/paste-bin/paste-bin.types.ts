@@ -1,5 +1,6 @@
 import { toDayString } from "../../lib/toDayString";
 import { v4 } from "uuid";
+
 // import { PASTE_BIN_NEW_DOCUMENT } from "./paste-bin.constants";
 
 export * from "./paste-bin.constants";
@@ -12,7 +13,15 @@ export enum DocumentType {
 export enum Flag {
   default = "default",
   star = "star",
-  super = "superStar",
+  super = "super",
+  lightning = "lightning",
+  butterfly = "butterfly",
+  schedule = "schedule",
+  task = "task",
+  bug = "bug",
+  contact = "contact",
+  pin = "pin",
+  pink = "pink",
 }
 
 export type DocumentId = string;
@@ -29,7 +38,7 @@ export interface DocumentMeta {
 }
 export interface IDocumentLink {
   type: DocumentType;
-  children: Map<DocumentId, IDocument>;
+  children: string[];
 }
 export interface IDocument {
   _rev: string;
@@ -75,7 +84,7 @@ export class Document implements IDocument {
     this.content = doc?.content || "";
     this.link = doc?.link || {
       type: DocumentType.file,
-      children: new Map(),
+      children: [],
     };
   }
 }

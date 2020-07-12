@@ -1,29 +1,28 @@
-import * as React from "react";
-import JqxMenu from "jqwidgets-scripts/jqwidgets-react-tsx/jqxmenu";
-import { FontIcon, mergeStyles } from "@fluentui/react";
+import "jqwidgets-scripts/jqwidgets/styles/jqx.base.css";
+import "jqwidgets-scripts/jqwidgets/styles/jqx.material-purple.css";
 
+import * as React from "react";
+
+import { Document, DocumentId } from "../../paste-bin.types";
+import { FontIcon, mergeStyles } from "@fluentui/react";
 import JqxTree, {
   ITreeProps,
 } from "jqwidgets-scripts/jqwidgets-react-tsx/jqxtree";
 
-import "jqwidgets-scripts/jqwidgets/styles/jqx.base.css";
-import "jqwidgets-scripts/jqwidgets/styles/jqx.material-purple.css";
+import JqxMenu from "jqwidgets-scripts/jqwidgets-react-tsx/jqxmenu";
+import { createTreeSource } from "./createTree";
 
-import Folder from "../assets/folder_48.png";
-import OpenFolder from "../assets/opened_folder_48.png";
-import Favorite from "../assets/star_filled_48px.png";
-import File from "../assets/document_48px.png";
-import Recycle from "../assets/recycle_bin_48px.png";
-import Document from "../assets/document_48px.png";
-import Settings from "../assets/gears_48px.png";
-
-class DocumentList extends React.PureComponent<{}, ITreeProps> {
+interface IDocumentListProps {
+  documents: Map<DocumentId, Document>;
+}
+class DocumentList extends React.PureComponent<IDocumentListProps, ITreeProps> {
   private myTree = React.createRef<JqxTree>();
   private myMenu = React.createRef<JqxMenu>();
-  constructor(props: {}) {
+  constructor(props: IDocumentListProps) {
     super(props);
     this.state = {
       width: "100%",
+      source: createTreeSource(),
     };
   }
   public componentDidMount(): void {
@@ -43,38 +42,13 @@ class DocumentList extends React.PureComponent<{}, ITreeProps> {
       return false;
     });
   }
+  getSnapshotBeforeUpdate(props: IDocumentListProps) {
+    const source = createTreeSource(props.documents);
+    return {
+      source,
+    };
+  }
   public render() {
-    var source = [
-      {
-        icon: Folder,
-        label: "Mail",
-        expanded: false,
-        items: [
-          { icon: Document, label: "Calendar" },
-          {
-            icon: Document,
-            label: "Contacts",
-            selected: false,
-          },
-        ],
-      },
-      {
-        icon: OpenFolder,
-        label: "Inbox",
-        expanded: true,
-        items: [
-          { icon: File, label: "Admin", selected: true },
-          { icon: File, label: "Corporate" },
-          { icon: File, label: "Finance" },
-          { icon: File, label: "Other" },
-        ],
-      },
-      { icon: Recycle, label: "Deleted Items" },
-      { icon: Document, label: "Notes" },
-      { iconsize: 14, icon: Settings, label: "Settings" },
-      { icon: Favorite, label: "Favorites" },
-    ];
-
     const listIconStyles = mergeStyles({
       marginRight: 0,
       fontWeight: "bold",
@@ -102,7 +76,7 @@ class DocumentList extends React.PureComponent<{}, ITreeProps> {
           ref={this.myTree}
           width={this.state.width}
           height={"100%"}
-          source={source}
+          source={this.state.source}
           {...this.props}
         ></JqxTree>
         <JqxMenu
