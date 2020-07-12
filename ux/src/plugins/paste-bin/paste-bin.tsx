@@ -1,6 +1,7 @@
 import { Document, DocumentId, IDocument } from "./paste-bin.types";
 import React, { createRef } from "react";
 
+import { DocumentAction } from "./actions";
 import DocumentEditor from "./components/editor";
 import { DocumentList } from "./components/list/index";
 import { DocumentTitle } from "./components/document-title";
@@ -87,6 +88,17 @@ class PasteBinEditorApp extends React.Component<any, PasteBinEditorState> {
     }
     return title;
   };
+  onAction = async (type: DocumentAction): Promise<Document> => {
+    switch (type) {
+      case DocumentAction.NewFile:
+        console.log("create document");
+        break;
+      case DocumentAction.NewFolder:
+        console.log("create file");
+        break;
+    }
+    return Promise.resolve(new Document());
+  };
   render() {
     const { meta: { title = toDayString() } = {} } =
       this.state.activeDocument || {};
@@ -113,7 +125,10 @@ class PasteBinEditorApp extends React.Component<any, PasteBinEditorState> {
             overflowY: "auto",
           }}
         >
-          <DocumentList documents={this.state.documents}></DocumentList>
+          <DocumentList
+            documents={this.state.documents}
+            onAction={this.onAction}
+          ></DocumentList>
           <DocumentTitle
             onChange={this.onTitleChange}
             defaultValue={title}
@@ -139,6 +154,7 @@ class PasteBinEditorApp extends React.Component<any, PasteBinEditorState> {
             onUpdate={this.delayedDataUpdate}
             onSave={this.dataUpdate}
             {...this.state.activeDocument}
+            onAction={this.onAction}
           ></DocumentEditor>
         </div>
       </div>

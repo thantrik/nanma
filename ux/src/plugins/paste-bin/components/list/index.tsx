@@ -10,10 +10,12 @@ import JqxTree, {
 } from "jqwidgets-scripts/jqwidgets-react-tsx/jqxtree";
 import { TreeNodeType, createTreeSource } from "./createTree";
 
+import { DocumentAction } from "../../actions";
 import JqxMenu from "jqwidgets-scripts/jqwidgets-react-tsx/jqxmenu";
 
 interface IDocumentListProps extends ITreeProps {
   documents: Map<DocumentId, Document>;
+  onAction: (action: DocumentAction) => Promise<Document>;
 }
 interface IDocumentListState {
   width: string;
@@ -99,7 +101,7 @@ class DocumentList extends React.Component<
         ></JqxTree>
         <JqxMenu
           ref={this.myMenu}
-          onItemclick={this.myMenuOnItemClick}
+          onItemclick={this.onMenuItemClick}
           width={120}
           autoOpenPopup={false}
           mode={"popup"}
@@ -108,65 +110,75 @@ class DocumentList extends React.Component<
           }}
         >
           <ul>
-            <li>New File</li>
-            <li>Flag</li>
-            <li>Tag</li>
-            <li>Star</li>
-            <li>New Folder</li>
-            <li>Rename</li>
-            <li>Remove</li>
+            {Object.values(DocumentAction).map((v: string) => (
+              <li key={v}>{v}</li>
+            ))}
           </ul>
         </JqxMenu>
       </>
     );
   }
-  private myMenuOnItemClick = (event: any): void => {
+  private onMenuItemClick = async (event: any) => {
     const item = event.args.innerText;
+    const { onAction } = this.props;
     let selectedItem = null;
     switch (item) {
-      case "New File":
+      case DocumentAction.NewFile:
         selectedItem = this.myTree.current!.getSelectedItem();
         if (selectedItem != null) {
           this.myTree.current!.addTo({ label: "Item" }, selectedItem.element);
         }
         break;
-      case "New Folder":
+      case DocumentAction.NewFolder:
         selectedItem = this.myTree.current!.getSelectedItem();
         if (selectedItem != null) {
           this.myTree.current!.addTo({ label: "Item" }, selectedItem.element);
         }
         break;
-      case "Rename":
+      case DocumentAction.Edit:
         selectedItem = this.myTree.current!.getSelectedItem();
         if (selectedItem != null) {
           this.myTree.current!.addTo({ label: "Item" }, selectedItem.element);
         }
         break;
-      case "Flag":
+      case DocumentAction.flag:
         selectedItem = this.myTree.current!.getSelectedItem();
         if (selectedItem != null) {
           this.myTree.current!.addTo({ label: "Item" }, selectedItem.element);
         }
         break;
-      case "Tag":
+      case DocumentAction.tag:
         selectedItem = this.myTree.current!.getSelectedItem();
         if (selectedItem != null) {
           this.myTree.current!.addTo({ label: "Item" }, selectedItem.element);
         }
         break;
-      case "Star":
+      case DocumentAction.delete:
         selectedItem = this.myTree.current!.getSelectedItem();
         if (selectedItem != null) {
-          this.myTree.current!.addTo({ label: "Item" }, selectedItem.element);
+          this.myTree.current!.removeItem(selectedItem.element);
         }
         break;
-      case "Delete":
+      case DocumentAction.export:
+        selectedItem = this.myTree.current!.getSelectedItem();
+        if (selectedItem != null) {
+          this.myTree.current!.removeItem(selectedItem.element);
+        }
+        break;
+      case DocumentAction.import:
+        selectedItem = this.myTree.current!.getSelectedItem();
+        if (selectedItem != null) {
+          this.myTree.current!.removeItem(selectedItem.element);
+        }
+        break;
+      case DocumentAction.download:
         selectedItem = this.myTree.current!.getSelectedItem();
         if (selectedItem != null) {
           this.myTree.current!.removeItem(selectedItem.element);
         }
         break;
     }
+    await onAction(item);
   };
 }
 export { DocumentList };

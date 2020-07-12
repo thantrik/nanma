@@ -1,6 +1,7 @@
 import "./custom.style.css";
 
 import { Document } from "../../paste-bin.types";
+import { DocumentAction } from "../../actions";
 import { Editor } from "@tinymce/tinymce-react";
 import React from "react";
 import { wordArt } from "./format";
@@ -13,6 +14,7 @@ import { wordArt } from "./format";
 interface IDocumentEditor extends Document {
   onUpdate: (content: string) => void;
   onSave: (content: string) => void;
+  onAction: (action: DocumentAction) => Promise<Document>;
 }
 
 class DocumentEditor extends React.Component<IDocumentEditor, any> {
@@ -102,32 +104,16 @@ const format_style = {
     ".underline { text-decoration: underline; } " +
     ".example1 {} " +
     ".tablerow1 { background-color: #D3D3D3; }" +
-    `.word-art-flame { ${wordArt.Flame} }`,
+    `.word-art-flame { ${wordArt.Flame} }` +
+    `.word-art-rainbow { ${wordArt.Rainbow} }` +
+    `.word-art-shadow { ${wordArt.Shadow} }` +
+    `.word-art-outline { ${wordArt.Outline} }` +
+    `.word-art-shadow-layer { ${wordArt.ShadowLayer} }`,
 
   formats: {
-    alignleft: {
-      selector: "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img",
-      classes: "left",
-    },
-    aligncenter: {
-      selector: "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img",
-      classes: "center",
-    },
-    alignright: {
-      selector: "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img",
-      classes: "right",
-    },
-    alignfull: {
-      selector: "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img",
-      classes: "full",
-    },
-    bold: { inline: "span", classes: "bold" },
-    italic: { inline: "span", classes: "italic" },
-    underline: { inline: "span", classes: "underline", exact: true },
-    strikethrough: { inline: "del" },
     customformat: {
       inline: "span",
-      styles: { color: "#00ff00", fontSize: "20px" },
+      styles: { color: "#00ff00" },
       attributes: { title: "My custom format" },
       classes: "example1",
     },
@@ -136,38 +122,48 @@ const format_style = {
       attributes: { title: "Flame" },
       classes: "word-art-flame",
     },
+    wordArtRainbow: {
+      inline: "div",
+      attributes: { title: "Rainbow" },
+      classes: "word-art-rainbow",
+    },
+    wordArtShadow: {
+      inline: "div",
+      attributes: { title: "Shadow" },
+      classes: "word-art-shadow",
+    },
+    wordArtOutline: {
+      inline: "div",
+      attributes: { title: "Outline" },
+      classes: "word-art-outline",
+    },
+    wordArtShadowLayer: {
+      inline: "div",
+      attributes: { title: "Layer" },
+      classes: "word-art-shadow-layer",
+    },
   },
   style_formats: [
-    { title: "Custom format1", format: "customformat" },
-    { title: "Align left", format: "alignleft" },
-    { title: "Align center", format: "aligncenter" },
-    { title: "Align right", format: "alignright" },
-    { title: "Align full", format: "alignfull" },
-    { title: "Bold text", inline: "strong" },
-    { title: "Word Art" },
-    { title: "Flame", format: "wordArtFlame" },
-    {
-      title: "Red text",
-      inline: "span",
-      styles: { color: "#ff0000" },
-    },
-    {
-      title: "Red header",
-      block: "h1",
-      styles: { color: "#ff0000" },
-    },
+    { title: "Custom format", format: "customformat" },
     {
       title: "Badge",
       inline: "span",
       styles: {
         display: "inline-block",
         border: "1px solid #2276d2",
-        "border-radius": "5px",
-        padding: "2px 5px",
+        "border-radius": "3px",
+        padding: "1px 3px",
         margin: "0 2px",
         color: "#2276d2",
       },
     },
+    { title: "Word Art" },
+    { title: "Rainbow", format: "wordArtRainbow" },
+    { title: "Shadow", format: "wordArtShadow" },
+    { title: "Outline", format: "wordArtOutline" },
+    { title: "Layer", format: "wordArtShadowLayer" },
+    { title: "Flame", format: "wordArtFlame" },
+
     // { title: "Table row 1", selector: "tr", classes: "tablerow1" },
     // { title: "Image formats" },
     // {
