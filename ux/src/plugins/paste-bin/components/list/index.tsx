@@ -110,9 +110,37 @@ class DocumentList extends React.Component<
           }}
         >
           <ul>
-            {Object.values(DocumentAction).map((v: string) => (
-              <li key={v}>{v}</li>
-            ))}
+            {Object.values(DocumentAction).map((v: string) => {
+              let item = <li key={v}>{v}</li>;
+              if (v.indexOf("New") > -1) {
+                item = (
+                  <li key={v}>
+                    {v}
+                    <ul>
+                      <li>New File</li>
+                      <li>New Folder</li>
+                    </ul>
+                  </li>
+                );
+              } else if (v.indexOf("Flag") > -1) {
+                item = (
+                  <li key={v}>
+                    {v}
+                    <ul>
+                      <li>Star</li>
+                      <li>Super</li>
+                      <li>Butterfly</li>
+                      <li>Bug</li>
+                      <li>Task</li>
+                      <li>File</li>
+                      <li>Important</li>
+                      <li>Pink</li>
+                    </ul>
+                  </li>
+                );
+              }
+              return item;
+            })}
           </ul>
         </JqxMenu>
       </>

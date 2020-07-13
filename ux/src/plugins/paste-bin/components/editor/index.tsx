@@ -163,18 +163,5 @@ const format_style = {
     { title: "Outline", format: "wordArtOutline" },
     { title: "Layer", format: "wordArtShadowLayer" },
     { title: "Flame", format: "wordArtFlame" },
-
-    // { title: "Table row 1", selector: "tr", classes: "tablerow1" },
-    // { title: "Image formats" },
-    // {
-    //   title: "Image Left",
-    //   selector: "img",
-    //   styles: { float: "left", margin: "0 10px 0 10px" },
-    // },
-    // {
-    //   title: "Image Right",
-    //   selector: "img",
-    //   styles: { float: "right", margin: "0 0 10px 10px" },
-    // },
   ],
 };
