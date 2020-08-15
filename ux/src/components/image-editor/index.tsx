@@ -1,10 +1,7 @@
-import React, { createRef } from "react";
-import ImageEditor from "@toast-ui/react-image-editor";
-import TuiImageEditor from "tui-image-editor";
-import "tui-image-editor/dist/tui-image-editor.css";
-import "tui-color-picker/dist/tui-color-picker.css";
-import "./overrides.css";
 import "file-saver/dist/FileSaver";
+
+import React, { Suspense, createRef } from "react";
+
 import { IState } from "../../plugins/image-editor/image-editor.types";
 import canvas from "./canvas.jpg";
 
@@ -18,6 +15,8 @@ const myTheme = {
   "submenu.iconSize.width": "22px",
   "submenu.iconSize.height": "12px",
 };
+
+const ImageEditor = React.lazy(() => import("@toast-ui/react-image-editor"));
 
 class NanmaImageEditor extends React.Component<IState, IState> {
   private editorInstance = createRef<any>();
@@ -36,7 +35,16 @@ class NanmaImageEditor extends React.Component<IState, IState> {
       imageName: props.imageName || NanmaImageEditor.getNewImageName(),
     };
   }
+  componentDidMount = async () => {
+    // @ts-ignore
+    import("tui-image-editor/dist/tui-image-editor.css");
+    // @ts-ignore
+    import("tui-color-picker/dist/tui-color-picker.css");
+    // @ts-ignore
+    import("./overrides.css");
+  };
   componentDidUpdate() {
+    type TuiImageEditor = import("tui-image-editor");
     const { imageSrc, imageName } = this.state;
     const editor = this.editorInstance.current
       ?.imageEditorInst as TuiImageEditor;
@@ -65,28 +73,30 @@ class NanmaImageEditor extends React.Component<IState, IState> {
     const { imageSrc, imageName } = this.state;
 
     return (
-      <ImageEditor
-        ref={this.editorInstance}
-        includeUI={{
-          loadImage: {
-            path: imageSrc,
-            name: imageName,
-          },
-          theme: myTheme,
-          uiSize: {
-            width: "100vw",
-            height: "100vh",
-          },
-          menuBarPosition: "top",
-        }}
-        cssMaxHeight={document.body.clientHeight * 0.8}
-        cssMaxWidth={document.body.clientWidth * 0.8}
-        selectionStyle={{
-          cornerSize: 2,
-          rotatingPointOffset: 0,
-        }}
-        usageStatistics={false}
-      />
+      <Suspense fallback={<div>Loading...</div>}>
+        <ImageEditor
+          ref={this.editorInstance}
+          includeUI={{
+            loadImage: {
+              path: imageSrc,
+              name: imageName,
+            },
+            theme: myTheme,
+            uiSize: {
+              width: "100vw",
+              height: "100vh",
+            },
+            menuBarPosition: "top",
+          }}
+          cssMaxHeight={document.body.clientHeight * 0.8}
+          cssMaxWidth={document.body.clientWidth * 0.8}
+          selectionStyle={{
+            cornerSize: 2,
+            rotatingPointOffset: 0,
+          }}
+          usageStatistics={false}
+        />
+      </Suspense>
     );
   }
 }

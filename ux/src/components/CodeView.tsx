@@ -1,6 +1,4 @@
 import React from "react";
-import * as monaco from "monaco-editor";
-import "./index.css";
 
 interface Props {
   language?: string;
@@ -13,7 +11,11 @@ export default class CodeView extends React.Component<Props, {}> {
     super(props);
     this.editorPanel = null;
   }
-  componentDidMount() {
+  componentDidMount = async () => {
+    const monaco = await import("monaco-editor");
+
+    //@ts-ignore
+    import("./index.css");
     if (this.editorPanel) {
       monaco.editor.create(this.editorPanel, {
         value: this.props.data,
@@ -21,7 +23,7 @@ export default class CodeView extends React.Component<Props, {}> {
         language: this.props.language,
       });
     }
-  }
+  };
   render() {
     return (
       <div

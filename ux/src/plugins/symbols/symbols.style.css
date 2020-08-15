@@ -22,5 +22,6 @@
 }
 
 .unicode-panel span:hover {
-  border: solid 1px yellow;
+  border: solid 1px red;
+  background-color: black;
 }

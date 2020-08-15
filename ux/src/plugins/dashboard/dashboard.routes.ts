@@ -1,7 +1,7 @@
-import ConnectedDashBoard from "./dashboard.connected";
 import { DASHBOARD_ROUTE_PATH } from "./dashboard.constants";
+import { lazy } from "react";
 
 export default {
   path: DASHBOARD_ROUTE_PATH,
-  component: ConnectedDashBoard,
+  component: lazy(() => import("./dashboard.connected")),
 };

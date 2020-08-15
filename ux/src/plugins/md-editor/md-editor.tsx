@@ -1,12 +1,8 @@
-import React from "react";
+import BaseComponent from "../../components/base/component";
 import MarkdownIt from "markdown-it";
+import React from "react";
 
 // import "./md-viewer.style.css";
-import "@primer/css/dist/base.css";
-import "@primer/css/dist/core.css";
-import "@primer/css/dist/support.css";
-import "@primer/css/dist/markdown.css";
-
 const config = {
   html: false, // Enable HTML tags in source
   xhtmlOut: false, // Use '/' to close single tags (<br />).
@@ -32,7 +28,7 @@ const config = {
   // highlight: hljs,
 };
 
-class MarkDownEditorApp extends React.Component<any, any> {
+class MarkDownEditorApp extends BaseComponent<any, any> {
   private processor: MarkdownIt;
   private editor: HTMLDivElement | null;
   private viewer: HTMLElement | null;
@@ -56,7 +52,16 @@ class MarkDownEditorApp extends React.Component<any, any> {
       .use(require("markdown-it-mark"));
   }
 
-  componentDidMount() {
+  componentDidMount = async () => {
+    // @ts-ignore
+    import("@primer/css/dist/base.css");
+    // @ts-ignore
+    import("@primer/css/dist/core.css");
+    // @ts-ignore
+    import("@primer/css/dist/support.css");
+    // @ts-ignore
+    import("@primer/css/dist/markdown.css");
+
     //const self = this;
     const { data } = this.props;
     if (this.viewer) {
@@ -66,7 +71,7 @@ class MarkDownEditorApp extends React.Component<any, any> {
       );
     }
     window.document.body.classList.remove("noscroll");
-  }
+  };
   componentWillUnmount() {
     window.document.body.classList.remove("noscroll");
   }

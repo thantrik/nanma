@@ -1,21 +1,23 @@
-import React from "react";
 import {
-  SketchPicker,
-  PhotoshopPicker,
-  GithubPicker,
-  ChromePicker,
   BlockPicker,
-  TwitterPicker,
+  ChromePicker,
   CirclePicker,
+  CompactPicker,
+  GithubPicker,
+  MaterialPicker,
+  PhotoshopPicker,
+  SketchPicker,
   SliderPicker,
   SwatchesPicker,
-  CompactPicker,
-  MaterialPicker,
+  TwitterPicker,
 } from "react-color";
+
+import BaseComponent from "../../components/base/component";
+import React from "react";
 
 const Panel = (props: any) => <div style={{}}>{props.children}</div>;
 
-export default class ColorView extends React.Component {
+export default class ColorView extends BaseComponent {
   state = {
     background: document.body.style.backgroundColor,
   };

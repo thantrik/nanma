@@ -1,6 +1,7 @@
+import BaseComponent from "../../components/base/component";
 import React from "react";
 
-class ConnectedAwesomeLinksViewer extends React.Component<any, any> {
+class ConnectedAwesomeLinksViewer extends BaseComponent<any, any> {
   render() {
     return <div></div>;
   }

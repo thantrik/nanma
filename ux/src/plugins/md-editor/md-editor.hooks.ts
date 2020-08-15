@@ -1,4 +1,5 @@
 import { AppContext, setDOMOwner } from "../../app";
+
 import config from "./md-editor.config";
 import { setMdView } from "./md-editor.actions";
 
@@ -14,6 +15,8 @@ const mdView = (data: string) => {
   setDOMOwner(config, () => {
     window.___DATA = data;
     setMdView(data);
+    //@ts-ignore
+    import("../../app/app.styles.css");
   });
 };
 

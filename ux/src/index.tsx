@@ -1,4 +1,5 @@
 import "./react-app-env.d.ts";
+
 import { context } from "./app";
 import initAppView from "./app/view";
 import { setJsonViewRoute } from "./plugins/json/json.actions";

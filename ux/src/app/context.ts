@@ -1,4 +1,5 @@
 import { IPluginConfig } from "./app.types";
+
 let context: AppContext;
 
 export class AppContext {

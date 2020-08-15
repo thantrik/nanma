@@ -1,4 +1,5 @@
 import { AppContext, setDOMOwner } from "../../app";
+
 import config from "./code.config";
 import { setCodeView } from "./code.actions";
 
@@ -18,6 +19,8 @@ const codeView = (url: string, data: string) => {
       url,
     });
   });
+  //@ts-ignore
+  import("../../app/app.styles.css");
   return true;
 };
 

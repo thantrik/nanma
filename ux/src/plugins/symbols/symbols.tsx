@@ -1,9 +1,27 @@
+import BaseComponent from "../../components/base/component";
 import React from "react";
-import "./symbols.style.css";
 import { unicodeGroups } from "./symbols.data";
-class SymbolsViewer extends React.Component<any, any> {
+
+function copySymbol(this: HTMLSpanElement, ev: MouseEvent) {
+  this.focus();
+  window.navigator.clipboard.writeText(this.innerText);
+  ev.preventDefault();
+  ev.stopImmediatePropagation();
+}
+
+const addSymbol = (i: number, panel: HTMLDivElement) => {
+  const code = document.createElement("span");
+  // @ts-ignore
+  code.innerHTML = `&#${i};`;
+  code.addEventListener("click", copySymbol);
+  code.addEventListener("mouseover", copySymbol);
+  panel.appendChild(code);
+};
+class SymbolsViewer extends BaseComponent<any, any> {
   panel: HTMLDivElement | null = null;
-  componentDidMount() {
+  componentDidMount = async () => {
+    // @ts-ignore
+    import("./symbols.style.css");
     window.document.body.classList.remove("no-scroll");
     if (this.panel) {
       for (const group of unicodeGroups) {
@@ -13,24 +31,22 @@ class SymbolsViewer extends React.Component<any, any> {
         for (const range of group.ranges)
           if (Array.isArray(range)) {
             for (let i of range) {
-              const code = document.createElement("span");
-              code.onclick = () => document.execCommand("copy");
-              code.innerHTML = `&#${i};`;
-              this.panel.appendChild(code);
+              addSymbol(i, this.panel);
             }
           } else
-            for (let i = range.from; i <= range.to; i++) {
-              const code = document.createElement("span");
-              code.onclick = () => document.execCommand("copy");
-              code.innerHTML = `&#${i};`;
-              this.panel.appendChild(code);
-            }
+            for (let i = range.from; i <= range.to; i++)
+              addSymbol(i, this.panel);
       }
     }
-  }
+  };
   render() {
     return (
-      <div className={"unicode-panel"} ref={(ele) => (this.panel = ele)}></div>
+      <>
+        <div
+          className={"unicode-panel"}
+          ref={(ele) => (this.panel = ele)}
+        ></div>
+      </>
     );
   }
 }

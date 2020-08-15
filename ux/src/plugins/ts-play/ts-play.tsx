@@ -1,9 +1,10 @@
+import BaseComponent from "../../components/base/component";
 import React from "react";
 
-class TSPlayGround extends React.Component<any, any> {
-  componentDidMount() {
+class TSPlayGround extends BaseComponent<any, any> {
+  componentDidMount = async () => {
     window.document.body.classList.remove("noscroll");
-  }
+  };
   render() {
     return (
       <iframe

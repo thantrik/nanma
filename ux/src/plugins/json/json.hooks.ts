@@ -1,9 +1,12 @@
 import { AppContext, setDOMOwner } from "../../app";
-import { setJsonView } from "./json.actions";
+
 import config from "./json.config";
+import { setJsonView } from "./json.actions";
 
 const jsonView = (data: string, parse = false) => {
   setDOMOwner(config, () => setJsonView({ data }));
+  //@ts-ignore
+  import("../../app/app.styles.css");
 };
 
 const hook = (context: AppContext) => {
