@@ -1,10 +1,10 @@
-import { Reducer } from "redux";
-import { setJsonData } from "./json.actions";
-import { createReducer } from "@reduxjs/toolkit";
 import { IState } from "./json.types";
+import { Reducer } from "redux";
+import { createReducer } from "@reduxjs/toolkit";
+import { setJsonData } from "./json.actions";
 
 const initialState: IState = {
-  data: "{}",
+  data: window.localStorage.getItem("json") || "{}",
 };
 
 const json: Reducer = createReducer(initialState, {

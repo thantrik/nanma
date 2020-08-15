@@ -1,5 +1,6 @@
 import BaseComponent from "../../components/base/component";
 import React from "react";
+import { saveJson } from "./json.actions";
 
 type JSONEditorType = import("jsoneditor").default;
 
@@ -52,6 +53,7 @@ class JsonEditorApp extends BaseComponent<any, any> {
           mode: "text",
           onChangeText: function (jsonString: string) {
             self.jsonEditor.tree.editor?.updateText(jsonString);
+            saveJson(jsonString);
           },
         }
       );
@@ -65,6 +67,7 @@ class JsonEditorApp extends BaseComponent<any, any> {
           mode: "tree",
           onChangeText: function (jsonString: string) {
             self.jsonEditor?.code?.editor?.updateText(jsonString);
+            saveJson(jsonString);
           },
         }
       );
