@@ -1,7 +1,7 @@
-import ConnectedMyWebViewer from "./my-web.connected";
 import { MYWEB_ROUTE_PATH } from "./my-web.constants";
+import { lazy } from "react";
 
 export default {
   path: MYWEB_ROUTE_PATH,
-  component: ConnectedMyWebViewer,
+  component: lazy(() => import("./my-web.connected")),
 };

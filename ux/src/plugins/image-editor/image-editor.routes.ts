@@ -1,7 +1,7 @@
-import ConnectedImageEditor from "./image-editor.connected";
 import { IMAGE_EDITOR_ROUTE } from "./image-editor.constants";
+import { lazy } from "react";
 
 export default {
   path: IMAGE_EDITOR_ROUTE,
-  component: ConnectedImageEditor,
+  component: lazy(() => import("./image-editor.connected")),
 };

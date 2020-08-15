@@ -1,6 +1,6 @@
-import ColorView from "./color.connected";
+import { lazy } from "react";
 
 export default {
   path: "/color",
-  component: ColorView,
+  component: lazy(() => import("./color.connected")),
 };

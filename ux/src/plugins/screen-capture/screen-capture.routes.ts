@@ -1,7 +1,7 @@
-import ConnectedSCREENCAPTUREViewer from"./screen-capture.connected";
-import { SCREEN_CAPTURE_ROUTE } from"./screen-capture.constants";
+import { SCREEN_CAPTURE_ROUTE } from "./screen-capture.constants";
+import { lazy } from "react";
 
 export default {
   path: SCREEN_CAPTURE_ROUTE,
-  component: ConnectedSCREENCAPTUREViewer,
+  component: lazy(() => import("./screen-capture.connected")),
 };

@@ -1,7 +1,7 @@
-import ConnectedDiffView from "./diff.connected";
 import { DIFF_ROUTE_PATH } from "./diff.constants";
+import { lazy } from "react";
 
 export default {
   path: DIFF_ROUTE_PATH,
-  component: ConnectedDiffView,
+  component: lazy(() => import("./diff.connected")),
 };
