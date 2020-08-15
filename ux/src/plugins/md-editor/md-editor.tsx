@@ -1,12 +1,7 @@
-import React from "react";
 import MarkdownIt from "markdown-it";
+import React from "react";
 
 // import "./md-viewer.style.css";
-import "@primer/css/dist/base.css";
-import "@primer/css/dist/core.css";
-import "@primer/css/dist/support.css";
-import "@primer/css/dist/markdown.css";
-
 const config = {
   html: false, // Enable HTML tags in source
   xhtmlOut: false, // Use '/' to close single tags (<br />).
@@ -57,6 +52,15 @@ class MarkDownEditorApp extends React.Component<any, any> {
   }
 
   componentDidMount() {
+    // @ts-ignore
+    import("@primer/css/dist/base.css");
+    // @ts-ignore
+    import("@primer/css/dist/core.css");
+    // @ts-ignore
+    import("@primer/css/dist/support.css");
+    // @ts-ignore
+    import("@primer/css/dist/markdown.css");
+
     //const self = this;
     const { data } = this.props;
     if (this.viewer) {

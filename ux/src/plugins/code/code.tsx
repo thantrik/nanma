@@ -1,9 +1,11 @@
-import React from "react";
-import * as monaco from "monaco-editor";
 import "../../global.d.ts";
-//import { context } from "../../app";
+
 import { IDropdownOption } from "office-ui-fabric-react/lib/Dropdown";
+import React from "react";
 import SelectLanguage from "../../components/dropdown/language";
+import { editor } from "monaco-editor";
+
+//import { context } from "../../app";
 
 // const dropdownStyles: Partial<IDropdownStyles> = {
 //   dropdown: { width: 200, right: 0, position: "absolute", zIndex: 1000 },
@@ -14,8 +16,8 @@ interface Props {
   data?: string;
 }
 
-let modal: monaco.editor.ITextModel | null = null;
-let editor: monaco.editor.IStandaloneCodeEditor;
+let modal: import("monaco-editor").editor.ITextModel | null = null;
+let editorInstance: import("monaco-editor").editor.IStandaloneCodeEditor;
 
 export default class CodeView extends React.Component<any, any> {
   private editorPanel: HTMLDivElement | null;
@@ -27,16 +29,18 @@ export default class CodeView extends React.Component<any, any> {
       language: "typescript",
     };
   }
-  setCodeView = () => {
+  setCodeView = async () => {
+    const { editor, Uri } = await import("monaco-editor");
     if (!modal) {
-      modal = monaco.editor.createModel(
+      modal = editor.createModel(
         this.props.data,
         this.state.language,
-        monaco.Uri.parse(this.props.url)
+        Uri.parse(this.props.url)
       );
     }
     if (this.editorPanel) {
-      editor = monaco.editor.create(this.editorPanel, {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      editorInstance = editor.create(this.editorPanel, {
         //@ts-ignore
         model: modal,
         theme: "vs-dark",
@@ -56,8 +60,8 @@ export default class CodeView extends React.Component<any, any> {
     if (!this.editorPanel) return;
     this.setCodeView();
   }
-  onLangaugeChange = (_: React.FormEvent, option?: IDropdownOption): void => {
-    modal && monaco.editor.setModelLanguage(modal, option?.id || "typescript");
+  onLangaugeChange = async (_: React.FormEvent, option?: IDropdownOption) => {
+    modal && editor.setModelLanguage(modal, option?.id || "typescript");
   };
 
   render() {

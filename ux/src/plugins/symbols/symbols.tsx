@@ -1,9 +1,11 @@
 import React from "react";
-import "./symbols.style.css";
 import { unicodeGroups } from "./symbols.data";
+
 class SymbolsViewer extends React.Component<any, any> {
   panel: HTMLDivElement | null = null;
-  componentDidMount() {
+  componentDidMount = async () => {
+    // @ts-ignore
+    import("./symbols.style.css");
     window.document.body.classList.remove("no-scroll");
     if (this.panel) {
       for (const group of unicodeGroups) {
@@ -27,7 +29,7 @@ class SymbolsViewer extends React.Component<any, any> {
             }
       }
     }
-  }
+  };
   render() {
     return (
       <div className={"unicode-panel"} ref={(ele) => (this.panel = ele)}></div>

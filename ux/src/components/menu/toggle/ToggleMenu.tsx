@@ -1,5 +1,4 @@
 import React from "react";
-import "./toggle.style.css";
 
 export default class ToggleMenu extends React.Component<any, any> {
   instanceButton: HTMLImageElement | null;
@@ -29,6 +28,11 @@ export default class ToggleMenu extends React.Component<any, any> {
       this.prevX = e.pageX;
     };
   }
+  componentDidMount = async () => {
+    // @ts-ignore
+    await import("./toggle.style.css");
+  };
+
   showCard = () => {
     this.instanceButton?.classList.toggle("is-rotate");
     for (var i = 0; i < this.instanceItems.length; i++) {

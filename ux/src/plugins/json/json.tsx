@@ -1,12 +1,11 @@
 import React from "react";
-import JSONEditor from "jsoneditor";
 
-import "jsoneditor/dist/jsoneditor.min.css";
+type JSONEditorType = import("jsoneditor").default;
 
 class IEditorRef {
   constructor(
     public element: HTMLDivElement | undefined = undefined,
-    public editor: JSONEditor | undefined = undefined
+    public editor: JSONEditorType | undefined = undefined
   ) {}
 }
 
@@ -25,9 +24,12 @@ class JsonEditorApp extends React.Component<any, any> {
   createJsonEditorRef = (type: string) => (ele: HTMLDivElement) => {
     this.jsonEditor[type].element = ele;
   };
-  componentDidMount() {
+  componentDidMount = async () => {
+    const JSONEditor = (await import("jsoneditor")).default;
+    // @ts-ignore
+    import("jsoneditor/dist/jsoneditor.min.css");
     const self = this;
-    const setEditorValue = (editor: JSONEditor, value: any) => {
+    const setEditorValue = (editor: JSONEditorType, value: any) => {
       if (!editor) return;
       if (!value) return;
       switch (typeof value) {
@@ -44,7 +46,7 @@ class JsonEditorApp extends React.Component<any, any> {
         this.jsonEditor.code.element,
         {
           mode: "text",
-          onChangeText: function (jsonString) {
+          onChangeText: function (jsonString: string) {
             self.jsonEditor.tree.editor?.updateText(jsonString);
           },
         }
@@ -57,7 +59,7 @@ class JsonEditorApp extends React.Component<any, any> {
         self.jsonEditor.tree.element,
         {
           mode: "tree",
-          onChangeText: function (jsonString) {
+          onChangeText: function (jsonString: string) {
             self.jsonEditor?.code?.editor?.updateText(jsonString);
           },
         }
@@ -65,7 +67,7 @@ class JsonEditorApp extends React.Component<any, any> {
       //@ts-ignore
       setEditorValue(self.jsonEditor.tree.editor, this.props.data);
     }
-  }
+  };
   render() {
     return (
       <div
