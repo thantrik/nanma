@@ -1,15 +1,18 @@
+import "./app.plugins";
+
+import { Route, Switch } from "react-router-dom";
+import { getRoutes, history, store } from "./index";
+
+import { ApplicationNavMenu } from "../components/menu/bottom";
+import { ConnectedRouter } from "connected-react-router";
+import { IPluginConfig } from "./app.types";
+import { IPluginRoute } from "../routes";
 import { Provider } from "react-redux";
-import { Switch, Route } from "react-router-dom";
 import React from "react";
 import ReactDOM from "react-dom";
-import { ConnectedRouter } from "connected-react-router";
-import { getRoutes, store, history } from "./index";
-import { IPluginRoute } from "../routes";
-import { IPluginConfig } from "./app.types";
-import { ApplicationNavMenu } from "../components/menu/bottom";
-import { initializeIcons } from "office-ui-fabric-react/lib/Icons";
 import context from "./context";
-import "./app.plugins";
+import { initializeIcons } from "office-ui-fabric-react/lib/Icons";
+
 // import { setJsonViewRoute } from "../plugins/json/json.actions";
 initializeIcons();
 
@@ -38,7 +41,11 @@ const App = ({ config }: { config?: IPluginConfig }) => {
       <Route
         key={`${route.path}-${i}`}
         path={route.path}
-        component={route.component}
+        render={(props) => (
+          <React.Suspense fallback={<div>Loading...</div>}>
+            <route.component {...props}></route.component>
+          </React.Suspense>
+        )}
       ></Route>
     ) : null;
   let specificRoute = routes.find(isSpecificRoute);
