@@ -1,9 +1,12 @@
 import "file-saver/dist/FileSaver";
+import "tui-image-editor/dist/tui-image-editor.css";
+import "tui-color-picker/dist/tui-color-picker.css";
+import "./overrides.css";
 
 import React, { Suspense, createRef } from "react";
 
 import { IState } from "../../plugins/image-editor/image-editor.types";
-import canvas from "./canvas.jpg";
+import ImageEditor from "@toast-ui/react-image-editor";
 
 const myTheme = {
   "common.bi.image": "none",
@@ -16,14 +19,12 @@ const myTheme = {
   "submenu.iconSize.height": "12px",
 };
 
-const ImageEditor = React.lazy(() => import("@toast-ui/react-image-editor"));
-
 class NanmaImageEditor extends React.Component<IState, IState> {
   private editorInstance = createRef<any>();
   constructor(props: IState) {
     super(props);
     this.state = {
-      imageSrc: canvas,
+      imageSrc: "",
       imageName: NanmaImageEditor.getNewImageName(),
     };
   }
@@ -36,12 +37,12 @@ class NanmaImageEditor extends React.Component<IState, IState> {
     };
   }
   componentDidMount = async () => {
-    // @ts-ignore
-    import("tui-image-editor/dist/tui-image-editor.css");
-    // @ts-ignore
-    import("tui-color-picker/dist/tui-color-picker.css");
-    // @ts-ignore
-    import("./overrides.css");
+    // // @ts-ignore
+    // import("tui-image-editor/dist/tui-image-editor.css");
+    // // @ts-ignore
+    // import("tui-color-picker/dist/tui-color-picker.css");
+    // // @ts-ignore
+    // import("./overrides.css");
   };
   componentDidUpdate() {
     type TuiImageEditor = import("tui-image-editor");
@@ -88,8 +89,8 @@ class NanmaImageEditor extends React.Component<IState, IState> {
             },
             menuBarPosition: "top",
           }}
-          cssMaxHeight={document.body.clientHeight * 0.8}
-          cssMaxWidth={document.body.clientWidth * 0.8}
+          // cssMaxHeight={document.body.clientHeight * 0.8}
+          // cssMaxWidth={document.body.clientWidth * 0.8}
           selectionStyle={{
             cornerSize: 2,
             rotatingPointOffset: 0,
