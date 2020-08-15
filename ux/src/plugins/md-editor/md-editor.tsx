@@ -1,3 +1,4 @@
+import BaseComponent from "../../components/base/component";
 import MarkdownIt from "markdown-it";
 import React from "react";
 
@@ -27,7 +28,7 @@ const config = {
   // highlight: hljs,
 };
 
-class MarkDownEditorApp extends React.Component<any, any> {
+class MarkDownEditorApp extends BaseComponent<any, any> {
   private processor: MarkdownIt;
   private editor: HTMLDivElement | null;
   private viewer: HTMLElement | null;
@@ -51,7 +52,7 @@ class MarkDownEditorApp extends React.Component<any, any> {
       .use(require("markdown-it-mark"));
   }
 
-  componentDidMount() {
+  componentDidMount = async () => {
     // @ts-ignore
     import("@primer/css/dist/base.css");
     // @ts-ignore
@@ -70,7 +71,7 @@ class MarkDownEditorApp extends React.Component<any, any> {
       );
     }
     window.document.body.classList.remove("noscroll");
-  }
+  };
   componentWillUnmount() {
     window.document.body.classList.remove("noscroll");
   }

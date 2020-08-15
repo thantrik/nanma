@@ -4,6 +4,7 @@ import {
   IDropdownStyles,
 } from "office-ui-fabric-react/lib/Dropdown";
 
+import BaseComponent from "../../components/base/component";
 import React from "react";
 
 const dropdownStyles: Partial<IDropdownStyles> = {
@@ -12,7 +13,7 @@ const dropdownStyles: Partial<IDropdownStyles> = {
 
 type DiffViewType = HTMLDivElement | null;
 
-class DiffView extends React.Component<any, any> {
+class DiffView extends BaseComponent<any, any> {
   private diffView: DiffViewType = null;
   private options: IDropdownOption[] = [];
   constructor(props: {}) {

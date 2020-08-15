@@ -1,7 +1,8 @@
+import BaseComponent from "../../components/base/component";
 import React from "react";
 import { unicodeGroups } from "./symbols.data";
 
-class SymbolsViewer extends React.Component<any, any> {
+class SymbolsViewer extends BaseComponent<any, any> {
   panel: HTMLDivElement | null = null;
   componentDidMount = async () => {
     // @ts-ignore

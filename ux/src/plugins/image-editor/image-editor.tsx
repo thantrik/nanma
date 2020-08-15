@@ -1,10 +1,12 @@
-import React from "react";
 import {
   setImageEditorView,
   setImageEditorViewRoute,
 } from "./image-editor.actions";
-import NanmaImageEditor from "../../components/image-editor";
+
+import BaseComponent from "../../components/base/component";
 import { IState } from "../image-editor/image-editor.types";
+import NanmaImageEditor from "../../components/image-editor";
+import React from "react";
 
 const base64toBlob = (
   b64Data: string,
@@ -40,7 +42,7 @@ window.setScreenshotUrl = function (dataUrl: string) {
   setImageEditorView({ imageSrc: url });
 };
 
-class ImageEditorEditorApp extends React.Component<IState, any> {
+class ImageEditorEditorApp extends BaseComponent<IState, any> {
   // constructor(props: any) {
   //   super(props);
   // }

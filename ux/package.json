@@ -135,6 +135,7 @@
     "seamless-immutable": "^7.1.4",
     "semver": "6.3.0",
     "style-loader": "0.23.1",
+    "svg-inline-loader": "^0.8.2",
     "terser-webpack-plugin": "2.3.5",
     "tinymce": "^5.2.2",
     "ts-pnp": "1.1.6",

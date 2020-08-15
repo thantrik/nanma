@@ -1,9 +1,9 @@
 import "../../global.d.ts";
 
+import BaseComponent from "../../components/base/component";
 import { IDropdownOption } from "office-ui-fabric-react/lib/Dropdown";
 import React from "react";
 import SelectLanguage from "../../components/dropdown/language";
-import { editor } from "monaco-editor";
 
 //import { context } from "../../app";
 
@@ -19,7 +19,7 @@ interface Props {
 let modal: import("monaco-editor").editor.ITextModel | null = null;
 let editorInstance: import("monaco-editor").editor.IStandaloneCodeEditor;
 
-export default class CodeView extends React.Component<any, any> {
+export default class CodeView extends BaseComponent<any, any> {
   private editorPanel: HTMLDivElement | null;
 
   constructor(props: Props) {
@@ -56,11 +56,12 @@ export default class CodeView extends React.Component<any, any> {
     }
   };
 
-  componentDidMount() {
+  componentDidMount = async () => {
     if (!this.editorPanel) return;
     this.setCodeView();
-  }
+  };
   onLangaugeChange = async (_: React.FormEvent, option?: IDropdownOption) => {
+    const { editor } = await import("monaco-editor");
     modal && editor.setModelLanguage(modal, option?.id || "typescript");
   };
 

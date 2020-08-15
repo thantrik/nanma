@@ -1,3 +1,4 @@
+import BaseComponent from "../../components/base/component";
 import React from "react";
 
 type JSONEditorType = import("jsoneditor").default;
@@ -11,7 +12,7 @@ class IEditorRef {
 
 type IEditorRefRecord = Record<string, IEditorRef>;
 
-class JsonEditorApp extends React.Component<any, any> {
+class JsonEditorApp extends BaseComponent<any, any> {
   private jsonEditor: IEditorRefRecord;
   constructor(props: any) {
     super(props);

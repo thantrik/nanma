@@ -1,14 +1,16 @@
-import React from "react";
-import MyWebSnippetInputForm from "./components/form/form";
 import {
-  MyWebSnippetsModal as modal,
   MyWebSnippetsModal,
+  MyWebSnippetsModal as modal,
 } from "./components/form/modal";
-import DomainList from "./components/domain/DomainList";
+
+import BaseComponent from "../../components/base/component";
 import DomainDetailsPanel from "./components/domain/DetailsPanel";
+import DomainList from "./components/domain/DomainList";
+import MyWebSnippetInputForm from "./components/form/form";
+import React from "react";
 import { createDomainSnippetsMap } from "./utils/domainSnippetMap";
 
-class MyWebSnippetsApp extends React.Component<
+class MyWebSnippetsApp extends BaseComponent<
   any,
   {
     all: MyWebSnippetsModal[];
