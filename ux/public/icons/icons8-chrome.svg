@@ -1,0 +1,21 @@
+<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="152.267" y1="98.548" x2="152.267" y2="138.528" id="gradient-0" gradientTransform="matrix(0.256884, -1.092548, 0.29328, 0.065766, -63.45517, 203.193481)">
+      <stop offset="0" style="stop-color: #bada55"></stop>
+      <stop offset="1" style="stop-color: #758d29"></stop>
+    </linearGradient>
+    <radialGradient gradientUnits="userSpaceOnUse" cx="168.182" cy="118.548" r="10.42" id="gradient-1" gradientTransform="matrix(6.774195, 10.757982, -0.977762, 0.587205, -988.83075, -1855.363159)">
+      <stop offset="0" style="stop-color: rgba(178, 3, 205, 1)"></stop>
+      <stop offset="1" style="stop-color: rgba(91, 2, 105, 1)"></stop>
+    </radialGradient>
+    <radialGradient gradientUnits="userSpaceOnUse" cx="159.092" cy="110.613" r="17.35" id="gradient-2" gradientTransform="matrix(3.602105, 3.022077, -0.74798, 0.850299, -466.208344, -560.189331)">
+      <stop offset="0" style="stop-color: rgba(218, 85, 85, 1)"></stop>
+      <stop offset="1" style="stop-color: rgb(196, 52, 52);"></stop>
+    </radialGradient>
+  </defs>
+  <path fill="#fff" d="M 35.036 23.547 C 35.036 29.738 29.896 34.757 23.559 34.757 C 17.222 34.757 12.079 29.738 12.079 23.547 C 12.079 17.359 17.222 12.337 23.559 12.337 C 29.896 12.337 35.036 17.359 35.036 23.547 Z" style=""></path>
+  <path d="M 31.972 29.388 L 22.607 45.944 C 10.371 45.463 0.602 35.609 0.602 23.547 C 0.602 11.173 10.888 1.129 23.559 1.129 L 23.559 13.459 C 17.853 13.459 13.229 17.977 13.229 23.547 C 13.229 29.12 17.853 33.637 23.559 33.637 C 27.036 33.637 30.102 31.967 31.972 29.388 Z" style="paint-order: fill; fill: url(#gradient-0);"></path>
+  <path d="M 46.516 23.547 C 46.516 35.933 36.242 45.967 23.559 45.967 L 22.595 45.967 L 31.972 29.388 C 33.178 27.74 33.889 25.722 33.889 23.547 C 33.889 17.977 29.265 13.459 23.559 13.459 L 23.559 1.129 C 32.524 1.129 40.261 6.151 44.048 13.459 C 45.608 16.496 46.516 19.915 46.516 23.547 Z" style="fill: url(#gradient-1);"></path>
+  <path d="M 44.036 13.459 L 23.559 13.459 C 17.853 13.459 13.229 17.977 13.229 23.547 C 13.229 25.217 13.642 26.788 14.388 28.178 L 14.376 28.178 L 4.229 11.508 L 4.206 11.508 C 8.269 5.266 15.42 1.129 23.559 1.129 C 32.512 1.129 40.261 6.151 44.036 13.459 Z" style="fill: url(#gradient-2);"></path>
+  <path d="M 407 398.31 L 409.125 403.039 L 414.223 403.624 L 410.438 407.131 L 411.464 412.221 L 407 409.66 L 402.536 412.221 L 403.562 407.131 L 399.777 403.624 L 404.875 403.039 Z" style="fill: rgb(49, 133, 212);" transform="matrix(-0.487623, 0.873054, -0.882764, -0.470238, 580.46309, -140.307836)" bx:shape="star 407 406 7.595 7.69 0.476 5 1@5c9dbcdb"></path>
+</svg>
