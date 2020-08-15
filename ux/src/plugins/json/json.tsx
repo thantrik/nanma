@@ -20,6 +20,9 @@ class JsonEditorApp extends BaseComponent<any, any> {
       code: new IEditorRef(),
       tree: new IEditorRef(),
     };
+    this.state = {
+      data: "{}",
+    };
   }
 
   createJsonEditorRef = (type: string) => (ele: HTMLDivElement) => {
