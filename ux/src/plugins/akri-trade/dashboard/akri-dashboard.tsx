@@ -43,8 +43,8 @@ class AkriTradeDashboardView extends BaseComponent<any, AkriTradeStateType> {
   }
 }
 
-const indexWidget = (input: any = { data: [] }) => {
-  const { data } = input;
+const indexWidget = (input: any = { json: { data: [] } }) => {
+  const { data } = input.json;
   const list = [
     "NIFTY 50",
     "NIFTY NEXT 50",
