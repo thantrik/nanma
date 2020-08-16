@@ -1,0 +1,63 @@
+.akri.dashboard {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  min-height: 100vh;
+  font-family: "Fira Code";
+  font-size: 0.8rem;
+}
+
+.akri .side-menu {
+  width: 60px;
+  background-color: #1f1a1a;
+}
+
+.akri .main-content {
+  padding-top: 10px;
+  width: calc(100vw - 80px);
+  background-color: #010101;
+}
+
+.akri .index-list {
+  display: flex;
+  flex-direction: row;
+  max-height: 38px;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  overflow: hidden;
+  flex-wrap: wrap;
+}
+
+.akri .index-list-item {
+  padding: 4px;
+  min-width: 50px;
+  max-height: 30px;
+  color: white;
+  border-radius: 3px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  font-size: xx-small;
+  margin-right: 4px;
+}
+
+.akri .index-list-item .label {
+  display: block;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.akri .index-list-item .value {
+  display: block;
+}
+
+.akri .index-list-item[status="up"] {
+  background-color: #00d084;
+}
+.akri .index-list-item[status="down"] {
+  background-color: #eb144c;
+  border: solid 1px #b10e39;
+  font-size: 8px;
+}

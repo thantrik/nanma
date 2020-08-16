@@ -1,0 +1,39 @@
+table.default {
+  margin: 0 0 40px 0;
+  width: 100%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  display: table;
+  border-collapse: collapse;
+}
+
+table.default tbody tr {
+  display: table-row;
+  background: #f6f6f6;
+}
+table.default .row:nth-of-type(odd) {
+  background: #e9e9e9;
+}
+
+table.default.red thead tr {
+  font-weight: 900;
+  color: #ffffff;
+  background: #ea6153;
+  text-transform: capitalize;
+}
+table.default.green thead tr {
+  background: #27ae60;
+  color: white;
+  text-transform: capitalize;
+}
+table.default.blue thead tr {
+  background: #2980b9;
+  color: white;
+  text-transform: capitalize;
+}
+
+table.default tr td,
+table.default tr th {
+  padding: 6px 12px;
+  display: table-cell;
+  text-align: left;
+}
