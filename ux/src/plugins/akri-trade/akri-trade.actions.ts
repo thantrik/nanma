@@ -54,10 +54,10 @@ export const getIndices = async () => {
   );
 };
 
-let intervalHandle: NodeJS.Timeout;
+//let intervalHandle: NodeJS.Timeout;
 export const fetchDashBoard = () => {
-  if (typeof intervalHandle !== "undefined") return;
-  intervalHandle = setInterval(() => {
-    getIndices();
-  }, 1000);
+  // if (typeof intervalHandle !== "undefined") return;
+  // intervalHandle = setInterval(() => {
+  getIndices();
+  //  }, 1000);
 };
