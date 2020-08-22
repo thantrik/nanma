@@ -30,7 +30,7 @@ export class ApplicationNavMenu extends React.Component<any, any> {
       const yCord = e.clientY;
       // const toBottom = yCord > this.prevY;
       const inMargin = yCord > window.innerHeight - 50;
-      console.log(yCord, window.innerHeight, window.innerHeight - 50);
+      // console.log(yCord, window.innerHeight, window.innerHeight - 50);
       this.toggleMenu(inMargin);
       this.prevY = yCord;
     };

@@ -38,6 +38,8 @@ const preopen_niftybank_url =
   "https://www1.nseindia.com/live_market/dynaContent/live_analysis/pre_open/niftybank.json";
 const fno_lot_size_url = "https://www1.nseindia.com/content/fo/fo_mktlots.csv";
 
+const option_chain = "https://www.nseindia.com/api/option-chain-indices";
+
 export interface DataUrl {
   title: string;
   url: string;
@@ -78,6 +80,7 @@ const urls = {
   ),
   fnoLotSize: createUrl("FNO LOT SIZE", fno_lot_size_url, DataType.json),
   stocks: createUrl("STOCKS", stocks_csv_url, DataType.csv),
+  optionChain: createUrl("OPTION_CHAIN", option_chain, DataType.json),
 };
 
 export { urls, DataType };

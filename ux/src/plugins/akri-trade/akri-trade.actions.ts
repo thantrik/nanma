@@ -54,10 +54,21 @@ export const getIndices = async () => {
   );
 };
 
+export const getOptionChain = async () => {
+  const response = await getWebData(urls.optionChain.url);
+  store.dispatch(
+    setAkriWebReqData({
+      url: urls.optionChain,
+      data: response,
+    })
+  );
+};
+
 //let intervalHandle: NodeJS.Timeout;
 export const fetchDashBoard = () => {
   // if (typeof intervalHandle !== "undefined") return;
   // intervalHandle = setInterval(() => {
   getIndices();
+  getOptionChain();
   //  }, 1000);
 };

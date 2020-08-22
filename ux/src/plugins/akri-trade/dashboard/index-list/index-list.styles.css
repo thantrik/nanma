@@ -1,0 +1,89 @@
+.akri .index-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  overflow: hidden;
+  flex-wrap: wrap;
+}
+
+.akri .index-list-item {
+  padding: 4px;
+  min-width: 50px;
+  color: white;
+  border-radius: 3px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  font-size: xx-small;
+  margin-right: 4px;
+  cursor: pointer;
+}
+
+.akri .index-list-item .label {
+  display: block;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.akri .index-list-item .label div.past,
+.akri .index-list-item .label div.graph {
+  display: none;
+  margin-top: 18px;
+  margin-left: -80px;
+  z-index: 10000;
+  position: absolute;
+  background-color: #343434;
+  padding: 4px;
+  border-radius: 4px;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 250px;
+}
+
+.akri .index-list-item .label div.past {
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+.akri .index-list-item .label div.graph {
+  margin-top: 27px;
+}
+
+.akri .index-list-item:hover .label div {
+  display: flex;
+}
+
+.akri .index-list-item .value {
+  display: block;
+}
+
+.akri .index-list-item .past {
+  display: block;
+  font-size: 8px;
+}
+
+.akri .index-list-item[data-status="up"] {
+  background-color: #00d084;
+}
+.akri .index-list-item[data-status="down"] {
+  background-color: #eb144c;
+  border: solid 1px #b10e39;
+  font-size: 8px;
+}
+
+.akri .index-list-item span[data-status="up"]::after {
+  content: "▲";
+  color: greenyellow;
+  margin-left: 2px;
+}
+
+.akri .index-list-item span[data-status="down"]::after {
+  content: "▼";
+  margin-left: 2px;
+  color: red;
+}

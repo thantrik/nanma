@@ -2,6 +2,7 @@ import { WEB_REQUEST, isDev } from "../../../app/common/constants";
 
 import { AKRI_TRADE_PLUGIN_NAME } from "../akri-trade.constants";
 import { WebResponse } from "../../../app/common/services";
+import { getMockResponse } from "../mock/get";
 
 export const getWebData = (
   url: string,
@@ -28,7 +29,7 @@ export const getWebData = (
     },
   };
   if (isDev) {
-    return import("../mock/all-indices").then((module) => {
+    return getMockResponse(url).then((module) => {
       console.log("Fetching mock", url);
       return (module.default as unknown) as WebResponse;
     });
