@@ -1,25 +1,9 @@
+import { OptionChainProps, defaultData } from "./option-chain.types";
 import React, { useEffect, useState } from "react";
 
 import MarketQuote from "../../mock/master-quote";
 import { NSEOptionRow } from "./option-row";
 import { OptionTableHeader } from "./option-chian-table-header";
-import { WebResponse } from "../../../../app/common/services";
-
-export interface OptionChainData {
-  optionChain: {
-    records: { expiryDates: any[]; data: any[]; strikePrices: any[] };
-    filtered: { data: any[] };
-  };
-}
-export interface OptionChainProps {
-  input: WebResponse;
-}
-const defaultData: WebResponse = {
-  json: {
-    records: { expiryDates: [], data: [], strikePrices: [] },
-    filtered: { data: [] },
-  },
-} as WebResponse;
 
 export const NSEOptionChain = ({ input = defaultData }: OptionChainProps) => {
   const {
@@ -94,8 +78,12 @@ export const NSEOptionChain = ({ input = defaultData }: OptionChainProps) => {
                     data-level={level}
                     data-col={getIndex()}
                   >
-                    <th className="expiry" data-col={getIndex()}>
-                      {r.expiryDate}
+                    <th
+                      className="expiry"
+                      data-col={getIndex()}
+                      title={r.expiryDate}
+                    >
+                      {r.expiryDate.split("-").slice(0, 2).join("")}
                     </th>
                     <th data-col={getIndex()}>G</th>
                     <NSEOptionRow

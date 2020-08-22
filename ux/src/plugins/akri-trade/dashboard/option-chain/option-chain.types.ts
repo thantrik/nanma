@@ -1,3 +1,5 @@
+import { WebResponse } from "../../../../app/common/services";
+
 export const optionPropsMap = [
   ["openInterest", "OI", "Open Interest in contracts"],
   ["changeinOpenInterest", "🜂OI", "Change in Open Interest (Contracts)"],
@@ -25,3 +27,19 @@ const upDownRGList = [
   "askPrice",
 ];
 export const isInUpDownList = (p: string) => upDownRGList.indexOf(p) > -1;
+
+export interface OptionChainData {
+  optionChain: {
+    records: { expiryDates: any[]; data: any[]; strikePrices: any[] };
+    filtered: { data: any[] };
+  };
+}
+export interface OptionChainProps {
+  input: WebResponse;
+}
+export const defaultData: WebResponse = {
+  json: {
+    records: { expiryDates: [], data: [], strikePrices: [] },
+    filtered: { data: [] },
+  },
+} as WebResponse;

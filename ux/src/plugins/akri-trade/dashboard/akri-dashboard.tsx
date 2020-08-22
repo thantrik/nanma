@@ -2,6 +2,7 @@ import { AkriTradeStateType } from "../akri-trade.types";
 import BaseComponent from "../../../components/base/component";
 import { NSEIndexList } from "./index-list";
 import { NSEOptionChain } from "./option-chain";
+import { OiChart } from "./oi-chart";
 import React from "react";
 import { fetchDashBoard } from "../akri-trade.actions";
 import { urls } from "../trade-url";
@@ -31,6 +32,7 @@ class AkriTradeDashboardView extends BaseComponent<any, AkriTradeStateType> {
         <div className={"main-content"}>
           {/** INDECES VIEW */}
           <NSEIndexList input={data?.[urls.allIndices.title]}></NSEIndexList>
+          <OiChart input={data?.[urls.optionChain.title]}></OiChart>
           <NSEOptionChain
             input={data?.[urls.optionChain.title]}
           ></NSEOptionChain>
