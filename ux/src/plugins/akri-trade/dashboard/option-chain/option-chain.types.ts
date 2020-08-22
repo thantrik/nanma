@@ -15,3 +15,13 @@ export const optionPropsMap = [
   ["askPrice", "ASK ₹", "Best Ask/Sell Price"],
   //"underlyingValue",
 ];
+
+const upDownRGList = [
+  "changeinOpenInterest",
+  "pchangeinOpenInterest",
+  "change",
+  "pChange",
+  "bidprice",
+  "askPrice",
+];
+export const isInUpDownList = (p: string) => upDownRGList.indexOf(p) > -1;

@@ -1,5 +1,6 @@
+import { isInUpDownList, optionPropsMap } from "./option-chain.types";
+
 import React from "react";
-import { optionPropsMap } from "./option-chain.types";
 
 export interface NSEOption {
   strikePrice: number;
@@ -83,7 +84,11 @@ export const NSEOptionRow = (props: NSEOptionRowProps) => {
             data-col={getIndex()}
             onMouseEnter={toggleHover("hover") as any}
             onMouseLeave={toggleHover("hover", false) as any}
-            style={!isNaN(nVal) && nVal < 0 ? { color: "red" } : {}}
+            {...(!isNaN(nVal) && isInUpDownList(p)
+              ? {
+                  "data-status": nVal < 0 ? "down" : "up",
+                }
+              : {})}
           >
             {!isNaN(nVal)
               ? isFloat(nVal)
@@ -91,6 +96,8 @@ export const NSEOptionRow = (props: NSEOptionRowProps) => {
                 : nVal !== 0
                 ? nVal
                 : ""
+              : val === "-"
+              ? ""
               : val}
           </td>
         );
