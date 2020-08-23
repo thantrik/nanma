@@ -4,6 +4,20 @@ import { DashboardComponentProps } from "../../akri-trade.types";
 import { WebResponse } from "../../../../app/common/services";
 import { urls } from "../../trade-url";
 
+const list = [
+  "NIFTY 50",
+  "NIFTY NEXT 50",
+  "NIFTY 100",
+  "NIFTY 200",
+  "NIFTY 500",
+  "NIFTY MIDCAP 50",
+  "NIFTY MIDCAP 100",
+  "NIFTY SMALLCAP 100",
+  "NIFTY BANK",
+  "NIFTY METAL",
+  "NIFTY PHARMA",
+];
+
 enum IndexStatus {
   up = "up",
   down = "down",
@@ -24,21 +38,7 @@ const defaultData: WebResponse = { json: { data: [] } } as WebResponse;
 export const NSEIndexList = ({
   input = { [urls.allIndices.title]: defaultData },
 }: DashboardComponentProps) => {
-  const { data } = input[urls.allIndices.title]?.json;
-
-  const list = [
-    "NIFTY 50",
-    "NIFTY NEXT 50",
-    "NIFTY 100",
-    "NIFTY 200",
-    "NIFTY 500",
-    "NIFTY MIDCAP 50",
-    "NIFTY MIDCAP 100",
-    "NIFTY SMALLCAP 100",
-    "NIFTY BANK",
-    "NIFTY METAL",
-    "NIFTY PHARMA",
-  ];
+  const { data = [] } = (input[urls.allIndices.title] ?? defaultData).json;
 
   useEffect(() => {
     import("./index-list.styles.css");

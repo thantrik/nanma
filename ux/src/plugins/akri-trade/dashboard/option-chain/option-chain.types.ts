@@ -1,4 +1,5 @@
 import { WebResponse } from "../../../../app/common/services";
+import moment from "moment";
 
 export const optionPropsMap = [
   ["openInterest", "OI", "Open Interest in contracts"],
@@ -37,7 +38,23 @@ export interface OptionChainData {
 
 export const defaultData: WebResponse = {
   json: {
-    records: { expiryDates: [], data: [], strikePrices: [] },
+    records: {
+      expiryDates: [],
+      data: [],
+      strikePrices: [],
+      underlyingValue: 0,
+    },
     filtered: { data: [] },
   },
 } as WebResponse;
+
+export const nextThursday = () => {
+  let day = moment();
+  let index = 1;
+  console.log(day.format("dddd"));
+  while (day.format("dddd") !== "Thursday" && index < 8) {
+    day = moment().add(index++, "days");
+    console.log(day.format("dddd"));
+  }
+  return day.format("DD-MMM-YYYY");
+};

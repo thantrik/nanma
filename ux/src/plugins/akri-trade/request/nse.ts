@@ -6,7 +6,8 @@ import { getMockResponse } from "../mock/get";
 
 export const getWebData = (
   url: string,
-  options: any = {}
+  options: any = {},
+  exact: boolean = false
 ): Promise<WebResponse> => {
   const request = {
     name: AKRI_TRADE_PLUGIN_NAME,
@@ -29,7 +30,7 @@ export const getWebData = (
     },
   };
   if (isDev) {
-    return getMockResponse(url).then((module) => {
+    return getMockResponse(url, exact).then((module) => {
       console.log("Fetching mock", url);
       return (module.default as unknown) as WebResponse;
     });

@@ -16,19 +16,11 @@ export const OptionTableHeader = (
   <thead>
     <tr>
       <th></th>
-      <th
-        className="text-center"
-        //@ts-ignore
-        colspan={optionCallHeader.length}
-      >
+      <th className="text-center" colSpan={optionCallHeader.length}>
         CALLS
       </th>
       <th></th>
-      <th
-        className="text-center"
-        //@ts-ignore
-        colspan={optionPutHeader.length}
-      >
+      <th className="text-center" colSpan={optionPutHeader.length}>
         PUTS
       </th>
     </tr>

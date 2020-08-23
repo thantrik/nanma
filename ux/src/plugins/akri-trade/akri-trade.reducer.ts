@@ -1,6 +1,13 @@
-import { setAkriTradeData, setAkriWebReqData } from "./akri-trade.actions";
+import {
+  AKRI_TRADE_PLUGIN_NAME,
+  OI_FILTERED_DATA,
+} from "./akri-trade.constants";
+import {
+  setAkriTradeData,
+  setAkriWebReqData,
+  setOptionChainFilteredDataAction,
+} from "./akri-trade.actions";
 
-import { AKRI_TRADE_PLUGIN_NAME } from "./akri-trade.constants";
 import { AkriTradeStateType } from "./akri-trade.types";
 import { Reducer } from "redux";
 import { createReducer } from "@reduxjs/toolkit";
@@ -30,6 +37,12 @@ const akriTrade: Reducer = createReducer(initialState, {
     data: {
       ...state.data,
       [action.payload.url.title]: action.payload.data,
+    },
+  }),
+  [setOptionChainFilteredDataAction as any]: (state: any, action): any => ({
+    ...state,
+    filtered: {
+      [OI_FILTERED_DATA]: action.payload,
     },
   }),
 });

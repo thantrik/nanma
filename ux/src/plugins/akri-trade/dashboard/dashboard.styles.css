@@ -35,6 +35,7 @@
   color: white;
   font-size: x-large;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .akri .side-menu .menu-item:hover {
@@ -48,4 +49,13 @@
   padding-top: 10px;
   width: calc(100vw - 60px);
   background-color: #010101;
+}
+
+.akri .main-content input[type="text"],
+.akri .main-content select,
+.akri .main-content select option {
+  background-color: #121212;
+  color: white;
+  font-size: smaller;
+  border: #898989;
 }

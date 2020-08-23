@@ -1,8 +1,10 @@
+import { defaultData, nextThursday } from "../option-chain/option-chain.types";
+
+import DarkUnica from "highcharts/themes/dark-unica";
 import { DashboardComponentProps } from "../../akri-trade.types";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import React from "react";
-import { defaultData } from "../option-chain/option-chain.types";
 import { urls } from "../../trade-url";
 
 export const OiChart = ({
@@ -10,14 +12,22 @@ export const OiChart = ({
 }: DashboardComponentProps) => {
   const {
     records: {
-      // expiryDates = [],
+      //  expiryDates = [],
       data = [],
-      // strikePrices = [],
-      // underlyingValue,
-    },
+      //   strikePrices = [],
+      //   underlyingValue,
+    } = defaultData.json.records,
     // filtered: { data: filterdData = [] },
-  } = input[urls.optionChain.title]?.json;
-  const chartData = generateChartData(data, "27-Aug-2020");
+  } = (input[urls.optionChain.title] ?? defaultData)?.json || defaultData.json;
+  let storedFilteredData = window.localStorage.getItem("OI_FILTERED");
+  let filteredData = data;
+  try {
+    if (storedFilteredData) {
+      filteredData = JSON.parse(storedFilteredData);
+    }
+  } catch (e) {}
+
+  const chartData = generateChartData(filteredData, nextThursday());
   return createOiChart(chartData);
 };
 
@@ -241,7 +251,7 @@ const createOiChart = (chartData: any) => {
   };
   return (
     <HighchartsReact
-      highcharts={Highcharts}
+      highcharts={DarkUnica(Highcharts)}
       options={options}
     ></HighchartsReact>
   );

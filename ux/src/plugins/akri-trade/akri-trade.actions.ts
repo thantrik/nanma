@@ -1,5 +1,6 @@
 import {
   AKRI_TRADE_PLUGIN_NAME,
+  SET_AKRI_OPTION_FILTERED_DATA,
   SET_AKRI_WEB_REQ_DATA,
 } from "./akri-trade.constants";
 import {
@@ -54,8 +55,10 @@ export const getIndices = async () => {
   );
 };
 
-export const getOptionChain = async () => {
-  const response = await getWebData(urls.optionChain.url);
+export const getOptionChain = async (query: any = { symbol: "NIFTY" }) => {
+  const url = new URL(urls.optionChain.url);
+  Object.keys(query).forEach((k) => url.searchParams.append(k, query[k]));
+  const response = await getWebData(url.toString());
   store.dispatch(
     setAkriWebReqData({
       url: urls.optionChain,
@@ -63,6 +66,15 @@ export const getOptionChain = async () => {
     })
   );
 };
+
+export const setOptionChainFilteredDataAction = createAction(
+  SET_AKRI_OPTION_FILTERED_DATA,
+  (payload: any[]): any => ({
+    payload,
+  })
+);
+export const setOptionChainFilteredData = (data: any[]) =>
+  store.dispatch(setOptionChainFilteredDataAction(data));
 
 //let intervalHandle: NodeJS.Timeout;
 export const fetchDashBoard = () => {
