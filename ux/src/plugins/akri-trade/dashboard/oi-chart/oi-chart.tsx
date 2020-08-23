@@ -21,13 +21,18 @@ export const OiChart = ({
   } = (input[urls.optionChain.title] ?? defaultData)?.json || defaultData.json;
   let storedFilteredData = window.localStorage.getItem("OI_FILTERED");
   let filteredData = data;
+  let isFiltered = false;
   try {
     if (storedFilteredData) {
       filteredData = JSON.parse(storedFilteredData);
+      isFiltered = true;
     }
   } catch (e) {}
 
-  const chartData = generateChartData(filteredData, nextThursday());
+  const chartData = generateChartData(
+    filteredData,
+    isFiltered ? undefined : nextThursday()
+  );
   return createOiChart(chartData);
 };
 
@@ -42,7 +47,7 @@ interface Series {
 
 const generateChartData = (
   data: any[],
-  expiryDate: string,
+  expiryDate?: string,
   range: Range = { from: 0, to: Infinity }
 ) => {
   const categories = new Set();
@@ -69,7 +74,7 @@ const generateChartData = (
   data
     .filter(
       (r: any) =>
-        r.expiryDate === expiryDate &&
+        ((expiryDate && r.expiryDate === expiryDate) || !expiryDate) &&
         r.strikePrice >= range.from &&
         r.strikePrice <= range.to
     )
@@ -115,7 +120,7 @@ const generateChartData = (
       };
     });
   return {
-    expiryDate,
+    expiryDate: expiryDate || "",
     categories: [...categories],
     series: [
       ...getSeries(series, 0, "column"),

@@ -51,10 +51,8 @@ export const defaultData: WebResponse = {
 export const nextThursday = () => {
   let day = moment();
   let index = 1;
-  console.log(day.format("dddd"));
   while (day.format("dddd") !== "Thursday" && index < 8) {
     day = moment().add(index++, "days");
-    console.log(day.format("dddd"));
   }
   return day.format("DD-MMM-YYYY");
 };
