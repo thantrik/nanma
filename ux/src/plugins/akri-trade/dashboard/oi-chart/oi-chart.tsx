@@ -1,22 +1,22 @@
-import {
-  OptionChainProps,
-  defaultData,
-} from "../option-chain/option-chain.types";
-
+import { DashboardComponentProps } from "../../akri-trade.types";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import React from "react";
+import { defaultData } from "../option-chain/option-chain.types";
+import { urls } from "../../trade-url";
 
-export const OiChart = ({ input = defaultData }: OptionChainProps) => {
+export const OiChart = ({
+  input = { [urls.optionChain.title]: defaultData },
+}: DashboardComponentProps) => {
   const {
     records: {
-      expiryDates = [],
+      // expiryDates = [],
       data = [],
-      strikePrices = [],
-      underlyingValue,
+      // strikePrices = [],
+      // underlyingValue,
     },
     // filtered: { data: filterdData = [] },
-  } = input.json;
+  } = input[urls.optionChain.title]?.json;
   const chartData = generateChartData(data, "27-Aug-2020");
   return createOiChart(chartData);
 };

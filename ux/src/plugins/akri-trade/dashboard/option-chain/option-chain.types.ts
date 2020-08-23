@@ -34,9 +34,7 @@ export interface OptionChainData {
     filtered: { data: any[] };
   };
 }
-export interface OptionChainProps {
-  input: WebResponse;
-}
+
 export const defaultData: WebResponse = {
   json: {
     records: { expiryDates: [], data: [], strikePrices: [] },

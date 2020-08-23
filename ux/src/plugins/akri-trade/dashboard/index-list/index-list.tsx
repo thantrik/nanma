@@ -1,5 +1,9 @@
 import React, { useEffect } from "react";
 
+import { DashboardComponentProps } from "../../akri-trade.types";
+import { WebResponse } from "../../../../app/common/services";
+import { urls } from "../../trade-url";
+
 enum IndexStatus {
   up = "up",
   down = "down",
@@ -15,10 +19,12 @@ export interface NSEIndexListProps {
   input: { json: { data: any[] } };
 }
 
+const defaultData: WebResponse = { json: { data: [] } } as WebResponse;
+
 export const NSEIndexList = ({
-  input = { json: { data: [] } },
-}: NSEIndexListProps) => {
-  const { data } = input.json;
+  input = { [urls.allIndices.title]: defaultData },
+}: DashboardComponentProps) => {
+  const { data } = input[urls.allIndices.title]?.json;
 
   const list = [
     "NIFTY 50",

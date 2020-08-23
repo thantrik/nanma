@@ -1,11 +1,15 @@
-import { OptionChainProps, defaultData } from "./option-chain.types";
 import React, { useEffect, useState } from "react";
 
+import { DashboardComponentProps } from "../../akri-trade.types";
 import MarketQuote from "../../mock/master-quote";
 import { NSEOptionRow } from "./option-row";
 import { OptionTableHeader } from "./option-chian-table-header";
+import { defaultData } from "./option-chain.types";
+import { urls } from "../../trade-url";
 
-export const NSEOptionChain = ({ input = defaultData }: OptionChainProps) => {
+export const NSEOptionChain = ({
+  input = { [urls.optionChain.title]: defaultData },
+}: DashboardComponentProps) => {
   const {
     records: {
       expiryDates = [],
@@ -14,7 +18,7 @@ export const NSEOptionChain = ({ input = defaultData }: OptionChainProps) => {
       underlyingValue,
     },
     // filtered: { data: filterdData = [] },
-  } = input.json;
+  } = input[urls.optionChain.title]?.json;
 
   const [expiry, setExpiry] = useState(expiryDates[0]);
 

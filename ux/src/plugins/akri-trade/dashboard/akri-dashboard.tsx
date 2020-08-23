@@ -1,11 +1,15 @@
-import { AkriTradeStateType } from "../akri-trade.types";
+import {
+  AkriTradePropsType,
+  AkriTradeStateType,
+  DashboardType,
+} from "../akri-trade.types";
+
 import BaseComponent from "../../../components/base/component";
-import { NSEIndexList } from "./index-list";
-import { NSEOptionChain } from "./option-chain";
-import { OiChart } from "./oi-chart";
+import NSEIndexList from "./index-list";
+import OiChart from "./oi-chart";
+import OptionChain from "./option-chain";
 import React from "react";
 import { fetchDashBoard } from "../akri-trade.actions";
-import { urls } from "../trade-url";
 
 enum IndexStatus {
   up = "up",
@@ -18,32 +22,45 @@ interface Index {
   status: IndexStatus;
 }
 
-class AkriTradeDashboardView extends BaseComponent<any, AkriTradeStateType> {
+class AkriTradeDashboardView extends BaseComponent<
+  AkriTradeStateType,
+  AkriTradePropsType
+> {
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      currentIndex: 0,
+      dashboards: [NSEIndexList, OptionChain, OiChart],
+    };
+  }
   componentDidMount = async () => {
     import("../../../app/app.styles.css");
     import("./dashboard.styles.css");
     fetchDashBoard();
   };
+  selectDashboard = (index: number) => (e: MouseEvent) => {
+    this.setState({ currentIndex: index });
+    e.preventDefault();
+  };
   render() {
     const { data } = this.props;
+    const { dashboards, currentIndex } = this.state;
+    const Dashboard = dashboards[currentIndex].dashboard;
     return (
       <div className={"akri dashboard"}>
-        <div className={"side-menu"}></div>
+        <div className={"side-menu"}>
+          {dashboards.map((item: DashboardType, index: number) => (
+            <div
+              onClick={
+                this.selectDashboard(index) as () => (e: MouseEvent) => void
+              }
+            >
+              <item.menu active={index === currentIndex}></item.menu>
+            </div>
+          ))}
+        </div>
         <div className={"main-content"}>
-          {/** INDECES VIEW */}
-          <NSEIndexList input={data?.[urls.allIndices.title]}></NSEIndexList>
-          <OiChart input={data?.[urls.optionChain.title]}></OiChart>
-          <NSEOptionChain
-            input={data?.[urls.optionChain.title]}
-          ></NSEOptionChain>
-          {/* <div
-            style={{
-              display: "flex",
-            }}
-          >
-            <div style={{ width: 600, height: 400 }}></div>
-            <div style={{ width: "calc(100% - 600px)", height: 500 }}></div>
-          </div> */}
+          <Dashboard input={data}></Dashboard>
         </div>
       </div>
     );
