@@ -34,7 +34,7 @@ export interface NSEOptionRowProps {
 }
 
 const callProps = optionPropsMap.map((p) => p[0]);
-const putProps = callProps.reverse();
+const putProps = [...callProps].reverse();
 
 const toggleHover = (className: string, add: boolean = true) => (
   e: MouseEvent
