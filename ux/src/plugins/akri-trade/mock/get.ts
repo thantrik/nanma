@@ -1,4 +1,4 @@
-import { WebResponse } from "../../../app/common/services";
+import { WebResponse } from "../../../app/common";
 
 export interface WebResponseMock {
   default: WebResponse;
@@ -13,7 +13,19 @@ const response: { [key: string]: Promise<WebResponseMock> } = {
   "option-chain-indices": (import(
     "../mock/option-chain-indices"
   ) as unknown) as Promise<WebResponseMock>,
+  "https://money.rediff.com/index.html": (import(
+    "./rediff.index"
+  ) as unknown) as Promise<WebResponseMock>,
 };
+export const getMockCrawlResponse = (
+  url: string,
+  exact: boolean = false
+): Promise<WebResponseMock> => {
+  return response[url]
+    ? (response[url] as Promise<WebResponseMock>)
+    : Promise.reject();
+};
+
 export const getMockResponse = (
   url: string,
   exact: boolean = false

@@ -1,4 +1,4 @@
-import { WebResponse } from "../../app/common/services";
+import { WebResponse } from "../../app/common";
 
 export * from "./akri-trade.constants";
 

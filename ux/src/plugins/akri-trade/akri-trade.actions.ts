@@ -10,7 +10,7 @@ import {
 } from "./akri-trade.types";
 import { DataUrl, urls } from "./trade-url";
 
-import { WebResponse } from "../../app/common/services";
+import { WebResponse } from "../../app/common";
 import { createAction } from "@reduxjs/toolkit";
 import { getWebData } from "./request/nse";
 import { push } from "connected-react-router";

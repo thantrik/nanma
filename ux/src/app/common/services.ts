@@ -6,11 +6,6 @@ import {
 
 import { WEB_REQUEST } from "./constants";
 
-export type WebResponse = Response & {
-  json: any;
-  text: string;
-};
-
 const registerWebRequestHandler = () => {
   chrome.runtime.onMessage.addListener(
     async (

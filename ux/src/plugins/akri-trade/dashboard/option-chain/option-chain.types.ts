@@ -1,4 +1,4 @@
-import { WebResponse } from "../../../../app/common/services";
+import { WebResponse } from "../../../../app/common";
 import moment from "moment";
 
 export const optionPropsMap = [

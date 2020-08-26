@@ -6,11 +6,6 @@ import {
 
 import { WEB_PARSER } from "./constants";
 
-export type WebResponse = Response & {
-  json: any;
-  text: string;
-};
-
 const registerWebCrawlParserHandler = () => {
   chrome.runtime.onMessage.addListener(
     async (
@@ -27,25 +22,25 @@ const registerWebCrawlParserHandler = () => {
         response.headers.forEach((value: string, key: string) => {
           headers[key] = value;
         });
-        let body = "";
+        let html = "";
         let error = false;
         try {
-          body = await response.text();
+          html = await response.text();
         } catch (e) {
           error = true;
         }
 
         if (selector) {
           const cheerio = await import("cheerio");
-          const $ = cheerio.load(body);
-          body = $(selector).html() || "";
+          const $ = cheerio.load(html);
+          html = $(selector).html() || "";
         }
 
         const { ok, status, statusText, type, url } = response;
         sendResponse({
           ...response,
           headers,
-          body,
+          html,
           ok,
           status,
           statusText,

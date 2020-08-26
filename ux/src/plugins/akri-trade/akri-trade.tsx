@@ -6,7 +6,7 @@ import BaseComponent from "../../components/base/component";
 import JsonTableView from "./jsonTable";
 import React from "react";
 import { WEB_REQUEST } from "../../app/common/constants";
-import { WebResponse } from "../../app/common/services";
+import { WebResponse } from "../../app/common";
 
 interface AkriTradeViewAppState extends AkriTradeStateType {
   data: Record<string, WebResponse>;
