@@ -17,7 +17,7 @@ interface Props {
 }
 
 let modal: import("monaco-editor").editor.ITextModel | null = null;
-let editorInstance: import("monaco-editor").editor.IStandaloneCodeEditor;
+// let editorInstance: import("monaco-editor").editor.IStandaloneCodeEditor;
 
 export default class CodeView extends BaseComponent<any, any> {
   private editorPanel: HTMLDivElement | null;
@@ -40,7 +40,8 @@ export default class CodeView extends BaseComponent<any, any> {
     }
     if (this.editorPanel) {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      editorInstance = editor.create(this.editorPanel, {
+      // editorInstance =
+      editor.create(this.editorPanel, {
         //@ts-ignore
         model: modal,
         theme: "vs-dark",

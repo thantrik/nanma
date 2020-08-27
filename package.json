@@ -18,11 +18,15 @@
   "author": "Krishna Kumar",
   "license": "MIT",
   "dependencies": {
+    "@types/highcharts": "^7.0.0",
     "args": "^5.0.1",
     "camelcase": "^6.0.0",
     "chalk": "^4.1.0",
+    "cheerio": "^1.0.0-rc.3",
     "cross-env": "^7.0.2",
     "gsap": "^3.3.1",
+    "highcharts": "^8.2.0",
+    "highcharts-react-official": "^3.0.0",
     "pwd-fs": "^1.2.13",
     "replace-in-file": "^6.1.0",
     "rimraf": "^3.0.2"

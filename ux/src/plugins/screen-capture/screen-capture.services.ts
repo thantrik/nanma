@@ -1,6 +1,7 @@
 import { IPluginService, IPluginServiceRequest } from "../../app/app.services";
-import { SCREEN_CAPTURE_PLUGIN_NAME } from "./screen-capture.constants";
+
 import { IMAGE_EDITOR_ROUTE } from "../image-editor/image-editor.types";
+import { SCREEN_CAPTURE_PLUGIN_NAME } from "./screen-capture.constants";
 
 // window.scrollTo(0, window.scrollY +  window.innerHeight)
 // window.document.body.scrollHeight

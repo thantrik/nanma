@@ -1,0 +1,61 @@
+.akri.dashboard {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  min-height: 100vh;
+  font-family: "Fira Code";
+  font-size: 0.8rem;
+}
+
+.akri .side-menu {
+  width: 60px;
+  display: flex;
+  background-color: #1f1a1a;
+  flex-direction: column;
+  justify-items: start;
+  align-items: center;
+  align-content: space-around;
+  padding-top: 10px;
+}
+
+.akri .side-menu .menu-item {
+  color: white;
+  font-size: x-large;
+  margin-bottom: 5px;
+  box-sizing: border-box;
+  padding: 5px;
+  cursor: pointer;
+  border: solid 1px transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.akri .side-menu .menu-item i {
+  color: white;
+  font-size: x-large;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.akri .side-menu .menu-item:hover {
+  border: solid 1px #343434;
+}
+.akri .side-menu .menu-item:hover i {
+  color: aqua;
+}
+
+.akri .main-content {
+  padding-top: 10px;
+  width: calc(100vw - 60px);
+  background-color: #010101;
+}
+
+.akri .main-content input[type="text"],
+.akri .main-content select,
+.akri .main-content select option {
+  background-color: #121212;
+  color: white;
+  font-size: smaller;
+  border: #898989;
+}

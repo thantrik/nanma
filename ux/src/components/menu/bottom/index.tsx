@@ -1,8 +1,10 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { getPlugins } from "../../../app";
-import { DefaultButton, Stack, IStackTokens } from "office-ui-fabric-react";
+import { DefaultButton, IStackTokens, Stack } from "office-ui-fabric-react";
+
 import { AssessmentGroupIcon } from "@fluentui/react-icons";
+import { Link } from "react-router-dom";
+import React from "react";
+import { getPlugins } from "../../../app";
+
 //import { push } from "connected-react-router";
 
 const plugins = getPlugins();
@@ -25,17 +27,17 @@ export class ApplicationNavMenu extends React.Component<any, any> {
 
     this.prevY = 0;
     window.onmousemove = (e: MouseEvent) => {
-      const toBottom = e.clientY > this.prevY;
-      const inMargin = e.clientY > window.screen.availWidth - 50;
-      if (toBottom && inMargin) {
-        this.toggleMenu(true);
-      }
-      this.prevY = e.pageY;
+      const yCord = e.clientY;
+      // const toBottom = yCord > this.prevY;
+      const inMargin = yCord > window.innerHeight - 50;
+      // console.log(yCord, window.innerHeight, window.innerHeight - 50);
+      this.toggleMenu(inMargin);
+      this.prevY = yCord;
     };
   }
   toggleMenu = (show: boolean) => {
     this.instanceMenu &&
-      (this.instanceMenu.style.display = show ? "block" : "none");
+      (this.instanceMenu.style.display = show ? "flex" : "none");
   };
   render() {
     const { disabled, checked } = this.props;
@@ -50,6 +52,7 @@ export class ApplicationNavMenu extends React.Component<any, any> {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          alignContent: "center",
           width: "100vw",
         }}
       >
@@ -61,17 +64,22 @@ export class ApplicationNavMenu extends React.Component<any, any> {
                 <DefaultButton
                   disabled={disabled}
                   checked={checked}
+                  width={20}
                   styles={{
                     root: {
                       textAlign: "left",
                       boxSizing: "border-box",
-                      maxWidth: 150,
                       border: 0,
                       fontSize: 10,
                       borderRadius: 0,
+                      maxWidth: 20,
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
+                      borderTopLeftRadius: 1,
+                      borderTopRightRadius: 1,
+                      borderBottomLeftRadius: 1,
+                      borderBottomRightRadius: 1,
                     },
                     rootHovered: {
                       backgroundColor: "#D5FAFF",
@@ -88,9 +96,8 @@ export class ApplicationNavMenu extends React.Component<any, any> {
                       ></AssessmentGroupIcon>
                     )
                   }
-                >
-                  {plugin.name.toUpperCase()}
-                </DefaultButton>
+                  title={plugin.name.toUpperCase()}
+                ></DefaultButton>
               </Link>
             ))}
         </Stack>

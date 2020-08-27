@@ -1,0 +1,66 @@
+.option-table table {
+  width: 100%;
+  font-size: 8px;
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+  overflow: hidden;
+}
+
+.option-table table thead {
+  color: white;
+  background-color: #252525;
+}
+
+.option-table table thead tr th {
+  padding: 4px;
+}
+
+.option-table table tbody tr td,
+.option-table table tbody tr th {
+  color: teal;
+  border: solid 1px #252525;
+  padding-left: 2px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.option-table table tbody tr td.strike {
+  color: yellowgreen;
+}
+
+.option-table table tbody tr.option-row td.call[data-level="up"],
+.option-table table tbody tr.option-row td.put[data-level="down"] {
+  background-color: white;
+  border: solid 1px #f5eded;
+}
+
+.option-table table tbody tr.option-row td.strike {
+  font-weight: bold;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.option-table table tbody tr:hover,
+.option-table table tbody tr.option-row:hover td.call[data-level="up"],
+.option-table table tbody tr.option-row:hover td.put[data-level="up"],
+.option-table table tbody tr.option-row:hover td.put[data-level="down"],
+.option-table table tbody tr.option-row:hover td.call[data-level="down"],
+.option-table table tbody tr.option-row td.hover,
+.option-table table tbody tr.option-row th.hover {
+  color: greenyellow;
+  background-color: #242424 !important;
+  font-weight: bolder !important;
+  border: solid 1px #252525 !important;
+}
+
+.option-table table tbody tr.option-row td[data-status="down"],
+.option-table table tbody tr.option-row td:hover[data-status="down"] {
+  color: red !important;
+  font-weight: bold;
+}
+
+.option-table table tbody tr.option-row td[data-status="up"] {
+  color: green;
+  font-weight: bold;
+}
