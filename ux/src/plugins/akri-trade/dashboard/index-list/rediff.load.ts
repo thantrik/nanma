@@ -36,12 +36,15 @@ const getRediffData = async (): Promise<string> => {
     const selector = cheerio.load(rediff.html);
     return (
       `<style type="text/css" >
-      * {padding: 0; margin: 0; box-sizing: border-box; color: white}
+      * {padding: 0; margin: 0; box-sizing: border-box; color: #9a9a9a;}
       div{ padding: 20px;}
-      a { margin-left: 8px; margin-top: 8px; display: inline-block; background-color: white; text-decoration:none; color: black; padding: 5px; border-radius:4px; }
-      a:hover { background-color: burlywood}
-      a .f12 { color:blue }
-      a .black { color: black}
+      a { border: solid 1px transparent; margin-left: 8px; margin-top: 8px; display: inline-block; background-color: #232323; text-decoration:none; color: black; padding: 5px; border-radius:4px; }
+      a:hover {
+        background-color: #343434;
+        border: solid 1px #686868;
+     }
+      a .f12 { color:mediumslateblue; }
+      a .black { color: white}
       a .red { color: red}
       a .green { color: green}
      </style><br/><br/><div><h2>SECTOR INDEX</h2>` +
