@@ -35,88 +35,88 @@ export interface NSEIndexListProps {
 }
 
 const defaultData: WebResponse = { json: { data: [] } } as WebResponse;
-let redifDataLoaded = false;
 
-export const NSEIndexList = ({
-  input = { [urls.allIndices.title]: defaultData },
-}: DashboardComponentProps) => {
-  const { data = [] } = (input[urls.allIndices.title] ?? defaultData).json;
-  const rediffRef = React.useRef<HTMLDivElement>(null);
+export const NSEIndexList = React.memo(
+  ({
+    input = { [urls.allIndices.title]: defaultData },
+  }: DashboardComponentProps) => {
+    const { data = [] } = (input[urls.allIndices.title] ?? defaultData).json;
+    const rediffRef = React.useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    import("./index-list.styles.css");
-    if (!redifDataLoaded) {
+    useEffect(() => {
+      import("./index-list.styles.css");
       fetchSectorIndex(rediffRef);
-    }
-  });
+    });
 
-  if (!input) return null;
-  return (
-    <div>
-      <div className={"index-list"}>
-        {data
-          .filter((index: any) => list.indexOf(index.index) !== -1)
-          .map((indexData: any) => {
-            const {
-              previousClose,
-              percentChange,
-              index,
-              variation,
-              last,
-              oneWeekAgo,
-              oneMonthAgo,
-              oneYearAgo,
-              //perChange365d,
-              chart365dPath,
-              chartTodayPath,
-              chart30dPath,
-            } = indexData;
-            const changeLastDay = Number(previousClose - last).toFixed(1);
-            const changeOneWeekAgo = Number(oneWeekAgo - last).toFixed(1);
-            const changeOneMonthAgo = Number(oneMonthAgo - last).toFixed(1);
-            const changeOneYearAgo = Number(oneYearAgo - last).toFixed(1);
+    if (!input) return null;
+    return (
+      <div>
+        <div className={"index-list"}>
+          {data
+            .filter((index: any) => list.indexOf(index.index) !== -1)
+            .map((indexData: any) => {
+              const {
+                previousClose,
+                percentChange,
+                index,
+                variation,
+                last,
+                oneWeekAgo,
+                oneMonthAgo,
+                oneYearAgo,
+                //perChange365d,
+                chart365dPath,
+                chartTodayPath,
+                chart30dPath,
+              } = indexData;
+              const changeLastDay = Number(previousClose - last).toFixed(1);
+              const changeOneWeekAgo = Number(oneWeekAgo - last).toFixed(1);
+              const changeOneMonthAgo = Number(oneMonthAgo - last).toFixed(1);
+              const changeOneYearAgo = Number(oneYearAgo - last).toFixed(1);
 
-            const getStatus = (val: number | string) =>
-              Number(val) > 0 ? IndexStatus.up : IndexStatus.down;
+              const getStatus = (val: number | string) =>
+                Number(val) > 0 ? IndexStatus.up : IndexStatus.down;
 
-            return (
-              <div
-                key={index}
-                className={"index-list-item"}
-                data-status={getStatus(percentChange)}
-              >
-                <span className={"label"}>
-                  {index.replace("NIFTY", "N")} ({Number(variation).toFixed(1)})
-                  <div>
-                    <div className={"graph"}>
-                      <img src={chartTodayPath} alt={"Today"}></img>
-                      <img src={chart30dPath} alt={"Month"}></img>
-                      <img src={chart365dPath} alt={"Year"}></img>
+              return (
+                <div
+                  key={index}
+                  className={"index-list-item"}
+                  data-status={getStatus(percentChange)}
+                >
+                  <span className={"label"}>
+                    {index.replace("NIFTY", "N")} (
+                    {Number(variation).toFixed(1)})
+                    <div>
+                      <div className={"graph"}>
+                        <img src={chartTodayPath} alt={"Today"}></img>
+                        <img src={chart30dPath} alt={"Month"}></img>
+                        <img src={chart365dPath} alt={"Year"}></img>
+                      </div>
+                      <div className={"past"} title={String(variation)}>
+                        <span data-status={getStatus(changeLastDay)}>
+                          D {changeLastDay}
+                        </span>
+                        <span data-status={getStatus(changeOneWeekAgo)}>
+                          W {changeOneWeekAgo}
+                        </span>
+                        <span data-status={getStatus(changeOneMonthAgo)}>
+                          M {changeOneMonthAgo}
+                        </span>
+                        <span data-status={getStatus(changeOneYearAgo)}>
+                          Y {changeOneYearAgo}
+                        </span>
+                      </div>
                     </div>
-                    <div className={"past"} title={String(variation)}>
-                      <span data-status={getStatus(changeLastDay)}>
-                        D {changeLastDay}
-                      </span>
-                      <span data-status={getStatus(changeOneWeekAgo)}>
-                        W {changeOneWeekAgo}
-                      </span>
-                      <span data-status={getStatus(changeOneMonthAgo)}>
-                        M {changeOneMonthAgo}
-                      </span>
-                      <span data-status={getStatus(changeOneYearAgo)}>
-                        Y {changeOneYearAgo}
-                      </span>
-                    </div>
-                  </div>
-                </span>
-                <span className={"value"} title={String(variation)}>
-                  {last}
-                </span>
-              </div>
-            );
-          })}
+                  </span>
+                  <span className={"value"} title={String(variation)}>
+                    {last}
+                  </span>
+                </div>
+              );
+            })}
+        </div>
+        <div ref={rediffRef}></div>
       </div>
-      <div ref={rediffRef}></div>
-    </div>
-  );
-};
+    );
+  }
+);

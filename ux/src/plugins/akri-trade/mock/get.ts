@@ -1,3 +1,4 @@
+import { CRAWL_URL_REDIFF } from "../dashboard/index-list/rediff.load";
 import { WebResponse } from "../../../app/common";
 
 export interface WebResponseMock {
@@ -13,9 +14,9 @@ const response: { [key: string]: Promise<WebResponseMock> } = {
   "option-chain-indices": (import(
     "../mock/option-chain-indices"
   ) as unknown) as Promise<WebResponseMock>,
-  "https://money.rediff.com/index.html": (import(
-    "./rediff.index"
-  ) as unknown) as Promise<WebResponseMock>,
+  [CRAWL_URL_REDIFF]: (import("./rediff.index") as unknown) as Promise<
+    WebResponseMock
+  >,
 };
 export const getMockCrawlResponse = (
   url: string,
